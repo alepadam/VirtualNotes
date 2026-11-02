@@ -584,6 +584,116 @@ table{font-size:.875rem}
 .cmap button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .cmap button.on{box-shadow:0 0 0 3px var(--fg),0 10px 24px rgba(0,0,0,.5)}
 .cmap button.dim{opacity:.35}
+/* ---- v7: drill, HDFS write path, NoSQL and YARN animations ---- */
+.dr-tabs{margin:4px 0 12px}
+.dr{display:grid;gap:14px}
+.dr-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.dr-bar label{display:grid;gap:4px;font-size:.78rem;color:var(--muted)}
+.dr-score{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.dr-score small{display:block;font-size:.68rem;color:var(--muted)}
+.dr-score div{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.dr-score span{font-family:var(--f-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.dr-score b{display:block;font-family:var(--f-mono);font-size:1.1rem;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.dr-score{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.dr-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px}
+.dr-meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.dr-chip{font-family:var(--f-mono);font-size:.7rem;padding:2px 8px;border-radius:999px;background:var(--amber-soft);color:var(--amber)}
+.dr-q{font-size:1.06rem;font-weight:600;line-height:1.5}
+.dr-opts{display:grid;gap:8px}
+.dr-opt{all:unset;box-sizing:border-box;display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg-2);cursor:pointer;line-height:1.45}
+.dr-opt .k{font-family:var(--f-mono);color:var(--muted);min-width:1.2em}
+.dr-opt:hover:not([disabled]){border-color:var(--amber)}
+.dr-opt:focus-visible{outline:2px solid var(--amber)}
+.dr-opt[disabled]{cursor:default}
+.dr-opt.right{border-color:var(--teal);background:var(--teal-soft)}
+.dr-opt.wrong{border-color:var(--rose);background:var(--rose-soft)}
+.dr-exp{padding:12px 14px;border-radius:10px;background:var(--surface-2);font-size:.92rem;line-height:1.55}
+.dr-exp.skip{background:var(--amber-soft)}
+.dr-exp b{display:block;margin-bottom:2px}
+.dr-nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.dr-nav .grp{display:flex;gap:8px;flex-wrap:wrap}
+.dr-dots{display:flex;flex-wrap:wrap;gap:4px}
+.dr-dots button{all:unset;box-sizing:border-box;cursor:pointer;width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-family:var(--f-mono);font-size:.66rem;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.dr-dots button.c{background:var(--teal-soft);border-color:var(--teal);color:var(--teal)}
+.dr-dots button.w{background:var(--rose-soft);border-color:var(--rose);color:var(--rose)}
+.dr-dots button.s{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.dr-dots button.cur{outline:2px solid var(--fg);outline-offset:1px}
+.dr-dots button:focus-visible{outline:2px solid var(--amber)}
+.dr-done{text-align:center;display:grid;gap:8px;justify-items:center}
+details.dq{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+details.dq summary{cursor:pointer;padding:14px 16px;font-weight:600;list-style:none;display:flex;gap:10px;line-height:1.45}
+details.dq summary::-webkit-details-marker{display:none}
+details.dq summary:focus-visible{outline:2px solid var(--amber);border-radius:12px}
+details.dq summary .n{font-family:var(--f-mono);color:var(--muted);font-weight:400;min-width:2.2em}
+details.dq summary .mk{margin-left:auto;font-family:var(--f-mono);font-size:.7rem;color:var(--amber);white-space:nowrap;padding-left:8px;font-weight:500}
+details.dq[open] summary{border-bottom:1px solid var(--line)}
+.dq .ans{padding:12px 16px 16px;font-size:.94rem;line-height:1.6;color:var(--fg)}
+.dq .ans ul,.dq .ans ol{margin:6px 0;padding-left:1.3em}
+.dq .ans p{margin:6px 0}
+.dq .ans .marks{font-size:.76rem;color:var(--muted);font-family:var(--f-mono)}
+.dq .ans table{border-collapse:collapse;font-size:.88rem;width:100%}
+.dq .ans td,.dq .ans th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.dq .ans .tw{overflow-x:auto}
+.dq .ans pre{background:#0A0F18;border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto;margin:8px 0;font-family:var(--f-mono);font-size:.82rem;white-space:pre-wrap}
+.dq .got{margin-top:10px;display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--muted)}
+.dq .got input{accent-color:var(--teal)}
+.dr-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.dr-facts .fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.dr-facts h3{font-size:var(--s1);margin-bottom:6px;color:var(--amber)}
+.dr-facts ul{margin:0;padding-left:1.2em;display:grid;gap:3px;font-size:.9rem}
+.ptn{list-style:none;padding:0!important}
+.ptn li{display:flex;gap:10px;align-items:baseline}
+.src{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:4px;flex:none}
+.src.s{background:var(--teal-soft);color:var(--teal)}
+.src.b{background:var(--amber-soft);color:var(--amber)}
+.hw2{position:relative;display:grid;gap:14px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"client nn" "racks racks";min-width:0}
+.hw-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:6px;position:relative;z-index:1}
+.hw-box b{font-family:var(--f-display)}
+.hw-box small{color:var(--muted);font-size:.72rem}
+.hw-file{display:flex;gap:3px;height:30px}
+.hw-file i{display:grid;place-items:center;border-radius:4px;font-style:normal;font:600 .66rem var(--f-mono);color:#0B111C;min-width:18px;transition:opacity .3s}
+.hw-file i.sent{opacity:.25}
+.hw-nnlog{font-family:var(--f-mono);font-size:.68rem;color:var(--muted);min-height:2.6em;line-height:1.4}
+.hw-racks{grid-area:racks;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hw-rack{border:1px dashed var(--line);border-radius:10px;padding:8px;display:grid;gap:6px}
+.hw-rack>span{font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+.hw-rack .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.hw-dn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;min-height:92px;display:grid;align-content:start;gap:4px;position:relative;z-index:1}
+.hw-dn b{font:700 .72rem var(--f-mono)}
+.hw-dn.hot{border-color:var(--amber);box-shadow:0 0 0 2px var(--amber-soft)}
+.hw-bl{display:flex;flex-wrap:wrap;gap:3px}
+.hw-bl i{font-style:normal;font:600 .6rem var(--f-mono);color:#0B111C;padding:2px 4px;border-radius:3px}
+.hw-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+.hw-svg path{fill:none;stroke:var(--amber);stroke-width:2;stroke-dasharray:5 4;opacity:.8}
+.hw-dot{position:absolute;width:14px;height:14px;border-radius:3px;transform:translate(-50%,-50%);z-index:3;pointer-events:none;box-shadow:0 0 0 3px rgba(255,255,255,.25)}
+@container (max-width:520px){.hw2{grid-template-columns:1fr;grid-template-areas:"client" "nn" "racks"}.hw-racks{grid-template-columns:1fr}}
+.nsq-grid,.my-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:4px}
+@media (max-width:700px){.nsq-grid,.my-grid{grid-template-columns:1fr}}
+.nsq-side,.my-side{display:grid;gap:8px;align-content:start;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.nsq-up{height:150px;display:grid;place-items:end center}
+.nsq-box{background:var(--blue);color:#0B111C;border-radius:8px;display:grid;place-items:center;text-align:center;padding:6px;transition:width .4s,height .4s,background .3s;font-size:.8rem}
+.nsq-box small{font-size:.7rem}
+.nsq-box.max{background:var(--rose)}
+.nsq-nodes{display:flex;flex-wrap:wrap;gap:6px;min-height:150px;align-content:flex-start}
+.nsq-node{width:calc(33.3% - 4px);min-width:96px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;display:grid;gap:4px;transition:opacity .3s,border-color .3s}
+.nsq-node b{font:700 .72rem var(--f-mono)}
+.nsq-node.down{border-color:var(--rose);background:var(--rose-soft)}
+.nsq-node.down .kk i{opacity:.3}
+.kk{display:flex;flex-wrap:wrap;gap:3px}
+.kk i{font-style:normal;font:600 .6rem var(--f-mono);padding:1px 4px;border-radius:3px;background:var(--teal-soft);color:var(--teal)}
+.kk i.rep{background:var(--surface-2);color:var(--muted)}
+.my-master{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:9px 11px;display:grid;gap:4px}
+.my-master b{font-family:var(--f-display)}
+.my-master small{color:var(--muted);font-size:.72rem}
+.meter{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .4s,background .3s}
+.meter i.hot{background:var(--rose)}
+.my-workers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.my-w{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;min-height:74px;display:grid;align-content:start;gap:4px}
+.my-w b{font:700 .66rem var(--f-mono);color:var(--muted)}
+.my-w i{font-style:normal;font:600 .62rem var(--f-mono);padding:2px 5px;border-radius:4px;color:#0B111C;animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.my-w i{animation:none}}
 /* print: the open page as clean notes */
 @media print{
  :root{--bg:#fff;--bg-2:#fff;--surface:#fff;--surface-2:#eee;--line:#bbb;--fg:#111;--muted:#333;--dim:#555;color-scheme:light}
@@ -634,7 +744,7 @@ table{font-size:.875rem}
     <div class="eyebrow">Big Data Applications &amp; Analytics · Revision companion</div>
     <h1>Learn big data by <em>poking the cluster</em></h1>
     <p class="lede">Three lecture chapters, every slide point kept, rebuilt as 3D models you can rotate and click. Fail a DataNode and watch HDFS re-replicate. Run MapReduce on your own input. Filter a Hive table and watch partition pruning skip whole folders.</p>
-    <div class="meta"><span><b>3</b> chapters</span><span><b>33</b> topics</span><span><b>16</b> interactive labs</span><span><b>9</b> with a 2D/3D switch</span><span><b>95+</b> glossary terms</span><span><b>84</b> quiz questions</span></div>
+    <div class="meta"><span><b>3</b> chapters</span><span><b>34</b> topics</span><span><b>19</b> interactive labs</span><span><b>9</b> with a 2D/3D switch</span><span><b>95+</b> glossary terms</span><span><b>84</b> quiz questions</span></div>
     <div class="resume" id="resume" hidden></div>
     <div class="toc" id="home-toc"></div>
     <div class="howto" aria-label="How to revise with this site">
@@ -778,6 +888,16 @@ table{font-size:.875rem}
       <div class="card"><span class="tag">NoSQL characteristics</span>
         <ul><li>Non-relational</li><li>Doesn't require a schema</li><li>Data replicated to multiple nodes (identical &amp; fault-tolerant) and can be partitioned: down nodes are easily replaced, no single point of failure</li><li>Horizontally scalable</li><li>Cheap and easy to implement (open-source)</li><li>Fast key-value access</li></ul>
         <p style="margin-top:8px">Examples shown: Redis, HBase, Cassandra, MongoDB, Riak, CouchDB, Tokyo Cabinet, Scalaris, Project Voldemort, Neo4j (graph), Membase</p>
+      </div>
+      <div class="card nsq">
+        <span class="tag">See it: horizontal scaling, partitioning and replication</span>
+        <p>Twelve keys are spread (partitioned) across the nodes, and each key is kept on two nodes (replicated). Add load to scale out, then fail nodes and see which keys survive.</p>
+        <div class="controls"><button class="btn primary" type="button" id="nq-load">Add load</button><button class="btn" type="button" id="nq-fail">Fail a node</button><button class="btn ghost" type="button" id="nq-reset">Reset</button></div>
+        <div class="nsq-grid">
+          <div class="nsq-side"><span class="kicker">Scale up (vertical) · one bigger machine</span><div class="nsq-up"><div class="nsq-box" id="nq-up"><b>1 server</b><small id="nq-up-t"></small></div></div></div>
+          <div class="nsq-side"><span class="kicker">Scale out (horizontal) · more cheap machines</span><div class="nsq-nodes" id="nq-nodes"></div></div>
+        </div>
+        <div class="steptext" id="nq-msg"></div>
       </div>
       <p class="note">"Big Data Technologies" is listed but never defined. Data Science is defined but not in the list. The Hadoop slide appears twice.</p>
     </article>
@@ -935,6 +1055,20 @@ CAD</textarea>
         <div class="card"><span class="tag">TaskTracker (per-node slave)</span><ul><li>Launch and tear down tasks on JobTracker's orders</li><li>Provide task-status information to the JobTracker periodically</li></ul><p style="margin-top:6px">Diagram: clients submit jobs (dashed) to the JobTracker; TaskTrackers running tasks send MapReduce status (solid).</p></div>
       </div>
       <div class="card"><span class="tag">Background: cluster computing</span><p>A <b style="color:var(--fg)">computer cluster</b> is a set of loosely or tightly connected computers that work together so they can be viewed as a single system. Challenges: storing data persistently and keeping it available if nodes fail; dealing with node failures during long-running computations; the network bottleneck that delays processing. MapReduce answers by <b style="color:var(--fg)">bringing computation close to the data</b>. Its stated limitation: map and reduce jobs are "not stateless", so Reduce must wait for Map to finish, which limits parallelism. So YARN was born as a generic resource management and distributed application framework.</p></div>
+      <div class="card my">
+        <span class="tag">See it: one JobTracker vs YARN</span>
+        <p>Submit jobs to both clusters. In MRv1 every job's scheduling and monitoring lands on the single JobTracker. In YARN the ResourceManager only hands out containers, and each job gets its own ApplicationMaster.</p>
+        <div class="controls"><button class="btn primary" type="button" id="my-mr">Submit MapReduce job</button><button class="btn" type="button" id="my-sp">Submit Spark job</button><button class="btn ghost" type="button" id="my-reset">Reset</button></div>
+        <div class="my-grid">
+          <div class="my-side"><span class="kicker">MRv1 (Hadoop 1)</span>
+            <div class="my-master"><b>JobTracker</b><small>resources + every job's scheduling &amp; monitoring</small><div class="meter"><i id="my-jt"></i></div></div>
+            <div class="my-workers" id="my-tt"></div></div>
+          <div class="my-side"><span class="kicker">YARN (Hadoop 2+)</span>
+            <div class="my-master"><b>ResourceManager</b><small>hands out containers only</small><div class="meter"><i id="my-rm"></i></div></div>
+            <div class="my-workers" id="my-nm"></div></div>
+        </div>
+        <div class="steptext" id="my-msg">Submit a job to see where the work lands.</div>
+      </div>
       <p class="note">The slide calls JobTracker/TaskTracker the "current" system, but since Hadoop 2 they are replaced by YARN. "Not stateless" is confusing wording: the real problems were the strict map-then-reduce barrier, the single overloaded JobTracker, and MRv1 running only MapReduce jobs.</p>
     </article>
 
@@ -992,8 +1126,40 @@ CAD</textarea>
       <p class="note">The diagram shows a Secondary NameNode (fsimage + edits) that is never explained. It periodically merges the edit log into the fsimage (checkpointing). It is not a live backup NameNode. Also: 64 MB was the Hadoop 1 default, 128 MB from Hadoop 2. Two slides are numbered "29" out of order.</p>
     </article>
 
+    <article class="topic" id="hdfs-write">
+      <div class="topic-head"><span class="tnum">2.10</span><h3>How HDFS stores a file: the write path</h3></div>
+      <p class="sub">Choose a file size, block size and replication factor, then step through what happens when a client saves the file into HDFS. The NameNode's metadata fills in as each block lands.</p>
+      <div class="controls">
+        <label class="inline" for="hw-size">File size</label><select id="hw-size"><option value="200">200 MB</option><option value="300" selected>300 MB</option><option value="500">500 MB</option></select>
+        <label class="inline" for="hw-bs">Block size</label><select id="hw-bs"><option value="64">64 MB (Hadoop 1)</option><option value="128" selected>128 MB (Hadoop 2+)</option></select>
+        <label class="inline" for="hw-rf">Replication</label><select id="hw-rf"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option></select>
+      </div>
+      <div class="lab">
+        <div class="stage" id="st-hw" style="height:480px"><span class="hint">Drag to rotate</span></div>
+        <aside class="panel">
+          <span class="kicker" id="hw-kick"></span>
+          <div class="steptext" id="hw-step"></div>
+          <div class="controls"><button class="btn" type="button" id="hw-prev">Back</button><button class="btn primary" type="button" id="hw-next">Next step</button><button class="btn" type="button" id="hw-play">Play all</button></div>
+          <span class="kicker">NameNode metadata (held in RAM)</span>
+          <div class="tbl"><table><thead><tr><th>Block</th><th>Size</th><th>Stored on</th></tr></thead><tbody id="hw-meta"></tbody></table></div>
+          <div class="tiles" id="hw-stats"></div>
+        </aside>
+      </div>
+      <div class="card"><span class="tag">Points to note</span>
+        <ul class="ptn">
+          <li><span class="src s">Slides</span>A file is cut into large blocks (typically 128 MB; 64 MB in Hadoop 1), and each block is replicated independently on several DataNodes.</li>
+          <li><span class="src s">Slides</span>The NameNode stores only metadata (namespace tree, inodes, and the block → DataNode map) and keeps it all in RAM. File data never passes through it.</li>
+          <li><span class="src s">Slides</span>Blocks sit on each DataNode's own local file system.</li>
+          <li><span class="src b">Beyond slides</span>The last block holds only what's left. A 300 MB file with 128 MB blocks is 128 + 128 + 44 MB, and that last block uses 44 MB of disk, not 128.</li>
+          <li><span class="src b">Beyond slides</span>Replication multiplies raw storage: 300 MB with 3 replicas uses 900 MB of disk across the cluster.</li>
+          <li><span class="src b">Beyond slides</span>By default the first replica goes on one rack and the other two go together on a different rack, so the file survives a whole rack failing.</li>
+          <li><span class="src b">Beyond slides</span>DataNodes pass the block along in a pipeline (client → DataNode → DataNode → DataNode), and acknowledgements travel back up the same chain.</li>
+        </ul></div>
+      <p class="tip">A favourite exam pairing: "how is a file stored" (this topic) with "how is a file read" (2.9). In both, the NameNode only deals in metadata; the bytes move between the client and the DataNodes.</p>
+    </article>
+
     <article class="topic">
-      <div class="topic-head"><span class="tnum">2.10</span><h3>Data access, governance, security and operations tools</h3></div>
+      <div class="topic-head"><span class="tnum">2.11</span><h3>Data access, governance, security and operations tools</h3></div>
       <p class="sub">Data access lets you interact with data in a wide variety of ways, from batch to real-time.</p>
       <div class="grid2">
         <div class="card"><span class="tag">Data access · SQL</span><h4>Apache Hive</h4><p>Data warehouse built on MapReduce for easy summarization and ad-hoc queries via a SQL-like interface over HDFS. User submits SQL → Hive converts it into MapReduce jobs → masters → slaves. Keeps a metadata store.</p></div>
@@ -1026,12 +1192,12 @@ CAD</textarea>
     </article>
 
     <article class="topic">
-      <div class="topic-head"><span class="tnum">2.11</span><h3>Where to apply Hadoop &amp; chapter summary</h3></div>
+      <div class="topic-head"><span class="tnum">2.12</span><h3>Where to apply Hadoop &amp; chapter summary</h3></div>
       <div class="chips" style="margin:0"><span class="chip">1 Modeling true risk</span><span class="chip">2 Customer churn analysis</span><span class="chip">3 Recommendation engine</span><span class="chip">4 PoS transaction analysis</span><span class="chip">5 Analyzing network data to predict failure</span><span class="chip">6 Threat analysis</span><span class="chip">7 Search quality</span><span class="chip">8 Data "sandbox"</span></div>
       <div class="card"><span class="tag">Summary</span><ul><li>Apache Hadoop is a fast-growing data framework</li><li>It addresses the problems of "traditional" large-scale computing</li><li>It features the Hadoop Distributed File System (HDFS)</li><li>Built on MapReduce concepts and Hadoop cluster operation</li></ul><p style="margin-top:6px">References: Cloudera, Introduction to Hadoop · hadoop.apache.org HDFS design (r1.2.1) · hadoop.apache.org MapReduce tutorial (r1.2.1)</p></div>
     </article>
     <article class="topic">
-      <div class="topic-head"><span class="tnum">2.12</span><h3>Common misconceptions</h3></div>
+      <div class="topic-head"><span class="tnum">2.13</span><h3>Common misconceptions</h3></div>
       <p class="sub">Each of these costs marks in exams. Say out loud why it's wrong before you open it.</p>
       <div class="myths"><details class="myth"><summary><span class="mx">Myth</span><span>The Secondary NameNode is a backup NameNode.</span></summary><p><b>Actually:</b> It periodically merges the edit log into the fsimage (checkpointing). It cannot take over if the NameNode fails. The slides show it but never explain it, so this is a favourite trap.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>When you read a file, the data passes through the NameNode.</span></summary><p><b>Actually:</b> The NameNode only answers which blocks and DataNodes hold the file. The client then reads the blocks directly from the DataNodes.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>The NameNode sends commands straight to DataNodes.</span></summary><p><b>Actually:</b> It never sends requests directly. It gives instructions only as replies to DataNode heartbeats: replicate, remove replicas, re-register, or shut down.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>YARN replaced MapReduce.</span></summary><p><b>Actually:</b> YARN replaced MRv1's JobTracker and TaskTracker resource management. MapReduce still runs, now as one application on YARN alongside Spark, Tez, Storm and others.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Replication factor 3 means a file is cut into 3 blocks.</span></summary><p><b>Actually:</b> The replication factor is how many copies of each block exist. The number of blocks depends on file size divided by block size (typically 128 MB).</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Reduce can start working before the maps finish.</span></summary><p><b>Actually:</b> Reducers need every value for their keys, so reducing waits for mapping to finish. The slides call this MapReduce's biggest limitation and the reason YARN was created.</p></details></div>
     </article>
@@ -1330,7 +1496,8 @@ CAD</textarea>
     <div class="ch-head"><span class="num" aria-hidden="true">✓</span><span class="eyebrow">Practice</span><h2>Revise and test yourself</h2><p>Flip through flashcards, take the quiz for one chapter or all of them, and check what the slides leave out.</p></div>
     <div class="phub">
       <a href="#glossary"><b>Glossary &amp; flashcards</b><small>Every term, searchable, or one card at a time</small></a>
-      <a href="#quiz"><b>Quiz</b><small>Pick a chapter or mix them all</small></a>
+      <a href="#quiz"><b>Quiz &amp; timed exam</b><small>Pick a chapter or mix them all</small></a>
+      <a href="#drill"><b>Test drill · Chapters 1–2</b><small>176 MCQs with negative marking, 43 written questions, last-minute facts</small></a>
       <a href="#gaps"><b>Slide gaps</b><small>Missing, outdated or unclear points to ask about</small></a>
     </div>
   </section>
@@ -1354,6 +1521,29 @@ CAD</textarea>
     <div class="tabs" id="quiz-f" style="margin-bottom:4px"></div>
     <article class="topic quiz" id="quiz-box"></article>
     <article class="topic exam" id="exam-box"></article>
+  </section>
+
+  <section class="chapter" id="drill" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Test drill · Chapters 1–2</span><h2>Big Data &amp; Hadoop test drill</h2><p>Built from the Chapter 1 and Chapter 2 lecture decks: 176 multiple-choice questions with negative marking, 43 written questions with model answers and likely marks, and a last-minute facts sheet.</p></div>
+    <div class="seg dr-tabs" role="group" aria-label="Drill section"><button type="button" data-v="mcq" aria-pressed="true">MCQ practice</button><button type="button" data-v="desc" aria-pressed="false">Written Q&amp;A</button><button type="button" data-v="facts" aria-pressed="false">Last-minute facts</button></div>
+    <article class="topic dr" id="dr-mcq">
+      <div class="dr-bar">
+        <label for="dr-topic">Topic<select id="dr-topic"></select></label>
+        <label for="dr-neg">Wrong answer costs<select id="dr-neg"><option value="0">0 marks</option><option value="0.25" selected>−0.25</option><option value="0.33">−0.33</option><option value="0.5">−0.5</option><option value="1">−1</option></select></label>
+        <label for="dr-order">Order<select id="dr-order"><option value="seq">As in slides</option><option value="rnd">Shuffled</option></select></label>
+        <button class="btn" type="button" id="dr-wrong">Retry my wrong ones</button>
+        <button class="btn ghost" type="button" id="dr-reset">Reset</button>
+      </div>
+      <div class="dr-score"><div><span>Score</span><b id="dr-s-score">0</b></div><div title="Correct ÷ answered. Skipped questions are not counted."><span>Accuracy</span><b id="dr-s-acc">–</b><small id="dr-s-accn">no answers yet</small></div><div><span>Correct</span><b id="dr-s-c">0</b></div><div><span>Wrong</span><b id="dr-s-w">0</b></div><div><span>Skipped</span><b id="dr-s-s">0</b></div><div><span>Left</span><b id="dr-s-l">0</b></div></div>
+      <div class="dr-card" id="dr-card"></div>
+      <div class="dr-dots" id="dr-dots"></div>
+      <p class="sub" style="font-size:.85rem">Keys: A–D to answer, S to skip, → or Enter for next, ← for previous. Skip when you'd only be guessing; that's the habit negative marking rewards.</p>
+    </article>
+    <article class="topic dr" id="dr-desc" hidden>
+      <div class="dr-bar"><label for="dr-dtopic">Topic<select id="dr-dtopic"></select></label><button class="btn" type="button" id="dr-open">Open all</button><button class="btn" type="button" id="dr-close">Close all</button><span id="dr-count" style="font-size:.85rem;color:var(--muted)"></span></div>
+      <div id="dr-list"></div>
+    </article>
+    <article class="topic dr" id="dr-facts" hidden><div class="dr-facts" id="dr-factlist"></div></article>
   </section>
 
   <section class="chapter" id="gaps" data-view="practice">
@@ -1695,7 +1885,7 @@ topics.forEach(t=>{const n=t.querySelector(".tnum").textContent.trim();if(!t.id)
  if(!sgs[ch]){side.insertAdjacentHTML("beforeend",`<a class="sh" href="#ch${ch}" data-g="ch${ch}">Chapter ${ch} · ${esc(chName(ch))}</a><div class="sg" data-g="ch${ch}"></div>`);sgs[ch]=side.querySelector(`.sg[data-g="ch${ch}"]`)}
  sgs[ch].insertAdjacentHTML("beforeend",`<a href="#${t.id}" data-t="${t.id}"><span class="n">${n}</span><span>${esc(h)}</span></a>`);
  const b=document.createElement("button");b.type="button";b.className="mark";b.dataset.t=t.id;b.onclick=()=>{learned.has(t.id)?learned.delete(t.id):learned.add(t.id);store.set("bdl-learned",[...learned]);syncLearned()};t.querySelector(".topic-head").appendChild(b)});
-side.insertAdjacentHTML("beforeend",`<a class="sh" href="#practice" data-g="practice">Practice</a><div class="sg" data-g="practice"><a href="#glossary"><span class="n">A–Z</span><span>Glossary &amp; flashcards</span></a><a href="#quiz"><span class="n">Q</span><span>Quiz</span></a><a href="#gaps"><span class="n">!</span><span>Slide gaps</span></a></div>`);
+side.insertAdjacentHTML("beforeend",`<a class="sh" href="#practice" data-g="practice">Practice</a><div class="sg" data-g="practice"><a href="#glossary"><span class="n">A–Z</span><span>Glossary &amp; flashcards</span></a><a href="#quiz"><span class="n">Q</span><span>Quiz &amp; timed exam</span></a><a href="#drill"><span class="n">D</span><span>Test drill · Ch 1–2</span></a><a href="#gaps"><span class="n">!</span><span>Slide gaps</span></a></div>`);
 /* top nav: one link per chapter page (new chapters appear automatically) + Practice */
 const topnav=$("#topnav");
 topnav.innerHTML=CH.map(c=>`<a href="#ch${c.n}" data-nav="ch${c.n}" title="Chapter ${c.n} · ${esc(c.name)}"><span>Chapter ${c.n}</span><i class="np"><b style="width:0"></b></i></a>`).join("")+`<a href="#practice" data-nav="practice"><span>Practice</span><i class="np" style="visibility:hidden"><b></b></i></a>`;
@@ -1728,7 +1918,7 @@ function route(){const r=resolve(),v=r.v,changed=v!==curView;curView=v;bgSet&&bg
  const pg=PAGES.find(p=>p.v===v);document.title=pg?`${pg.label} · ${baseTitle}`:baseTitle;
  if(v!=="home")store.set("bdl-last",location.hash);else drawResume();
  document.body.classList.remove("side-open");syncSideBtn();
- const target=r.el&&r.el.dataset.view!==v?r.el:null;
+ const target=r.el&&r.el.id!==v?r.el:null;
  requestAnimationFrame(()=>{if(target){if(changed)jump(()=>target.scrollIntoView());else target.scrollIntoView({behavior:reduced?"auto":"smooth"})}else if(changed){jump(()=>window.scrollTo(0,0));setTimeout(()=>{if(!userMoved&&curView===v)jump(()=>window.scrollTo(0,0))},60)}onScroll()});userMoved=false;if(target){[350,900,1800].forEach(ms=>setTimeout(()=>{if(!userMoved&&curView===v)jump(()=>target.scrollIntoView())},ms))}}
 let userMoved=false;["wheel","touchstart","keydown"].forEach(ev=>window.addEventListener(ev,()=>{userMoved=true},{passive:true}));
 function drawResume(){const h=store.get("bdl-last"),el=$("#resume");if(!h||h==="#home"){el.hidden=true;return}const id=h.slice(1),t=document.getElementById(id);if(!t){el.hidden=true;return}
@@ -1875,15 +2065,495 @@ function cmPick(k){const n=cmAt(k),links=CE.map((e,i)=>[e,i]).filter(([e])=>e[0]
 cmEl.addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)cmPick(b.dataset.k)});cmPick("hive");
 
 /* ---------- first-time hints on the first lab you reach ---------- */
-if(!store.get("bdl-coach")){const coachIO=new IntersectionObserver(es=>{const hit=es.find(e=>e.isIntersecting&&e.intersectionRatio>=.6);if(!hit)return;coachIO.disconnect();const stg=hit.target,has2d=!!stg.querySelector(".seg");
-  const c=document.createElement("div");c.className="coach";c.setAttribute("role","note");c.innerHTML=`<b>New here? Three moves</b><ul><li>Drag the model to rotate it</li><li>Tap any block to read about it</li><li>${has2d?"Switch 2D / 3D with the buttons at the top right":"Use Full screen at the top right for a closer look"}</li></ul><div class="controls"><button class="btn primary" type="button">Got it</button></div>`;
+if(!store.get("bdl-coach")){const coachIO=new IntersectionObserver(es=>{const hit=es.find(e=>e.isIntersecting&&e.intersectionRatio>=.6);if(!hit)return;coachIO.disconnect();const stg=hit.target;
+  const c=document.createElement("div");c.className="coach";c.setAttribute("role","note");c.innerHTML=`<b>New here? Three moves</b><ul><li>Drag the model to rotate it</li><li>Tap any block to read about it</li><li>Use the buttons at the top right to switch 2D / 3D (where offered) or go full screen</li></ul><div class="controls"><button class="btn primary" type="button">Got it</button></div>`;
   stg.appendChild(c);const done=()=>{c.remove();store.set("bdl-coach",1)};c.querySelector("button").onclick=done;stg.addEventListener("pointerdown",e=>{if(!c.contains(e.target))setTimeout(done,1200)},{once:true})},{threshold:[.6]});
  document.querySelectorAll(".stage").forEach(x=>coachIO.observe(x))}
+
+/* ---------- test drill (Chapters 1–2): content kept exactly as supplied ---------- */
+
+const DR_MCQ = [
+/* ---------- BIG DATA OVERVIEW ---------- */
+{t:"Big Data concepts",q:"According to Michael Franklin, Big Data is:",o:["Any data larger than one terabyte","Any data that is expensive to manage and hard to extract value from","Any data stored in a NoSQL database","Any data generated by social media"],a:1,e:"Franklin (Director of the AMP Lab, UC Berkeley): “Big Data is any data that is expensive to manage and hard to extract value from.”"},
+{t:"Big Data concepts",q:"Michael Franklin was the director of which lab?",o:["Stanford AI Lab","Google Research","Algorithms, Machines and People (AMP) Lab, UC Berkeley","MIT CSAIL"],a:2,e:"The slide credits him as Director of the Algorithms, Machines and People Lab, University of Berkeley."},
+{t:"Big Data concepts",q:"Big data analytics is best defined as:",o:["Storing large data sets in relational tables","The process of examining large data sets to uncover hidden patterns, unknown correlations, market trends, customer preferences and other useful business information","Compressing data so it fits on one server","Writing MapReduce programs in Java"],a:1,e:"Slide definition of Big Data Analytics."},
+{t:"Big Data concepts",q:"Which of the following is NOT listed as something big data analytics uncovers?",o:["Hidden patterns","Unknown correlations","Customer preferences","Hardware failures in the CPU cache"],a:3,e:"The definition lists hidden patterns, unknown correlations, market trends, customer preferences and other useful business information."},
+{t:"Big Data concepts",q:"Which is listed as a Big Data application in the slides?",o:["Airline route planning","Word processing","Spreadsheet formatting","Email encryption"],a:0,e:"Applications: Internet search, digital advertisements, recommender systems, image recognition, speech recognition, gaming, price comparison websites, airline route planning, fraud & risk detection, delivery logistics."},
+{t:"Big Data concepts",q:"“Targeted advertising and re-targeting” belongs to which Big Data application?",o:["Recommender systems","Digital advertisements","Price comparison websites","Internet search"],a:1,e:"Digital Advertisements (Targeted Advertising and re-targeting)."},
+{t:"Big Data concepts",q:"Which of these is NOT among the ten Big Data applications listed?",o:["Fraud and risk detection","Delivery logistics","Speech recognition","Payroll processing"],a:3,e:"Payroll processing is not in the list."},
+{t:"Big Data concepts",q:"Data Science refers to an emerging area of work concerned with:",o:["Only the visualization of data","The collection, preparation, analysis, visualization, management and preservation of large collections of information","Building computer hardware","Writing SQL queries only"],a:1,e:"Slide definition of Data Science."},
+{t:"Big Data concepts",q:"Machine Learning is defined in the slides as:",o:["A type of AI that gives computers the ability to learn without being explicitly programmed","A database that stores data without schema","A network of remote servers","A file system for clusters"],a:0,e:"“A type of artificial intelligence (AI) that provides computers with the ability to learn without being explicitly programmed.”"},
+{t:"Big Data concepts",q:"A dataset is:",o:["A single record in a table","A collection or group of related data whose members share the same set of attributes","Any file on a hard disk","A NoSQL index"],a:1,e:"Each group/dataset member shares the same set of attributes or properties as others in the same dataset."},
+{t:"Big Data concepts",q:"Which is given as an example of a dataset?",o:["Historical weather observations stored as XML files","A CPU register","A single pixel","A network cable"],a:0,e:"Examples: tweets in a flat file; image files in a directory; rows from a DB table in a CSV file; historical weather observations stored as XML files."},
+{t:"Big Data concepts",q:"A NoSQL database stores and retrieves data that is modeled:",o:["Only as tables with rows and columns","In means other than the tabular relations used in relational databases","Only as XML","Only in memory"],a:1,e:"Slide definition of NoSQL database."},
+{t:"Big Data concepts",q:"Which is NOT a characteristic of NoSQL listed in the slides?",o:["Non-relational","Doesn't require schema","Vertically scalable only","Fast key-value access"],a:2,e:"NoSQL is listed as horizontally scalable, not vertically."},
+{t:"Big Data concepts",q:"In NoSQL, data is replicated to multiple nodes. The benefit listed is:",o:["Higher licensing cost","No single point of failure; down nodes are easily replaced","Data must follow a fixed schema","Slower reads"],a:1,e:"Replicated (identical & fault-tolerant) and partitioned → down nodes easily replaced, no single point of failure."},
+{t:"Big Data concepts",q:"Cloud computing is:",o:["Storing data only on a personal computer","Using a network of remote servers hosted on the internet to store, manage and process data, rather than a local server or PC","A type of NoSQL database","A MapReduce phase"],a:1,e:"Slide definition of cloud computing."},
+{t:"Big Data concepts",q:"Which is listed as a big data FRAMEWORK (not a programming language)?",o:["Julia","Scala","Storm","R"],a:2,e:"Frameworks: Hadoop, Spark, Storm, Flume. Languages: R, Python, Java, Scala, Julia."},
+{t:"Big Data concepts",q:"Which is listed as a programming language for big data?",o:["Flume","Spark","Julia","Hadoop"],a:2,e:"Languages: R, Python, Java, Scala, Julia."},
+{t:"Big Data concepts",q:"Hadoop (in the overview deck) provides a software framework for multiple storage in different locations and processes them using:",o:["SQL joins","MapReduce technology","Blockchain","Spreadsheets"],a:1,e:"“...process them using MapReduce technology.”"},
+{t:"Big Data concepts",q:"The “four Ms” of big data stand for:",o:["Map, Merge, Move, Manage","Make Me More Money","Model, Measure, Monitor, Maintain","Memory, Machines, Methods, Metrics"],a:1,e:"Big Data V's to M's: many organisations forget or violate the four Ms – Make Me More Money."},
+{t:"Big Data concepts",q:"According to the “V’s to M’s” slide, what happens when organisations jump on the big data bandwagon just to follow competitors?",o:["They always profit immediately","Hidden costs and processes emerge, slowing the organisation or splitting it into silos","They no longer need IT staff","Data volume shrinks"],a:1,e:"Some struggle with maintenance; hidden costs and processes emerge which slow organisations or split them into silos."},
+{t:"Big Data concepts",q:"In the “History of Big Data” graphic, which unit is described as “our digital universe today”?",o:["Zettabyte","Yottabyte","Exabyte","Brontobyte"],a:1,e:"Yottabyte (10^24) = our digital universe today ≈ 250 trillion DVDs. Brontobyte is “our digital universe tomorrow”."},
+{t:"Big Data concepts",q:"A Brontobyte is:",o:["10^21 bytes","10^24 bytes","10^27 bytes","10^18 bytes"],a:2,e:"Brontobyte = 10^27, expected to measure sensor data from the Internet of Things (IoT)."},
+{t:"Big Data concepts",q:"Which unit is 10^21 bytes?",o:["Petabyte","Exabyte","Zettabyte","Yottabyte"],a:2,e:"MB 10^6, GB 10^9, TB 10^12, PB 10^15, EB 10^18, ZB 10^21, YB 10^24, Brontobyte 10^27."},
+{t:"Big Data concepts",q:"Arrange in increasing size: Exabyte, Petabyte, Zettabyte, Terabyte",o:["TB < PB < EB < ZB","PB < TB < EB < ZB","TB < EB < PB < ZB","EB < PB < TB < ZB"],a:0,e:"Terabyte 10^12 < Petabyte 10^15 < Exabyte 10^18 < Zettabyte 10^21."},
+{t:"Big Data concepts",q:"In the history graphic, which instrument “generates 1 PB per second”?",o:["Facebook databases","CERN Large Hadron Collider","NSA servers","Google search"],a:1,e:"Petabyte example: The CERN Large Hadron Collider generates 1 PB per second."},
+{t:"Big Data concepts",q:"The Brontobyte will be used to describe the type of data generated by:",o:["Government agencies","Sensors in the Internet of Things","Relational databases","DVDs"],a:1,e:"“...sensor data that will be generated from the IoT (Internet of Things).”"},
+{t:"Big Data concepts",q:"In the Intel big-data flow, data from many sources is collected, then:",o:["Correlated → Analyzed/Predicted → Insight","Deleted → Archived → Printed","Encrypted → Emailed → Stored","Sorted → Compressed → Deleted"],a:0,e:"Collect → Correlate → Analyze/Predict → Insight. The three stages shown separately: Gather, Store, Manipulate."},
+{t:"Big Data concepts",q:"Which three stages are highlighted in the Intel big data pipeline slides?",o:["Gather, Store, Manipulate","Map, Shuffle, Reduce","Plan, Build, Test","Extract, Load, Delete"],a:0,e:"Slide 1-11 highlights Gather, Store and Manipulate; the end result is Untapped Value / Insight."},
+{t:"Big Data concepts",q:"Which is listed as an INSIGHT produced by big data in the Intel slide?",o:["Falls prevention for the elderly","Printer maintenance","Keyboard layout design","Password resets"],a:0,e:"Insights: business intelligence, biodiversity trends, customer purchase habits, epidemic migration paths, falls prevention for the elderly, extreme weather prediction."},
+{t:"Big Data concepts",q:"According to the “Data Growth” chart, roughly what share of data growth is unstructured?",o:["12%","50%","88%","100%"],a:2,e:"Data growth is driven by unstructured data: 88% unstructured vs 12% structured."},
+{t:"Big Data concepts",q:"The Cloudera slide “Hadoop is so much more than just Hadoop” shows that in 2006 Hadoop consisted of:",o:["Core Hadoop (HDFS, MapReduce)","Spark and Kafka","Hive and Pig","YARN only"],a:0,e:"2006: Core Hadoop (HDFS, MR). HBase & ZooKeeper were added around 2008; Hive, Pig, Mahout ~2009; Sqoop, Whirr, Avro ~2010; Flume, Oozie, HCatalog ~2011; Spark, Impala, Solr, Kafka, YARN ~2012; Parquet, Sentry later."},
+{t:"Big Data concepts",q:"Which Quick Review question appears at the end of the overview deck?",o:["How big data analysis helps businesses increase their revenue?","How to install Hadoop on Windows?","What is the price of AWS?","How to write a Python loop?"],a:0,e:"Review questions: What exactly is Big Data? What are the biggest challenges of big data? How does big data analysis help businesses increase revenue?"},
+/* ---------- V's & STACK ---------- */
+{t:"V's & analytics stack",q:"Douglas Laney's original 3Vs of big data are:",o:["Volume, Velocity, Variety","Volume, Value, Veracity","Velocity, Visibility, Value","Variety, Veracity, Value"],a:0,e:"Laney's 3Vs: Volume, Variety, Velocity."},
+{t:"V's & analytics stack",q:"IBM extended the 3Vs to 4Vs by adding:",o:["Value","Veracity","Visibility","Validity"],a:1,e:"IBM's 4Vs: Volume, Velocity, Variety, Veracity."},
+{t:"V's & analytics stack",q:"Yuri Demchenko's 5Vs add which V to IBM's 4Vs?",o:["Visibility","Value","Viscosity","Volatility"],a:1,e:"Demchenko's 5Vs: Volume, Velocity, Variety, Veracity, Value."},
+{t:"V's & analytics stack",q:"Microsoft's 6Vs include which V that is NOT in Demchenko's 5Vs?",o:["Visibility","Veracity","Value","Variety"],a:0,e:"Microsoft's 6Vs: Volume, Velocity, Variety, Veracity, Value, Visibility."},
+{t:"V's & analytics stack",q:"“Data at rest” describes which V?",o:["Velocity","Variety","Volume","Veracity"],a:2,e:"Volume = Data at Rest: terabytes to exabytes of existing data to process."},
+{t:"V's & analytics stack",q:"“Data in motion – streaming data, milliseconds to seconds to respond” describes:",o:["Volume","Velocity","Variety","Value"],a:1,e:"Velocity = Data in Motion."},
+{t:"V's & analytics stack",q:"“Data in many forms – structured, unstructured, text, multimedia” describes:",o:["Variety","Veracity","Volume","Velocity"],a:0,e:"Variety = Data in Many Forms."},
+{t:"V's & analytics stack",q:"“Data in doubt” – uncertainty due to inconsistency, incompleteness, ambiguities, latency, deception and model approximations – describes:",o:["Value","Variety","Veracity","Volume"],a:2,e:"Veracity = Data in Doubt."},
+{t:"V's & analytics stack",q:"In Demchenko's 5V model, Trustworthiness, Authenticity, Origin and Accountability fall under:",o:["Value","Veracity","Variety","Velocity"],a:1,e:"Veracity: trustworthiness, authenticity, origin, accountability."},
+{t:"V's & analytics stack",q:"In Demchenko's 5V model, Hypothetical, Correlations, Events and Statistical fall under:",o:["Value","Volume","Velocity","Veracity"],a:0,e:"Value: hypothetical, correlations, events, statistical."},
+{t:"V's & analytics stack",q:"In Demchenko's 5V model, Stream data, Processes, Real time and Batches fall under:",o:["Variety","Velocity","Volume","Value"],a:1,e:"Velocity: stream data, processes, real time, batches."},
+{t:"V's & analytics stack",q:"In Demchenko's 5V model, Records/archived, Table/text/file and Transactions fall under:",o:["Volume","Variety","Veracity","Value"],a:0,e:"Volume: records/archived, table/text/file, transactions."},
+{t:"V's & analytics stack",q:"In Demchenko's 5V model, Structured, Semi-structured, Unstructured and Multi-factors fall under:",o:["Velocity","Volume","Variety","Value"],a:2,e:"Variety: structured, semi-structured, unstructured, multi-factors."},
+{t:"V's & analytics stack",q:"How many layers does the Analytics stack in the slides have?",o:["3","4","5","6"],a:2,e:"1 Infrastructure platforms, 2 Big data platforms, 3 Analytics platforms, 4 Analytics tools, 5 Analytics solutions."},
+{t:"V's & analytics stack",q:"The BOTTOM layer (layer 1) of the analytics stack is:",o:["Analytics solutions","Infrastructure platforms","Analytics tools","Big data platforms"],a:1,e:"Layer 1: Infrastructure platforms – Cloud (Azure, Amazon), Enterprise distributed systems (IBM, Oracle, Tibco), Others."},
+{t:"V's & analytics stack",q:"In the analytics stack, Hadoop and Spark are examples of:",o:["Data stream processing platforms","Stored data processing platforms","Stored data analytics platforms","Infrastructure platforms"],a:1,e:"Layer 2 Big data platforms → Stored data processing platforms: Hadoop, Spark."},
+{t:"V's & analytics stack",q:"Storm, Kafka, Flume, ActiveMQ and AWS Kinesis are examples of:",o:["Data stream processing platforms","Stored data analytics platforms","Analytics solutions","Analytics tools"],a:0,e:"Layer 2 Big data platforms → Data stream processing platforms."},
+{t:"V's & analytics stack",q:"Elastic Search and Pentaho are placed in which part of the stack?",o:["Data stream analytics platforms","Stored data analytics platforms","Infrastructure platforms","Specific solutions"],a:1,e:"Layer 3 Analytics platforms → Stored data analytics platforms."},
+{t:"V's & analytics stack",q:"Drools Fusion, Esper, Event Swarm, InfoSphere Streams and Azure Stream Analytics are:",o:["Data stream analytics platforms","Stored data processing platforms","Cloud infrastructure","Analytics solutions"],a:0,e:"Layer 3 Analytics platforms → Data stream analytics platforms."},
+{t:"V's & analytics stack",q:"“Advanced statistics, machine learning, text processing” belong to which layer?",o:["Layer 2 – Big data platforms","Layer 3 – Analytics platforms","Layer 4 – Analytics tools (techniques and functions)","Layer 5 – Analytics solutions"],a:2,e:"Layer 4: Analytics techniques and functions."},
+{t:"V's & analytics stack",q:"The TOP layer (layer 5) of the analytics stack contains:",o:["Specific solutions such as Finance, Health, Social Media, IoT","Hadoop and Spark","Azure and Amazon","Storm and Kafka"],a:0,e:"Layer 5 Analytics solutions: specific solutions – Finance, Health, Social Media, IoT."},
+{t:"V's & analytics stack",q:"IBM, Oracle and Tibco appear in the analytics stack as:",o:["Enterprise distributed systems (Infrastructure platforms)","Stream analytics","Analytics solutions","Programming languages"],a:0,e:"Layer 1 Infrastructure platforms: Enterprise distributed systems."},
+{t:"V's & analytics stack",q:"In the “3 Key Big Data Trends” slide, which is the TOP benefit driving the use of data analytics?",o:["Improved business efficiencies (17%)","Faster innovation cycles (25%)","More effective R&D (13%)","Product/service (12%)"],a:1,e:"Faster innovation cycles 25%, improved business efficiencies 17%, more effective R&D 13%, product/service 12%."},
+{t:"V's & analytics stack",q:"In the same trends slide, which area do the most companies plan to increase big data analysis investment in?",o:["System logs","Transaction data","Social media data (50%)","Video/images"],a:2,e:"Social media data 50%, documents/texts 44%, clickstream 41%, videos/images 34%, sensor/RFID/machine 29%, transaction 28%, system logs 25%."},
+{t:"V's & analytics stack",q:"The most common way companies plan to monetize their data (trends slide) is:",o:["Provision of digital platform (38%)","Provision of analysis results (26%)","Provision of data via benchmarking (25%)","Selling hardware"],a:0,e:"Digital platform 38%, analysis results 26%, data via benchmarking 25%."},
+/* ---------- DATA TYPES ---------- */
+{t:"Data structures",q:"Data with a defined data type, format and structure (e.g. transaction data, RDBMS, CSV files, simple spreadsheets) is:",o:["Structured data","Semi-structured data","Quasi-structured data","Unstructured data"],a:0,e:"Definition of structured data."},
+{t:"Data structures",q:"Textual data files with a discernible pattern that enables parsing, such as self-describing XML defined by an XML schema, are:",o:["Structured","Semi-structured","Quasi-structured","Unstructured"],a:1,e:"Definition of semi-structured data. The slide example is the HTML source code of a web page."},
+{t:"Data structures",q:"Data sitting between structured and unstructured, with loose or irregular patterns and recognizable tags that need specialized parsing, is:",o:["Structured","Semi-structured","Quasi-structured","Metadata"],a:2,e:"Definition of quasi-structured data."},
+{t:"Data structures",q:"Clickstream data (sequence of web pages a user visits) is an example of:",o:["Structured data","Quasi-structured data","Unstructured data","Relational data"],a:1,e:"Quasi-structured examples: clickstream data, server & web logs, email headers, sensor/IoT streams. The EMC search-URL example is quasi-structured."},
+{t:"Data structures",q:"Which is NOT given as an example of quasi-structured data?",o:["Server and web logs","Email headers","Sensor and IoT streams","A CSV file of bank transactions"],a:3,e:"A CSV of transactions is structured data."},
+{t:"Data structures",q:"Information without a predefined data model, schema or organization, hard to store and query in RDBMS, is:",o:["Structured","Semi-structured","Quasi-structured","Unstructured"],a:3,e:"Definition of unstructured data: e.g. text documents, PDFs, images, video."},
+{t:"Data structures",q:"Satellite images, scientific data, photographs/video and radar or sonar data are examples of:",o:["Human-generated unstructured data","Machine-generated unstructured data","Structured data","Semi-structured data"],a:1,e:"Machine generated: satellite images, scientific data, photographs and video, radar or sonar data."},
+{t:"Data structures",q:"Word/PDF/text documents, social media data, mobile text messages and website contents (blogs, Instagram) are examples of:",o:["Machine-generated unstructured data","Human-generated unstructured data","Structured data","Quasi-structured data"],a:1,e:"Human generated unstructured data."},
+{t:"Data structures",q:"The HTML source code of a web page (EMC example) is classified as:",o:["Structured","Semi-structured","Quasi-structured","Unstructured"],a:1,e:"Figure 1-5 “Example of semi-structured data”."},
+{t:"Data structures",q:"Correct order from MOST to LEAST structured:",o:["Structured → Semi-structured → Quasi-structured → Unstructured","Structured → Quasi → Semi → Unstructured","Semi → Structured → Quasi → Unstructured","Unstructured → Quasi → Semi → Structured"],a:0,e:"Structured, semi-structured, quasi-structured, unstructured."},
+{t:"Data structures",q:"An email's header vs its body: which statement matches the slides?",o:["Both are structured","Headers follow a standard format (quasi-structured) and are paired with an unstructured message body","Both are semi-structured XML","Headers are unstructured"],a:1,e:"“Email headers: metadata fields (To, From, Subject, routing paths) that follow a standard format, paired with unstructured message bodies.”"},
+/* ---------- HADOOP CORE ---------- */
+{t:"Hadoop basics",q:"Hadoop is:",o:["A relational database","A software framework for distributed processing of large datasets across large clusters of computers","A programming language","A cloud provider"],a:1,e:"Slide definition."},
+{t:"Hadoop basics",q:"In the Hadoop definition, “large clusters” means:",o:["2–3 computers","Hundreds or thousands of nodes","Exactly 64 nodes","One supercomputer"],a:1,e:"Large datasets → terabytes or petabytes; large clusters → hundreds or thousands of nodes."},
+{t:"Hadoop basics",q:"Hadoop is an open-source implementation of:",o:["Google MapReduce","Microsoft SQL Server","Amazon S3","Oracle RAC"],a:0,e:"“Hadoop is open-source implementation for Google MapReduce.”"},
+{t:"Hadoop basics",q:"Hadoop is based on a simple data model meaning:",o:["Only tables are allowed","Any data will fit","Only XML is allowed","Data must be under 1 GB"],a:1,e:"“Hadoop is based on a simple data model, any data will fit.”"},
+{t:"Hadoop basics",q:"Which is NOT a situation where you should use Hadoop?",o:["Processing large volumes of unstructured data","Parallel processing is feasible","Batch job execution is permissible","You need instant, low-latency transactional updates to a small table"],a:3,e:"When Hadoop: large volumes of unstructured data; parallel processing feasible; batch execution permissible; abundant cost-effective hardware."},
+{t:"Hadoop basics",q:"Which of the following is one of the “When Hadoop?” conditions?",o:["When you only have one expensive server","When you have access to abundant cost-effective hardware","When data must never be replicated","When real-time response is mandatory"],a:1,e:"Abundant cost-effective (commodity) hardware."},
+{t:"Hadoop basics",q:"The five pillars of Hadoop are:",o:["Data Management, Data Access, Data Governance & Integration, Security, Operations","Map, Shuffle, Sort, Reduce, Aggregate","Volume, Velocity, Variety, Veracity, Value","HDFS, YARN, Hive, Pig, HBase"],a:0,e:"Five pillars (Hortonworks Data Platform)."},
+{t:"Hadoop basics",q:"YARN and HDFS belong to which pillar?",o:["Data Access","Data Management","Operations","Security"],a:1,e:"Data Management: YARN (data operating system) + HDFS."},
+{t:"Hadoop basics",q:"Hive, Pig, Spark and HBase belong to which pillar?",o:["Data Access","Data Governance and Integration","Operations","Data Management"],a:0,e:"Data Access – interact with data from batch to real-time."},
+{t:"Hadoop basics",q:"Flume and Sqoop belong to which pillar?",o:["Security","Data Governance and Integration","Data Access","Operations"],a:1,e:"Data Governance & Integration: quickly load data and manage according to policy."},
+{t:"Hadoop basics",q:"Knox and Ranger belong to which pillar?",o:["Operations","Security","Data Access","Data Management"],a:1,e:"Security: Knox (perimeter gateway), Ranger (centralized authorization / FGAC)."},
+{t:"Hadoop basics",q:"Ambari, Oozie and ZooKeeper belong to which pillar?",o:["Operations","Security","Data Access","Governance"],a:0,e:"Operations: provision, manage, monitor and operate clusters at scale."},
+{t:"Hadoop basics",q:"The Security pillar addresses which four requirements?",o:["Authentication, Authorization, Accounting, Data Protection","Encryption, Hashing, Salting, Signing","Volume, Velocity, Variety, Veracity","Map, Reduce, Shuffle, Sort"],a:0,e:"Authentication, Authorization, Accounting and Data Protection."},
+{t:"Hadoop basics",q:"In the Hortonworks diagram, which layer is called the “Data Operating System”?",o:["HDFS","YARN","Hive","Ambari"],a:1,e:"YARN: Data Operating System (Cluster Resource Management) sits on top of HDFS."},
+{t:"Hadoop basics",q:"“Shared nothing” architecture in Hadoop means:",o:["Nodes share one hard disk","Nodes talk to each other as little as possible; developers do not write code that communicates between nodes","Nobody can read the data","All nodes share one memory bank"],a:1,e:"Core Hadoop Concepts: nodes talk to each other as little as possible – ‘shared nothing’ architecture."},
+{t:"Hadoop basics",q:"Core Hadoop concept: where does computation happen?",o:["Always on the master node","Where the data is stored, wherever possible","On the client laptop","In the cloud only"],a:1,e:"Data is spread among machines in advance; computation happens where the data is stored."},
+{t:"Hadoop basics",q:"Why is data replicated multiple times in Hadoop?",o:["To use more disk for no reason","For increased availability and reliability","To make the data structured","To speed up the network cable"],a:1,e:"“Data is replicated multiple times on the system for increased availability and reliability.”"},
+{t:"Hadoop basics",q:"In Hadoop, applications are written in high-level code so developers do NOT worry about:",o:["Business logic","Network programming, temporal dependencies etc.","Map and Reduce functions","Input data"],a:1,e:"Core Hadoop Concepts."},
+{t:"Hadoop basics",q:"Which is NOT among the 8 “Area to apply” Hadoop use cases?",o:["Customer churn analysis","PoS transaction analysis","Threat analysis","Word processing"],a:3,e:"Areas: modeling true risk, customer churn analysis, recommendation engine, PoS transaction analysis, analyzing network data to predict failure, threat analysis, search quality, data “sandbox”."},
+{t:"Hadoop basics",q:"Which list correctly names challenges of cluster computing from the slides?",o:["Storing data persistently and keeping it available if nodes fail; handling node failures during long computations; network bottleneck","Too few users; cheap hardware; small data","Lack of SQL; lack of Java; lack of XML","Too much RAM"],a:0,e:"Cluster computing challenges listed in “MapReduce and YARN: background”."},
+{t:"Hadoop basics",q:"A computer cluster is:",o:["A single high-end server","A set of loosely or tightly connected computers that work together so they can be viewed as a single system","A type of database index","A group of hard disks in one PC"],a:1,e:"Definition of a computer cluster."},
+/* ---------- MAPREDUCE ---------- */
+{t:"MapReduce",q:"MapReduce consists of which two phases?",o:["Split and Merge","Map and Reduce","Read and Write","Shuffle and Sort"],a:1,e:"MapReduce is a method for distributing a task across multiple nodes; two phases: Map and Reduce."},
+{t:"MapReduce",q:"Which is NOT a feature of MapReduce listed in the slides?",o:["Automatic parallelization and distribution","Fault-tolerance","Status and monitoring tools","Requires the developer to manage network communication manually"],a:3,e:"MapReduce abstracts all the ‘housekeeping’ away from the developer, who only writes Map and Reduce functions."},
+{t:"MapReduce",q:"MapReduce programs are usually written in:",o:["Python","Java","C#","R"],a:1,e:"“MapReduce programs are usually written in Java.”"},
+{t:"MapReduce",q:"Hadoop tries to run Mappers on nodes holding their portion of data locally in order to:",o:["Avoid network traffic","Increase replication","Encrypt data","Reduce RAM use"],a:0,e:"Data locality: avoid network traffic."},
+{t:"MapReduce",q:"A Mapper reads input as ___ and outputs ___ key/value pairs.",o:["tables; exactly one","key/value pairs; zero or more","XML; exactly two","files; no"],a:1,e:"Mapper reads key/value pairs and outputs zero or more key/value pairs."},
+{t:"MapReduce",q:"When a Mapper reads a text file one line at a time, the input key is typically:",o:["The word count","The byte offset into the file at which the line starts","The file name","The line number squared"],a:1,e:"Key = byte offset; value = the contents of the line. The key is typically considered irrelevant."},
+{t:"MapReduce",q:"Which statement about the Mapper's input key is TRUE?",o:["It must always be used","The Mapper may use or completely ignore the input key","It is always the file name","It must be a number above 1000"],a:1,e:"“The Mapper may use or completely ignore the input key.”"},
+{t:"MapReduce",q:"The general form of the map function is:",o:["map(key1, value) → list<key2, value2>","map(list) → table","map(key2, list<value2>) → list<value3>","map() → void"],a:0,e:"map(key1,value) → list<key2,value2>; i.e. map(in_key, in_value) → (inter_key, inter_value) list."},
+{t:"MapReduce",q:"The general form of the reduce function is:",o:["reduce(key1, value) → list<key2,value2>","reduce(key2, list<value2>) → list<value3>","reduce(table) → key","reduce(value) → value"],a:1,e:"reduce(key2, list<value2>) → list<value3>."},
+{t:"MapReduce",q:"Word count input: (3414,'the cat sat on the mat') and (3437,'the aardvark sat on the sofa'). What does the reducer output for 'the'?",o:["('the', 2)","('the', 3)","('the', 4)","('the', 1)"],a:2,e:"'the' appears twice in each line → ('the', [1,1,1,1]) → ('the', 4)."},
+{t:"MapReduce",q:"Same word count example: what is the reducer output for 'sat'?",o:["('sat', 1)","('sat', 2)","('sat', 3)","('sat', 4)"],a:1,e:"'sat' appears once in each line → ('sat', 2). Final: aardvark 1, cat 1, mat 1, on 2, sat 2, sofa 1, the 4."},
+{t:"MapReduce",q:"In the word count Mapper, for each word w in the input value, the Mapper emits:",o:["(w, 0)","(w, 1)","(1, w)","(w, length of w)"],a:1,e:"foreach word w in input_value: emit(w, 1)."},
+{t:"MapReduce",q:"How many key/value pairs does the word-count Mapper output for the two example lines?",o:["7","10","12","14"],a:2,e:"6 words in 'the cat sat on the mat' + 6 in 'the aardvark sat on the sofa' = 12 pairs."},
+{t:"MapReduce",q:"How many distinct keys reach the Reducer(s) in the word count example?",o:["5","7","12","4"],a:1,e:"aardvark, cat, mat, on, sat, sofa, the = 7 keys."},
+{t:"MapReduce",q:"After the Map phase, the intermediate keys and their value lists are passed to the Reducer in sorted key order. This step is called:",o:["Splitting","Shuffle and sort","Aggregating","Mapping"],a:1,e:"“This step is known as the ‘shuffle and sort’.”"},
+{t:"MapReduce",q:"Which is guaranteed in MapReduce?",o:["All values for a particular intermediate key go to the same Reducer","Each key goes to a random Reducer","There is always exactly one Reducer","Reducers run before Mappers"],a:0,e:"All values associated with a particular intermediate key are guaranteed to go to the same Reducer. There may be a single Reducer or multiple Reducers."},
+{t:"MapReduce",q:"Where is the Reducer's final output written?",o:["To the NameNode RAM","To HDFS","To the client screen only","To the TaskTracker log"],a:1,e:"The Reducer outputs zero or more final key/value pairs, written to HDFS."},
+{t:"MapReduce",q:"In practice, how many key/value pairs does a Reducer usually emit per input key?",o:["Zero","A single key/value pair","Exactly two","One per value"],a:1,e:"“In practice, the Reducer usually emits a single key/value pair for each input key.”"},
+{t:"MapReduce",q:"The correct order of the five steps of the MapReduce programming model is:",o:["Splitting → Mapping → Shuffling & sorting → Reducing → Aggregating","Mapping → Splitting → Reducing → Shuffling → Aggregating","Splitting → Shuffling → Mapping → Aggregating → Reducing","Aggregating → Splitting → Mapping → Reducing → Shuffling"],a:0,e:"Step 1 Splitting, 2 Mapping (distribution), 3 Shuffling and sorting, 4 Reducing (parallelizing), 5 Aggregating."},
+{t:"MapReduce",q:"Step 2 of the MapReduce programming model is:",o:["Splitting","Mapping (distribution)","Reducing (parallelizing)","Aggregating"],a:1,e:"Step 2: Mapping (distribution)."},
+{t:"MapReduce",q:"Step 4 of the MapReduce programming model is:",o:["Shuffling and sorting","Reducing (parallelizing)","Aggregating","Mapping"],a:1,e:"Step 4: Reducing (parallelizing)."},
+{t:"MapReduce",q:"A MapReduce job splits a large data set into independent chunks and organizes them into:",o:["Tables","Key-value pairs for parallel processing","XML trees","Images"],a:1,e:"Parallel processing improves the speed and reliability of the cluster."},
+{t:"MapReduce",q:"The Map function divides the input into ranges using the:",o:["OutputFormat","InputFormat","NameNode","ResourceManager"],a:1,e:"The Map function divides input into ranges by the InputFormat and creates a map task for each range."},
+{t:"MapReduce",q:"In classic MapReduce, which component distributes map tasks to worker nodes?",o:["NameNode","JobTracker","DataNode","ApplicationMaster"],a:1,e:"“The JobTracker distributes those tasks to the worker nodes.”"},
+{t:"MapReduce",q:"Each reduce task gets its input by:",o:["Pulling the relevant partition from the machines where the maps executed","Reading the whole input file again","Asking the client","Querying the NameNode for values"],a:0,e:"Each reduce pulls the relevant partition from the machines where the maps executed, then writes its output back into HDFS."},
+{t:"MapReduce",q:"The classic Apache Hadoop MapReduce system is composed of:",o:["ResourceManager and NodeManagers","JobTracker (master) and TaskTrackers (per-node slaves)","NameNode and DataNodes","Client and ApplicationMaster"],a:1,e:"JobTracker (master) and TaskTrackers (per-node slaves)."},
+{t:"MapReduce",q:"Which is a responsibility of the JobTracker?",o:["Storing data blocks","Resource management, tracking resource consumption/availability, and job life-cycle management","Rendering the web UI only","Replicating blocks"],a:1,e:"JobTracker: resource management (managing TaskTrackers), tracking resource consumption/availability, job life-cycle management (scheduling tasks, tracking progress, fault-tolerance)."},
+{t:"MapReduce",q:"Which is a responsibility of the TaskTracker?",o:["Arbitrating resources among all applications","Launching/tearing down tasks on orders from the JobTracker and periodically sending task-status information to the JobTracker","Holding the namespace tree in RAM","Scheduling jobs for the entire cluster"],a:1,e:"TaskTracker responsibilities."},
+{t:"MapReduce",q:"MapReduce solves the network bottleneck problem by:",o:["Buying faster cables","Bringing computation close to the data, minimizing data movement","Moving all data to one node","Compressing all files"],a:0,e:"“MapReduce offers a solution by bringing computation close to data → minimizing data movement.”"},
+{t:"MapReduce",q:"According to the slides, the biggest limitation of MapReduce programming is that:",o:["It cannot handle text","Map and reduce jobs are not stateless, so Reduce jobs must wait for Map jobs to finish, limiting maximum parallelism","It only runs on Windows","It has no fault tolerance"],a:1,e:"Slide wording: map and reduce jobs are not stateless → reduce waits for map → limits parallelism → YARN was born."},
+{t:"MapReduce",q:"Map tasks typically work on how much data each?",o:["The whole dataset","Typically a single block","Exactly 1 MB","One byte"],a:1,e:"Map tasks work on relatively small portions of data – typically a single block."},
+/* ---------- YARN ---------- */
+{t:"YARN",q:"YARN stands for:",o:["Yet Another Resource Negotiator","Yet Another Reduce Node","Yield And Run Now","Your Application Resource Network"],a:0,e:"Apache Hadoop YARN = Yet Another Resource Negotiator."},
+{t:"YARN",q:"YARN's main improvement over classic MapReduce is that it:",o:["Removes HDFS","Supports non-MapReduce workloads associated with other programming models","Only supports batch processing","Removes fault tolerance"],a:1,e:"YARN extends MapReduce capabilities by supporting non-MapReduce workloads, e.g. interactive SQL, real-time streaming, data science and batch processing."},
+{t:"YARN",q:"YARN splits the JobTracker's functions of resource management and job scheduling/monitoring into separate daemons. These are:",o:["NameNode and DataNode","A global ResourceManager (RM) and a per-application ApplicationMaster (AM)","TaskTracker and JobTracker","Hive and Pig"],a:1,e:"Global ResourceManager + per-application ApplicationMaster."},
+{t:"YARN",q:"In YARN, an “application” is:",o:["Always a single map task","Either a single job or a DAG (directed acyclic graph) of jobs","A Java class","A data block"],a:1,e:"An application is either a single job or a DAG of jobs."},
+{t:"YARN",q:"Which pair forms YARN's data-computation framework?",o:["ResourceManager and NodeManager","NameNode and DataNode","JobTracker and TaskTracker","Hive and HBase"],a:0,e:"“The ResourceManager and the NodeManager form the data-computation framework.”"},
+{t:"YARN",q:"The ultimate authority that arbitrates resources among all applications in YARN is the:",o:["NodeManager","ApplicationMaster","ResourceManager","DataNode"],a:2,e:"ResourceManager."},
+{t:"YARN",q:"The ResourceManager's pluggable Scheduler allocates resources based on the abstract notion of a:",o:["Block","Resource Container (memory, CPU, disk, network, etc.)","Heartbeat","Inode"],a:1,e:"Scheduler works with Resource Containers incorporating memory, CPU, disk, network, etc."},
+{t:"YARN",q:"The per-machine framework agent responsible for containers, monitoring their resource usage and reporting to the ResourceManager/Scheduler is the:",o:["ApplicationMaster","NodeManager","JobTracker","NameNode"],a:1,e:"NodeManager."},
+{t:"YARN",q:"The component that negotiates resources from the ResourceManager and works with NodeManagers to execute and monitor tasks is the:",o:["ApplicationMaster","DataNode","Scheduler","Client"],a:0,e:"Per-application ApplicationMaster (a framework-specific library)."},
+{t:"YARN",q:"The Scheduler in YARN allocates resources subject to constraints such as:",o:["Capacities and queues","Block size only","Replication factor","Number of inodes"],a:0,e:"“...subject to familiar constraints of capacities, queues, etc.”"},
+{t:"YARN",q:"Why is YARN described as the prerequisite for Enterprise Hadoop?",o:["It provides resource management and pluggable architecture so many data access methods can operate on Hadoop data with predictable performance and service levels","It replaces Java","It stores the data blocks","It encrypts all data"],a:0,e:"Slide: YARN provides resource management and pluggable architecture for a wide variety of data access methods."},
+{t:"YARN",q:"YARN was born because:",o:["HDFS was too slow","Classic MapReduce limited parallelism, so a generic resource management and distributed application framework was needed","Java was deprecated","Hadoop had no storage"],a:1,e:"“Therefore YARN was born as a generic resource management and distributed application framework.”"},
+{t:"YARN",q:"In YARN, which classic MapReduce component's role is split up?",o:["DataNode","JobTracker","NameNode","Client"],a:1,e:"Resource management and job scheduling/monitoring were initially done by the JobTracker."},
+/* ---------- HDFS ---------- */
+{t:"HDFS",q:"HDFS stands for:",o:["High Density File Storage","Hadoop Distributed File System","Hadoop Data Formatting Service","Hierarchical Distributed File Store"],a:1,e:"Hadoop Distributed File System."},
+{t:"HDFS",q:"HDFS is a ___-based file system designed to run on ___ hardware.",o:["C++; expensive","Java; low-cost commodity","Python; specialized","SQL; mainframe"],a:1,e:"Java-based; designed to run across low-cost commodity hardware/servers."},
+{t:"HDFS",q:"An HDFS cluster consists of:",o:["A JobTracker and TaskTrackers","A NameNode (manages metadata) and DataNodes (store the data)","A ResourceManager and NodeManagers","Only DataNodes"],a:1,e:"NameNode manages cluster metadata; DataNodes store the data."},
+{t:"HDFS",q:"On the NameNode, files and directories are represented by:",o:["Blocks","Inodes","Containers","Heartbeats"],a:1,e:"Inodes record permissions, modification and access times, namespace and disk space quotas."},
+{t:"HDFS",q:"Which attribute is NOT recorded by an inode?",o:["Permissions","Modification and access times","Namespace and disk space quotas","The actual file content"],a:3,e:"File content lives in blocks on DataNodes, not in inodes."},
+{t:"HDFS",q:"The typical HDFS block size given in the HDFS slides is:",o:["4 KB","64 KB","128 MB","1 GB"],a:2,e:"“Typically 128 megabytes.” (The high-level overview slide says typically 64MB or 128MB.)"},
+{t:"HDFS",q:"In the “How Files Are Stored” example, each block is replicated how many times?",o:["Once","Twice","Three times","Ten times"],a:2,e:"Each block is replicated three times on the cluster."},
+{t:"HDFS",q:"Where are HDFS blocks physically stored?",o:["In NameNode RAM","On the local file system of the DataNodes","On the client","In YARN containers"],a:1,e:"The blocks are stored on the local file system on the DataNodes."},
+{t:"HDFS",q:"What does the NameNode do when a block replica is lost due to DataNode or disk failure?",o:["Deletes the file","Creates another replica of the block","Shuts down the cluster","Asks the user to re-upload"],a:1,e:"The NameNode actively monitors replicas and creates another replica when one is lost."},
+{t:"HDFS",q:"The NameNode holds the entire namespace image in:",o:["Disk only","RAM","The DataNodes","The client"],a:1,e:"Maintains the namespace tree and block→DataNode mapping, holding the entire namespace image in RAM."},
+{t:"HDFS",q:"How does the NameNode send instructions to DataNodes?",o:["It sends direct requests","By replying to their heartbeats","Through email","Through the ResourceManager"],a:1,e:"The NameNode does not directly send requests to DataNodes; it replies to their heartbeats."},
+{t:"HDFS",q:"Which is NOT one of the NameNode's heartbeat-reply commands?",o:["Replicate blocks to other nodes","Remove local block replicas","Re-register and send an immediate block report","Run a Reduce function"],a:3,e:"Commands: replicate blocks, remove local replicas, re-register & send immediate block report, shut down the node."},
+{t:"HDFS",q:"When a client wants to read a file in HDFS, it FIRST:",o:["Reads directly from all DataNodes at random","Communicates with the NameNode to find which blocks make up the file and which DataNodes hold them","Asks the ResourceManager","Asks the JobTracker"],a:1,e:"Then it communicates directly with the DataNodes to read the data."},
+{t:"HDFS",q:"After getting block locations from the NameNode, a client reads the actual data:",o:["Through the NameNode","Directly from the DataNodes","From the ResourceManager","From a backup tape"],a:1,e:"The client communicates directly with the DataNodes to read the data."},
+{t:"HDFS",q:"Which statement is TRUE about the NameNode?",o:["It holds the actual data blocks","It holds metadata for the data files; DataNodes hold the actual blocks","It runs map tasks","It is optional"],a:1,e:"NameNode: stores metadata only. DataNodes: store blocks from files."},
+{t:"HDFS",q:"HDFS storage can grow linearly with demand because:",o:["Storage and computation are distributed across many servers","It uses one big disk","It compresses everything to zero","It deletes old data"],a:0,e:"Distributing storage and computation across many servers lets the combined storage grow linearly while remaining economical."},
+{t:"HDFS",q:"HDFS is described as:",o:["Scalable, fault-tolerant, distributed storage that works with many concurrent data access applications coordinated by YARN","A single-node relational store","An in-memory cache only","A messaging queue"],a:0,e:"Slide description of HDFS."},
+{t:"HDFS",q:"In the HDFS architecture diagram, “Metadata ops” flow between:",o:["Client and NameNode","Client and DataNodes","DataNode and DataNode","Rack 1 and Rack 2"],a:0,e:"Client ↔ NameNode = metadata ops; NameNode → DataNodes = block ops; client reads/writes go to DataNodes; replication between DataNodes across racks."},
+{t:"HDFS",q:"In the HDFS architecture diagram, “Replication” happens between:",o:["Client and NameNode","DataNodes (including across racks)","NameNode and ResourceManager","Client and Client"],a:1,e:"Blocks are replicated between DataNodes, e.g. Rack 1 → Rack 2."},
+/* ---------- ECOSYSTEM ---------- */
+{t:"Hadoop ecosystem",q:"Which tool is a data warehouse built on MapReduce that gives an SQL-like interface for data in HDFS?",o:["Pig","Hive","HBase","Flume"],a:1,e:"Apache Hive: data summarization and ad-hoc queries via an SQL-like interface."},
+{t:"Hadoop ecosystem",q:"Apache Pig uses which high-level language?",o:["HiveQL","Pig Latin","Scala","Cypher"],a:1,e:"Pig consists of a high-level language (Pig Latin) paired with the MapReduce framework."},
+{t:"Hadoop ecosystem",q:"Which tool is ideal for in-memory data processing and fast iterative algorithms like clustering and classification?",o:["Spark","Sqoop","Oozie","Knox"],a:0,e:"Apache Spark."},
+{t:"Hadoop ecosystem",q:"Which is a column-oriented NoSQL store providing random real-time read/write access to big data?",o:["Hive","HBase","Pig","Ambari"],a:1,e:"Apache HBase."},
+{t:"Hadoop ecosystem",q:"A distributed real-time computation system for processing large data streams reliably and quickly:",o:["Storm","Sqoop","HCatalog","Ranger"],a:0,e:"Apache Storm."},
+{t:"Hadoop ecosystem",q:"A distributed event streaming platform for building real-time data pipelines and streaming apps:",o:["Kafka","Pig","Oozie","Accumulo"],a:0,e:"Apache Kafka."},
+{t:"Hadoop ecosystem",q:"Which deployment tool for running existing distributed apps on YARN was retired by Apache in 2018?",o:["Slider","Solr","Tez","Mahout"],a:0,e:"Apache Slider (retired 2018)."},
+{t:"Hadoop ecosystem",q:"A highly scalable open-source enterprise search platform built on Apache Lucene:",o:["Solr","Sqoop","Storm","Knox"],a:0,e:"Apache Solr."},
+{t:"Hadoop ecosystem",q:"Which framework is often used to speed up Hive and Pig jobs?",o:["Tez","Flume","Ambari","ZooKeeper"],a:0,e:"Apache Tez: high-performance batch and interactive processing."},
+{t:"Hadoop ecosystem",q:"A distributed linear algebra framework and Scala DSL for scalable machine learning:",o:["Mahout","HBase","Oozie","Knox"],a:0,e:"Apache Mahout."},
+{t:"Hadoop ecosystem",q:"A sorted, distributed key-value store based on Google's Bigtable with cell-level security:",o:["Accumulo","HCatalog","Hive","Pig"],a:0,e:"Apache Accumulo."},
+{t:"Hadoop ecosystem",q:"A table and storage management layer that lets Pig, Hive and MapReduce easily read and write data on the grid:",o:["HCatalog","Kafka","Ranger","Storm"],a:0,e:"Apache HCatalog."},
+{t:"Hadoop ecosystem",q:"Which tool collects, aggregates and moves high-volume streaming and log data into Hadoop?",o:["Sqoop","Flume","Oozie","Ranger"],a:1,e:"Apache Flume."},
+{t:"Hadoop ecosystem",q:"Which tool bulk-transfers structured data between RDBMS/NoSQL stores and Hadoop (HDFS, Hive, HBase)?",o:["Flume","Sqoop","Kafka","Storm"],a:1,e:"Apache Sqoop."},
+{t:"Hadoop ecosystem",q:"Perimeter security gateway and reverse proxy for Hadoop clusters:",o:["Ranger","Knox","Ambari","ZooKeeper"],a:1,e:"Apache Knox."},
+{t:"Hadoop ecosystem",q:"Centralized authorization and fine-grained access control (FGAC):",o:["Knox","Ranger","Oozie","Tez"],a:1,e:"Apache Ranger."},
+{t:"Hadoop ecosystem",q:"Cluster management and provisioning tool:",o:["Ambari","Oozie","ZooKeeper","Sqoop"],a:0,e:"Apache Ambari."},
+{t:"Hadoop ecosystem",q:"Workflow scheduler and coordination engine:",o:["ZooKeeper","Oozie","Ambari","Kafka"],a:1,e:"Apache Oozie."},
+{t:"Hadoop ecosystem",q:"Distributed coordination service:",o:["ZooKeeper","Oozie","Hive","Flume"],a:0,e:"Apache ZooKeeper."},
+{t:"Hadoop ecosystem",q:"Which pairing is WRONG?",o:["Flume – log/streaming data ingestion","Sqoop – RDBMS bulk transfer","Knox – workflow scheduler","Ambari – cluster provisioning"],a:2,e:"Knox is the perimeter security gateway. Oozie is the workflow scheduler."},
+{t:"Hadoop ecosystem",q:"Security in Hadoop is provided:",o:["Only at the HDFS layer","At every layer of the stack from HDFS and YARN to Hive and other data access components, up through the perimeter via Knox","Only by the client","Not at all"],a:1,e:"Slide statement on security."},
+{t:"Hadoop ecosystem",q:"In the Hortonworks diagram, “Batch” access is done with ___ and “Script” access with ___.",o:["MapReduce; Pig","Pig; Hive","HBase; Storm","Spark; Hive"],a:0,e:"Batch: MapReduce; Script: Pig; SQL: Hive/Tez, HCatalog; NoSQL: HBase, Accumulo; Stream: Storm; Others: in-memory, analytics, ISV engines."},
+{t:"Hadoop ecosystem",q:"In the Hortonworks diagram, which tool handles “Scheduling” under Operations?",o:["Ambari","Oozie","ZooKeeper","Knox"],a:1,e:"Operations: Provision, Manage & Monitor (Ambari, ZooKeeper); Scheduling (Oozie)."},
+{t:"Hadoop ecosystem",q:"Under Governance & Integration in the Hortonworks diagram, which tool is listed for data workflow, lifecycle & governance alongside Sqoop and Flume?",o:["Falcon","Knox","Tez","Spark"],a:0,e:"Governance & Integration: Falcon, Sqoop, Flume, NFS, WebHDFS."}
+];
+
+const DR_DESC = [
+{t:"Big Data concepts",q:"What exactly is Big Data? Give a definition and explain it.",m:"4–5 marks",a:`<p><b>Definition (Michael Franklin, AMP Lab, UC Berkeley):</b> “Big Data is any data that is expensive to manage and hard to extract value from.”</p>
+<p>Explanation:</p><ul><li>It is data whose <b>volume</b> (terabytes to exabytes), <b>velocity</b> (streaming, needs response in milliseconds–seconds) and <b>variety</b> (structured, semi-, quasi- and unstructured: text, images, video) are too large or complex for traditional tools/RDBMS.</li>
+<li>It comes from many sources: social media, news &amp; journals, satellite images, e-commerce, TV &amp; video, medical scans, sensors &amp; surveillance.</li>
+<li>Its value is “untapped” until it is gathered, stored and manipulated (collected → correlated → analysed/predicted) to produce insight.</li></ul>`},
+{t:"Big Data concepts",q:"Define big data analytics. Give FOUR examples of big data applications.",m:"5–6 marks",a:`<p><b>Big data analytics</b> is the process of examining large data sets to uncover hidden patterns, unknown correlations, market trends, customer preferences and other useful business information.</p>
+<p>Applications (any four):</p><ul><li>Internet search</li><li>Digital advertisements (targeted advertising and re-targeting)</li><li>Recommender systems</li><li>Image recognition</li><li>Speech recognition</li><li>Gaming</li><li>Price comparison websites</li><li>Airline route planning</li><li>Fraud and risk detection</li><li>Delivery logistics</li></ul>
+<p>Tip: add one line of explanation per example, e.g. “Recommender systems analyse past purchases/views to suggest products (Netflix, Shopee).”</p>`},
+{t:"Big Data concepts",q:"Define the following terms: (a) Data Science (b) Machine Learning (c) Dataset (d) NoSQL database (e) Cloud computing.",m:"10 marks (2 each)",a:`<ol type="a"><li><b>Data Science:</b> an emerging area of work concerned with the collection, preparation, analysis, visualization, management and preservation of large collections of information.</li>
+<li><b>Machine Learning:</b> a type of artificial intelligence (AI) that provides computers with the ability to learn without being explicitly programmed.</li>
+<li><b>Dataset:</b> a collection or group of related data; each member shares the same set of attributes or properties as others in the dataset. E.g. tweets in a flat file, image files in a directory, DB rows extracted to CSV, historical weather observations stored as XML.</li>
+<li><b>NoSQL database:</b> provides a mechanism for storage and retrieval of data modeled in means other than the tabular relations used in relational databases.</li>
+<li><b>Cloud computing:</b> the practice of using a network of remote servers hosted on the internet to store, manage and process data, rather than a local server or a personal computer.</li></ol>`},
+{t:"Big Data concepts",q:"List and explain the characteristics of NoSQL databases.",m:"5–6 marks",a:`<ul><li><b>Non-relational</b> – data is not stored in tables with relations.</li>
+<li><b>Don't require a schema</b> – flexible structure, any data can be stored.</li>
+<li><b>Replicated to multiple nodes</b> (identical &amp; fault-tolerant) <b>and can be partitioned</b> – down nodes are easily replaced and there is no single point of failure.</li>
+<li><b>Horizontally scalable</b> – scale out by adding more machines.</li>
+<li><b>Cheap and easy to implement</b> (open-source).</li>
+<li><b>Fast key-value access.</b></li></ul>`},
+{t:"Big Data concepts",q:"List the big data terminologies, frameworks and programming languages introduced in the Concepts and Terminology slide.",m:"3–5 marks",a:`<div class="tw"><table><tr><th>Terminologies</th><th>Frameworks</th><th>Programming languages</th></tr>
+<tr><td>Big Data Technologies, Datasets, Machine Learning, NoSQL, Cloud Computing</td><td>Hadoop, Spark, Storm, Flume</td><td>R, Python, Java, Scala, Julia</td></tr></table></div>`},
+{t:"Big Data concepts",q:"Explain the “Big Data V's to M's” concept.",m:"4 marks",a:`<ul><li>Seeing competitors jump onto the Big Data bandwagon, many organisations follow suit.</li>
+<li>Some then struggle to keep up with its maintenance.</li>
+<li>Hidden costs and processes emerge, which either slow the organisation down or split it into silos.</li>
+<li>Many forget or violate the <b>four Ms of big data: Make Me More Money</b> – i.e. big data must ultimately deliver business value/ROI, not just be adopted because it is trendy.</li></ul>`},
+{t:"Big Data concepts",q:"How does big data analysis help businesses increase their revenue?",m:"5–6 marks",a:`<ul><li><b>Understanding customers:</b> uncovers customer preferences and purchase habits → targeted advertising, re-targeting and recommender systems increase sales.</li>
+<li><b>Market trends:</b> identifies trends and correlations early → faster innovation cycles (top benefit, 25% in the trends slide) and better products/services.</li>
+<li><b>Efficiency:</b> improved business efficiencies (17%) e.g. delivery logistics, airline route planning reduce cost.</li>
+<li><b>Risk reduction:</b> fraud and risk detection, threat analysis prevent losses.</li>
+<li><b>Pricing:</b> price comparison and analytics support competitive pricing.</li>
+<li><b>Monetizing data directly:</b> providing a digital platform (38%), analysis results (26%) or data via benchmarking (25%).</li>
+<li>Overall it improves Return on Investment – the “Make Me More Money” goal.</li></ul>`},
+{t:"Big Data concepts",q:"What are the biggest challenges of big data?",m:"5–6 marks",a:`<ul><li><b>Creating/collecting the right data</b> – data comes from a variety of sources (“how can we keep up?”).</li>
+<li><b>Identifying and blending multiple external data sources</b> of different formats (variety).</li>
+<li><b>Volume</b> – terabytes to exabytes to store and process; it is expensive to manage.</li>
+<li><b>Velocity</b> – streaming data needing responses in milliseconds to seconds.</li>
+<li><b>Veracity</b> – data in doubt: inconsistency, incompleteness, ambiguity, latency, deception, model approximations.</li>
+<li><b>Extracting value</b> – data is hard to extract value from (Franklin's definition); most growth is unstructured (88%).</li>
+<li><b>Cost and maintenance</b> – hidden costs and processes, organisational silos (V's to M's).</li>
+<li><b>Cluster challenges</b> – keeping data available when nodes fail, node failures in long computations, network bottlenecks.</li></ul>`},
+{t:"Big Data concepts",q:"Describe the flow of how big data produces insight (Gather–Store–Manipulate). Give examples of sources and insights.",m:"6 marks",a:`<ol><li><b>Gather/Collect:</b> data is collected from many sources – medical scans, social media, news &amp; journals, satellite images, e-commerce, TV &amp; video, sensors &amp; surveillance.</li>
+<li><b>Store/Correlate:</b> data is stored and correlated together.</li>
+<li><b>Manipulate/Analyze &amp; Predict:</b> analytics is applied to find patterns and predictions.</li>
+<li><b>Insight (untapped value):</b> business intelligence, biodiversity trends, customer purchase habits, epidemic migration paths, falls prevention for the elderly, extreme weather prediction; ultimately improved return on investment.</li></ol>`},
+{t:"Big Data concepts",q:"Explain the units of data size shown in the History of Big Data slide.",m:"4–5 marks",a:`<div class="tw"><table><tr><th>Unit</th><th>Bytes</th><th>Slide example</th></tr>
+<tr><td>Megabyte</td><td>10^6</td><td>–</td></tr><tr><td>Gigabyte</td><td>10^9</td><td>–</td></tr>
+<tr><td>Terabyte</td><td>10^12</td><td>500 TB of new data per day ingested in Facebook databases</td></tr>
+<tr><td>Petabyte</td><td>10^15</td><td>CERN Large Hadron Collider generates 1 PB per second</td></tr>
+<tr><td>Exabyte</td><td>10^18</td><td>1 EB of data is created on the internet each day ≈ 250 million DVDs</td></tr>
+<tr><td>Zettabyte</td><td>10^21</td><td>1.3 ZB of network traffic by 2016</td></tr>
+<tr><td>Yottabyte</td><td>10^24</td><td>“Our digital universe today” ≈ 250 trillion DVDs</td></tr>
+<tr><td>Brontobyte</td><td>10^27</td><td>“Our digital universe tomorrow” – sensor data from the IoT</td></tr></table></div>`},
+{t:"V's & analytics stack",q:"Explain the 4 V's of big data (Volume, Velocity, Variety, Veracity).",m:"8 marks",a:`<ul><li><b>Volume – Data at rest:</b> terabytes to exabytes of existing data to process.</li>
+<li><b>Velocity – Data in motion:</b> streaming data; milliseconds to seconds to respond.</li>
+<li><b>Variety – Data in many forms:</b> structured, unstructured, text, multimedia.</li>
+<li><b>Veracity – Data in doubt:</b> uncertainty due to data inconsistency and incompleteness, ambiguities, latency, deception, model approximations.</li></ul>`},
+{t:"V's & analytics stack",q:"Explain the evolution from 3Vs to 4Vs, 5Vs and 6Vs of big data.",m:"6–8 marks",a:`<ul><li><b>3Vs – Douglas Laney:</b> Volume, Velocity, Variety.</li>
+<li><b>4Vs – IBM:</b> adds <b>Veracity</b>.</li>
+<li><b>5Vs – Yuri Demchenko:</b> adds <b>Value</b>. Sub-attributes:<ul>
+<li>Volume: records/archived, table/text/file, transactions</li>
+<li>Velocity: stream data, processes, real time, batches</li>
+<li>Variety: structured, semi-structured, unstructured, multi-factors</li>
+<li>Veracity: trustworthiness, authenticity, origin, accountability</li>
+<li>Value: hypothetical, correlations, events, statistical</li></ul></li>
+<li><b>6Vs – Microsoft:</b> adds <b>Visibility</b> → Volume, Velocity, Variety, Veracity, Value, Visibility.</li></ul>`},
+{t:"V's & analytics stack",q:"Draw/describe the five layers of the Analytics stack with examples.",m:"10 marks",a:`<div class="tw"><table><tr><th>Layer</th><th>Contents</th></tr>
+<tr><td>5. Analytics solutions</td><td>Specific solutions: Finance, Health, Social Media, IoT, …</td></tr>
+<tr><td>4. Analytics tools</td><td>Analytics techniques and functions: advanced statistics, machine learning, text processing, …</td></tr>
+<tr><td>3. Analytics platforms</td><td>Data stream analytics platforms: Drools Fusion, Esper, Event Swarm, InfoSphere Streams, Azure Stream Analytics. Stored data analytics platforms: Elastic Search, Pentaho.</td></tr>
+<tr><td>2. Big data platforms</td><td>Data stream processing platforms: Storm, Kafka, Flume, ActiveMQ, AWS Kinesis, Microsoft Azure. Stored data processing platforms: Hadoop, Spark.</td></tr>
+<tr><td>1. Infrastructure platforms</td><td>Cloud (Azure, Amazon), Enterprise distributed systems (IBM, Oracle, Tibco), Others.</td></tr></table></div>
+<p>Draw it as a pyramid/stack with layer 1 at the bottom and layer 5 at the top.</p>`},
+{t:"V's & analytics stack",q:"Summarise the “3 Key Big Data Trends” slide.",m:"3–6 marks",a:`<ol><li><b>Top benefits driving data analytics:</b> faster innovation cycles (25%), improved business efficiencies (17%), more effective R&amp;D (13%), product/service (12%).</li>
+<li><b>Areas companies plan to increase big data investment:</b> social media data (50%), documents/texts (44%), clickstream (41%), videos/images (34%), sensor/RFID/machine data (29%), transaction data (28%), system logs (25%).</li>
+<li><b>How companies plan to monetize data:</b> provision of digital platform (38%), provision of analysis results (26%), provision of data via benchmarking (25%).</li></ol>`},
+{t:"Data structures",q:"Explain the four types of data structures with an example of each.",m:"8 marks",a:`<ul><li><b>Structured data:</b> data containing a defined data type, format and structure. E.g. transaction data, traditional RDBMS, CSV files, simple spreadsheets.</li>
+<li><b>Semi-structured data:</b> textual data files with a discernible pattern that enables parsing. E.g. XML data files that are self-describing and defined by an XML schema; HTML source of a web page.</li>
+<li><b>Quasi-structured data:</b> sits between structured and unstructured; loose or irregular patterns, recognizable tags and partial organization requiring specialized parsing. E.g. clickstream data, server &amp; web logs, email headers, sensor/IoT streams.</li>
+<li><b>Unstructured data:</b> no predefined data model, schema or organizational structure, hard to store/query in RDBMS. E.g. text documents, PDFs, images, video.</li></ul>
+<p>Most data growth today is unstructured (≈88% vs 12% structured).</p>`},
+{t:"Data structures",q:"Differentiate machine-generated and human-generated unstructured data with examples.",m:"4 marks",a:`<div class="tw"><table><tr><th>Machine-generated</th><th>Human-generated</th></tr>
+<tr><td>Satellite images<br>Scientific data<br>Photographs and video<br>Radar or sonar data</td><td>Word, PDF, text<br>Social media data (Facebook, Twitter, LinkedIn)<br>Mobile data (text messages)<br>Website contents (blogs, Instagram)</td></tr></table></div>`},
+{t:"Data structures",q:"Explain quasi-structured data and give FOUR common examples.",m:"5 marks",a:`<p>Quasi-structured data sits between structured and unstructured data. It has loose or irregular patterns, recognizable tags and partial organization, so it needs specialized parsing.</p>
+<ul><li><b>Clickstream data</b> – sequence of web pages a user visits; varies with session length and path.</li>
+<li><b>Server and web logs</b> – follow a general timestamp/event pattern but contain variable-length error or diagnostic text.</li>
+<li><b>Email headers</b> – standard fields (To, From, Subject, routing) paired with an unstructured message body.</li>
+<li><b>Sensor and IoT streams</b> – periodic telemetry where some fields may drop out or change depending on event type.</li></ul>`},
+{t:"Hadoop basics",q:"What is Hadoop? Explain its key characteristics.",m:"5–6 marks",a:`<p>Hadoop is a <b>software framework for distributed processing of large datasets across large clusters of computers</b>.</p>
+<ul><li>Large datasets → terabytes or petabytes of data.</li>
+<li>Large clusters → hundreds or thousands of nodes.</li>
+<li>It is an open-source implementation of Google MapReduce.</li>
+<li>It is based on a simple programming model called MapReduce.</li>
+<li>It is based on a simple data model – any data will fit.</li>
+<li>(Overview deck) An open-source collection of software utilities to perform computations on massive amounts of data; storage in multiple locations processed with MapReduce.</li></ul>`},
+{t:"Hadoop basics",q:"When should you use Hadoop?",m:"4 marks",a:`<ul><li>When you need to process large volumes of <b>unstructured</b> data.</li>
+<li>When <b>parallel processing</b> is feasible for your task.</li>
+<li>When <b>batch job execution</b> is permissible.</li>
+<li>When you have access to abundant <b>cost-effective hardware</b>.</li></ul>`},
+{t:"Hadoop basics",q:"List and explain the five pillars of Hadoop with the tools in each.",m:"10 marks",a:`<ol><li><b>Data Management</b> – store and process vast data in a storage layer that scales linearly. Tools: <b>HDFS</b> (storage), <b>YARN</b> (data operating system / resource management).</li>
+<li><b>Data Access</b> – interact with data in many ways, from batch to real-time. Tools: MapReduce (batch), Hive (SQL), Pig (script), Spark (in-memory), HBase (NoSQL), Storm, Kafka, Solr, Slider, Tez, Mahout, Accumulo, HCatalog.</li>
+<li><b>Data Governance and Integration</b> – quickly and easily load data and manage it according to policy. Tools: Flume, Sqoop (also Falcon, NFS, WebHDFS in the diagram).</li>
+<li><b>Security</b> – authentication, authorization, accounting and data protection, at every layer. Tools: Knox, Ranger.</li>
+<li><b>Operations</b> – provision, manage, monitor and operate clusters at scale. Tools: Ambari, Oozie, ZooKeeper.</li></ol>`},
+{t:"Hadoop basics",q:"Explain the core Hadoop concepts.",m:"6 marks",a:`<ul><li><b>Applications are written in high-level code</b> – developers do not worry about network programming, temporal dependencies, etc.</li>
+<li><b>Nodes talk to each other as little as possible</b> – developers should not write code that communicates between nodes: a ‘shared nothing’ architecture.</li>
+<li><b>Data is spread among machines in advance</b> – computation happens where the data is stored, wherever possible.</li>
+<li><b>Data is replicated</b> multiple times on the system for increased availability and reliability.</li>
+<li>When data is loaded it is split into <b>blocks</b> (typically 64 MB or 128 MB); map tasks work on a single block; a master program allocates work so a map task works on a block stored locally; many nodes work in parallel.</li></ul>`},
+{t:"Hadoop basics",q:"What is a computer cluster? State the challenges of cluster computing and how MapReduce addresses them.",m:"6 marks",a:`<p>A <b>computer cluster</b> is a set of loosely or tightly connected computers that work together so that, in many respects, they can be viewed as a single system. Cluster computing is the set of techniques used to connect multiple computers together as a single system.</p>
+<p><b>Challenges:</b></p><ul><li>How to store data persistently and keep it available if nodes fail.</li><li>How to deal with node failures during a long-running computation.</li><li>Network bottleneck that delays processing.</li></ul>
+<p><b>MapReduce solution:</b> brings computation close to the data, minimizing data movement; a simple programming model that processes large data in parallel by dividing the job into independent tasks; with replication and fault tolerance.</p>`},
+{t:"Hadoop basics",q:"List the eight areas where Hadoop can be applied.",m:"4 marks",a:`<ol><li>Modeling true risk</li><li>Customer churn analysis</li><li>Recommendation engine</li><li>PoS (point-of-sale) transaction analysis</li><li>Analyzing network data to predict failure</li><li>Threat analysis</li><li>Search quality</li><li>Data “sandbox”</li></ol>`},
+{t:"MapReduce",q:"What is MapReduce? List its features.",m:"6 marks",a:`<p>MapReduce is a method for distributing a task across multiple nodes. Each node processes data stored on that node where possible. It has two phases: <b>Map</b> and <b>Reduce</b>.</p>
+<p><b>Features:</b></p><ul><li>Automatic parallelization and distribution</li><li>Fault-tolerance</li><li>Status and monitoring tools</li><li>A clean abstraction for programmers (programs usually written in Java)</li><li>Abstracts all the ‘housekeeping’ away from the developer, who concentrates only on writing the Map and Reduce functions</li></ul>`},
+{t:"MapReduce",q:"Explain the five steps of the MapReduce programming model.",m:"5–10 marks",a:`<ol><li><b>Splitting</b> – the large input data set is split into independent chunks (e.g. lines/blocks).</li>
+<li><b>Mapping (distribution)</b> – map tasks are distributed to nodes; each processes its chunk and emits intermediate key/value pairs, e.g. (word, 1).</li>
+<li><b>Shuffling and sorting</b> – intermediate values for the same key are grouped into a list and passed to Reducers in sorted key order, e.g. (the, [1,1,1,1]).</li>
+<li><b>Reducing (parallelizing)</b> – each Reducer combines the list of values for a key in parallel, e.g. sum → (the, 4).</li>
+<li><b>Aggregating</b> – reducer outputs are combined into the final result and written to HDFS.</li></ol>`},
+{t:"MapReduce",q:"Explain the role of the Mapper.",m:"5 marks",a:`<ul><li>Hadoop tries to run Mappers on nodes that hold their portion of the data locally, to avoid network traffic; multiple Mappers run in parallel, each on a portion of the input.</li>
+<li>The Mapper reads data in the form of key/value pairs and outputs zero or more key/value pairs: <code>map(in_key, in_value) → (inter_key, inter_value) list</code>.</li>
+<li>The Mapper may use or completely ignore the input key. E.g. reading a text file line by line: the key is the byte offset where the line starts, the value is the line itself; the key is usually irrelevant.</li>
+<li>If it writes anything, the output must be key/value pairs.</li></ul>`},
+{t:"MapReduce",q:"Explain the role of the Reducer.",m:"5 marks",a:`<ul><li>After the Map phase, all intermediate values for a given intermediate key are combined into a list, which is given to a Reducer.</li>
+<li>There may be a single Reducer or multiple Reducers. All values for a particular intermediate key are guaranteed to go to the same Reducer.</li>
+<li>Intermediate keys and their value lists are passed to the Reducer in sorted key order – the ‘shuffle and sort’.</li>
+<li>The Reducer outputs zero or more final key/value pairs, written to HDFS. In practice it usually emits one key/value pair per input key.</li>
+<li>Each reduce pulls its partition from the machines where the maps ran: <code>reduce(key2, list&lt;value2&gt;) → list&lt;value3&gt;</code>.</li></ul>`},
+{t:"MapReduce",q:"Using MapReduce, show the word count process for the input: “the cat sat on the mat” and “the aardvark sat on the sofa”.",m:"8–10 marks",a:`<p><b>Map function:</b></p><pre>Map(input_key, input_value):
+  foreach word w in input_value:
+    emit(w, 1)</pre>
+<p><b>Mapper input:</b> (3414, 'the cat sat on the mat'), (3437, 'the aardvark sat on the sofa')</p>
+<p><b>Mapper output (12 pairs):</b> (the,1) (cat,1) (sat,1) (on,1) (the,1) (mat,1) (the,1) (aardvark,1) (sat,1) (on,1) (the,1) (sofa,1)</p>
+<p><b>Shuffle &amp; sort:</b> aardvark [1]; cat [1]; mat [1]; on [1,1]; sat [1,1]; sofa [1]; the [1,1,1,1]</p>
+<p><b>Reduce function (sum reducer):</b></p><pre>reduce(output_key, intermediate_vals):
+  set count = 0
+  foreach v in intermediate_vals:
+    count += v
+  emit(output_key, count)</pre>
+<p><b>Final result:</b> (aardvark,1) (cat,1) (mat,1) (on,2) (sat,2) (sofa,1) (the,4)</p>
+<p>Practise the same steps on any sentence the lecturer gives: split → emit (word,1) → group by key in sorted order → sum.</p>`},
+{t:"MapReduce",q:"Explain the map and reduce functions using their general form.",m:"4–6 marks",a:`<ul><li>A MapReduce job splits a large data set into independent chunks organized as key-value pairs for parallel processing, improving speed and reliability.</li>
+<li><b>Map:</b> <code>map(key1, value) → list&lt;key2, value2&gt;</code>. The input is divided into ranges by the <b>InputFormat</b>, a map task is created per range, and the <b>JobTracker</b> distributes these tasks to worker nodes. Each map's output is partitioned into a group of key-value pairs for each reduce.</li>
+<li><b>Reduce:</b> <code>reduce(key2, list&lt;value2&gt;) → list&lt;value3&gt;</code>. It collects the results and combines them to answer the larger problem the master node must solve; each reduce pulls its partition from the map machines and writes output back into HDFS.</li></ul>`},
+{t:"MapReduce",q:"Describe the roles of the JobTracker and TaskTracker in classic Hadoop MapReduce.",m:"6 marks",a:`<p>Classic Hadoop MapReduce = <b>JobTracker (master)</b> + <b>TaskTrackers (per-node slaves)</b>. Clients submit jobs to the JobTracker.</p>
+<p><b>JobTracker:</b></p><ul><li>Resource management – managing the worker nodes (TaskTrackers)</li><li>Tracking resource consumption/availability</li><li>Job life-cycle management – scheduling individual tasks, tracking progress, providing fault-tolerance for tasks</li></ul>
+<p><b>TaskTracker:</b></p><ul><li>Launch/teardown tasks on orders from the JobTracker</li><li>Provide task-status information to the JobTracker periodically</li></ul>`},
+{t:"MapReduce",q:"What is the main limitation of MapReduce and why was YARN introduced?",m:"4 marks",a:`<ul><li>Per the slides, map and reduce jobs are <b>not stateless</b>: Reduce jobs have to wait for Map jobs to complete first, which <b>limits maximum parallelism</b>.</li>
+<li>The JobTracker also did both resource management and job scheduling/monitoring, and only MapReduce workloads could run.</li>
+<li>Therefore <b>YARN</b> was born as a generic resource management and distributed application framework, splitting those functions and supporting non-MapReduce workloads (interactive SQL, real-time streaming, data science, batch).</li></ul>`},
+{t:"YARN",q:"What is YARN? Explain its components (ResourceManager, Scheduler, NodeManager, ApplicationMaster).",m:"8–10 marks",a:`<p><b>YARN (Yet Another Resource Negotiator)</b> is part of core Hadoop – a next-generation framework that extends MapReduce by supporting non-MapReduce workloads. It splits resource management and job scheduling/monitoring (previously in the JobTracker) into separate daemons: a global <b>ResourceManager</b> and per-application <b>ApplicationMaster</b>. An application is a single job or a DAG of jobs. The ResourceManager and NodeManager form the data-computation framework.</p>
+<ul><li><b>ResourceManager (RM):</b> the ultimate authority that arbitrates resources among all applications in the system.</li>
+<li><b>Scheduler</b> (pluggable, inside RM): allocates resources to running applications subject to capacities, queues, etc., based on their resource requirements using the abstract notion of a <b>Resource Container</b> (memory, CPU, disk, network).</li>
+<li><b>NodeManager (NM):</b> per-machine framework agent responsible for containers, monitoring their resource usage (CPU, memory, disk, network) and reporting to the RM/Scheduler.</li>
+<li><b>ApplicationMaster (AM):</b> per-application, framework-specific library that negotiates resources from the RM and works with the NodeManager(s) to execute and monitor tasks.</li></ul>`},
+{t:"YARN",q:"Compare classic MapReduce (MRv1) and YARN.",m:"6 marks",a:`<div class="tw"><table><tr><th>Classic MapReduce</th><th>YARN</th></tr>
+<tr><td>JobTracker (master) + TaskTrackers (slaves)</td><td>ResourceManager (global) + NodeManagers (per machine) + ApplicationMaster (per application)</td></tr>
+<tr><td>JobTracker does both resource management and job scheduling/monitoring</td><td>These are split into separate daemons (RM for resources, AM for scheduling/monitoring each app)</td></tr>
+<tr><td>Only MapReduce workloads</td><td>Also non-MapReduce workloads: interactive SQL, real-time streaming, data science, batch</td></tr>
+<tr><td>Tasks run in fixed task slots on TaskTrackers</td><td>Tasks run in resource Containers (memory, CPU, disk, network) managed by NodeManagers</td></tr>
+<tr><td>Limited parallelism</td><td>Generic resource management and distributed application framework; “data operating system”</td></tr></table></div>`},
+{t:"YARN",q:"Why is YARN called the architectural center / prerequisite of Enterprise Hadoop?",m:"4 marks",a:`<ul><li>It allows multiple data processing engines (interactive SQL, real-time streaming, data science, batch) to handle data stored in a single platform – a new approach to analytics.</li>
+<li>It provides resource management and a pluggable architecture so a wide variety of data access methods (script/Pig, SQL/Hive, NoSQL/HBase, stream/Storm, in-memory/Spark, search/Solr, ISV engines) can operate on data in HDFS with predictable performance and service levels.</li>
+<li>In the diagram, YARN is the “Data Operating System (Cluster Resource Management)” sitting between HDFS and all the data access engines.</li></ul>`},
+{t:"HDFS",q:"What is HDFS? Explain its characteristics.",m:"5–6 marks",a:`<ul><li>The <b>Hadoop Distributed File System</b> is the core technology for the efficient scale-out storage layer of Hadoop (Data Management pillar).</li>
+<li>A <b>Java-based</b> file system providing scalable and reliable storage, designed to span large clusters of <b>low-cost commodity servers</b>.</li>
+<li><b>Scalable, fault-tolerant, distributed</b> storage that works with many concurrent data access applications, coordinated by YARN.</li>
+<li>Will “just work” under a variety of physical and systemic circumstances.</li>
+<li>Storage scales <b>linearly</b>: distributing storage and computation across many servers lets capacity grow with demand while remaining economical.</li></ul>`},
+{t:"HDFS",q:"Explain the HDFS architecture: NameNode and DataNodes.",m:"8–10 marks",a:`<p>An HDFS cluster has one <b>NameNode</b>, which manages the cluster metadata, and many <b>DataNodes</b>, which store the data.</p>
+<ul><li>Files and directories are represented on the NameNode by <b>inodes</b> (permissions, modification and access times, namespace and disk space quotas).</li>
+<li>File content is split into large <b>blocks (typically 128 MB)</b>; each block is independently <b>replicated</b> at multiple DataNodes (3 times in the example). Blocks are stored on the DataNodes' local file system.</li>
+<li>The NameNode actively monitors the number of replicas; if one is lost (DataNode/disk failure) it creates another replica.</li>
+<li>The NameNode maintains the namespace tree and block→DataNode mapping, holding the whole namespace image in <b>RAM</b>.</li>
+<li>The NameNode does not send requests directly; it replies to DataNode <b>heartbeats</b> with commands to: replicate blocks to other nodes, remove local block replicas, re-register and send an immediate block report, or shut down the node.</li>
+<li>Diagram: Client ↔ NameNode = metadata ops; NameNode → DataNodes = block ops; Client reads/writes directly with DataNodes; blocks replicated across racks (Rack 1, Rack 2).</li></ul>`},
+{t:"HDFS",q:"Describe how a client reads a file from HDFS.",m:"4 marks",a:`<ol><li>The client application contacts the <b>NameNode</b> to find which blocks make up the file and on which DataNodes those blocks reside (e.g. /user/diana/bar → blocks 3, 5; block 3 → N3, N4, N6; block 5 → N2, N3, N4).</li>
+<li>The NameNode returns this metadata only (it does not send the data).</li>
+<li>The client then communicates <b>directly with the DataNodes</b> to read the data blocks.</li></ol>`},
+{t:"HDFS",q:"How does HDFS provide fault tolerance?",m:"5 marks",a:`<ul><li>Each block is replicated on multiple DataNodes (typically three copies), across racks.</li>
+<li>DataNodes send heartbeats to the NameNode; a missing heartbeat indicates failure.</li>
+<li>The NameNode actively monitors replica counts; when a replica is lost due to DataNode or disk failure it instructs other DataNodes (in heartbeat replies) to replicate the block.</li>
+<li>Replication gives increased availability and reliability; low-cost commodity hardware can fail without data loss.</li></ul>`},
+{t:"Hadoop ecosystem",q:"Explain the Data Access tools: Hive, Pig, Spark and HBase.",m:"8 marks",a:`<ul><li><b>Apache Hive:</b> built on MapReduce; a data warehouse enabling easy data summarization and ad-hoc queries via an SQL-like interface for large datasets in HDFS.</li>
+<li><b>Apache Pig:</b> platform for processing and analyzing large data sets; a high-level language (Pig Latin) paired with the MapReduce framework.</li>
+<li><b>Apache Spark:</b> ideal for in-memory processing; lets data scientists implement fast, iterative algorithms for advanced analytics such as clustering and classification.</li>
+<li><b>Apache HBase:</b> column-oriented NoSQL data store providing random, real-time read/write access to big data for user applications.</li></ul>`},
+{t:"Hadoop ecosystem",q:"Describe the other Data Access tools: Storm, Kafka, Slider, Solr, Tez, Mahout, Accumulo, HCatalog.",m:"8 marks",a:`<p><b>Data streaming &amp; ingestion</b></p><ul><li><b>Storm:</b> distributed real-time computation system to process large streams reliably and quickly.</li><li><b>Kafka:</b> distributed event streaming platform for real-time data pipelines and streaming apps.</li></ul>
+<p><b>Search &amp; cluster management</b></p><ul><li><b>Slider:</b> deployment tool to run existing distributed applications on YARN (retired by Apache in 2018).</li><li><b>Solr:</b> highly scalable open-source enterprise search platform built on Apache Lucene.</li></ul>
+<p><b>Processing &amp; analytics engines</b></p><ul><li><b>Tez:</b> framework for high-performance batch and interactive processing, often used to speed up Hive and Pig.</li><li><b>Mahout:</b> distributed linear algebra framework and Scala DSL for scalable machine learning.</li></ul>
+<p><b>Databases &amp; storage management</b></p><ul><li><b>Accumulo:</b> sorted, distributed key-value store based on Google's Bigtable, with cell-level security.</li><li><b>HCatalog:</b> table and storage management layer so Pig, Hive and MapReduce can easily read/write data on the grid.</li></ul>`},
+{t:"Hadoop ecosystem",q:"Explain the tools under Data Governance & Integration, Security and Operations.",m:"8 marks",a:`<p><b>Data Governance &amp; Integration</b> – quickly load data and manage it per policy:</p><ul><li><b>Flume:</b> collects, aggregates and moves high-volume streaming and log data into Hadoop.</li><li><b>Sqoop:</b> bulk transfer of structured data between RDBMS/NoSQL stores and Hadoop (HDFS, Hive, HBase).</li></ul>
+<p><b>Security</b> – authentication, authorization, accounting, data protection:</p><ul><li><b>Knox:</b> perimeter security gateway and reverse proxy for Hadoop clusters.</li><li><b>Ranger:</b> centralized authorization and fine-grained access control (FGAC).</li><li>Security is provided at every layer – HDFS, YARN, Hive, other data access components, up through the perimeter via Knox.</li></ul>
+<p><b>Operations</b> – provision, manage, monitor, operate clusters at scale:</p><ul><li><b>Ambari:</b> cluster management and provisioning.</li><li><b>Oozie:</b> workflow scheduler and coordination engine.</li><li><b>ZooKeeper:</b> distributed coordination service.</li></ul>`},
+{t:"Hadoop ecosystem",q:"Differentiate Flume and Sqoop.",m:"4 marks",a:`<div class="tw"><table><tr><th>Flume</th><th>Sqoop</th></tr>
+<tr><td>Collects, aggregates and moves high-volume <b>streaming and log data</b> into Hadoop</td><td>Bulk transfer of <b>structured data</b> between RDBMS/NoSQL stores and Hadoop (HDFS, Hive, HBase)</td></tr>
+<tr><td>Continuous/streaming, unstructured or semi-structured sources (logs)</td><td>Batch import/export from databases; works in both directions</td></tr></table></div>`},
+{t:"Hadoop ecosystem",q:"Differentiate Hive and Pig.",m:"4 marks",a:`<div class="tw"><table><tr><th>Hive</th><th>Pig</th></tr>
+<tr><td>Data warehouse built on MapReduce</td><td>Platform for processing and analysing large data sets</td></tr>
+<tr><td>SQL-like interface; for summarization and ad-hoc queries</td><td>High-level scripting language: Pig Latin</td></tr>
+<tr><td>“SQL” access in the Hortonworks diagram</td><td>“Script” access in the Hortonworks diagram</td></tr></table></div>
+<p>Both run on MapReduce over data in HDFS and can be sped up by Tez.</p>`}
+];
+
+const DR_FACTS = [
+{h:"Numbers to memorise",l:["HDFS block: typically 128 MB (overview slide: 64 MB or 128 MB)","Replication in example: 3 copies per block","Large dataset = TB–PB; large cluster = hundreds–thousands of nodes","Unstructured 88% vs structured 12% of data growth","Units: TB 10^12, PB 10^15, EB 10^18, ZB 10^21, YB 10^24, Brontobyte 10^27","Word count result: aardvark 1, cat 1, mat 1, on 2, sat 2, sofa 1, the 4"]},
+{h:"Who added which V",l:["Laney 3Vs: Volume, Velocity, Variety","IBM 4Vs: + Veracity","Demchenko 5Vs: + Value","Microsoft 6Vs: + Visibility","Volume = at rest · Velocity = in motion · Variety = many forms · Veracity = in doubt"]},
+{h:"Five MapReduce steps",l:["1 Splitting","2 Mapping (distribution)","3 Shuffling and sorting","4 Reducing (parallelizing)","5 Aggregating"]},
+{h:"Masters and workers",l:["HDFS: NameNode (metadata, RAM, inodes) / DataNodes (blocks)","Classic MR: JobTracker (master) / TaskTrackers (slaves)","YARN: ResourceManager (+Scheduler) / NodeManagers; one ApplicationMaster per application","NameNode talks to DataNodes only by replying to heartbeats"]},
+{h:"Five pillars → tools",l:["Data Management: HDFS, YARN","Data Access: MapReduce, Hive, Pig, Spark, HBase, Storm, Kafka, Slider, Solr, Tez, Mahout, Accumulo, HCatalog","Governance & Integration: Flume, Sqoop (Falcon in diagram)","Security: Knox, Ranger","Operations: Ambari, Oozie, ZooKeeper"]},
+{h:"Easy-to-confuse pairs",l:["Knox = perimeter gateway · Ranger = authorization/FGAC","Oozie = workflow scheduler · ZooKeeper = coordination · Ambari = provisioning","Flume = streaming/log data · Sqoop = RDBMS bulk transfer","Storm = real-time computation · Kafka = event streaming platform","HBase = column NoSQL (real-time R/W) · Accumulo = Bigtable key-value, cell-level security","Semi-structured = XML/HTML · Quasi-structured = clickstream, logs, email headers"]},
+{h:"Analytics stack (bottom → top)",l:["1 Infrastructure: Cloud (Azure, Amazon), Enterprise (IBM, Oracle, Tibco)","2 Big data platforms: stream (Storm, Kafka, Flume, ActiveMQ, Kinesis) / stored (Hadoop, Spark)","3 Analytics platforms: stream (Drools Fusion, Esper, Event Swarm, InfoSphere Streams, Azure Stream Analytics) / stored (Elastic Search, Pentaho)","4 Analytics tools: statistics, ML, text processing","5 Analytics solutions: Finance, Health, Social Media, IoT"]}
+];
+
+/* ---------- state ---------- */
+const DR_CH=t=>["Big Data concepts","V's & analytics stack"].includes(t)?1:2;
+let drAns=store.get("bda-ans")||{};
+DR_MCQ.forEach((m,i)=>{m.id=i;let seed=(i+1)*9301+49297;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;const ord=m.o.map((_,k)=>k);for(let k=ord.length-1;k>0;k--){const j=Math.floor(rnd()*(k+1));[ord[k],ord[j]]=[ord[j],ord[k]]}m.o=ord.map(k=>m.o[k]);m.a=ord.indexOf(m.a)});
+const drTopics=[...new Set(DR_MCQ.map(m=>m.t))];
+let drPool=[],drIdx=0,drOnlyWrong=false,drRetry=null,drResetArmed=false,drVis=false;
+const drFill=(sel,list)=>{sel.innerHTML='<option value="all">All topics</option>'+list.map(t=>`<option>${esc(t)}</option>`).join("")};
+drFill($("#dr-topic"),drTopics);drFill($("#dr-dtopic"),[...new Set(DR_DESC.map(d=>d.t))]);
+function drBuild(){const t=$("#dr-topic").value;drPool=DR_MCQ.filter(m=>t==="all"||m.t===t);if(drOnlyWrong&&drRetry)drPool=drPool.filter(m=>drRetry.has(m.id));
+ if($("#dr-order").value==="rnd"){for(let i=drPool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[drPool[i],drPool[j]]=[drPool[j],drPool[i]]}}
+ drIdx=0;const fo=drPool.findIndex(m=>!drAns[m.id]);if(fo>0&&!drOnlyWrong)drIdx=fo;drRender()}
+function drStats(){const neg=parseFloat($("#dr-neg").value);let c=0,w=0,sk=0;drPool.forEach(m=>{const a=drAns[m.id];if(!a)return;if(a.pick===-1)sk++;else if(a.pick===m.a)c++;else w++});
+ $("#dr-s-c").textContent=c;$("#dr-s-w").textContent=w;$("#dr-s-s").textContent=sk;$("#dr-s-l").textContent=drPool.length-c-w-sk;$("#dr-s-score").textContent=(Math.round((c-w*neg)*100)/100)+" / "+drPool.length;
+ const n=c+w,acc=$("#dr-s-acc");if(n){const pc=Math.round(c/n*100);acc.textContent=pc+"%";acc.style.color=pc>=75?"var(--teal)":pc>=50?"var(--amber)":"var(--rose)";$("#dr-s-accn").textContent=`${c} of ${n} answered`}else{acc.textContent="–";acc.style.color="";$("#dr-s-accn").textContent="no answers yet"}}
+function drRender(){const card=$("#dr-card");
+ if(!drPool.length){card.innerHTML=`<div class="dr-done"><h3>Nothing here</h3><p class="sub">${drOnlyWrong?"No wrong answers in this topic. Nice.":"No questions match this filter."}</p><button class="btn primary" type="button" id="dr-all">Show all questions</button></div>`;$("#dr-all").onclick=()=>{drOnlyWrong=false;drRetry=null;$("#dr-wrong").textContent="Retry my wrong ones";$("#dr-topic").value="all";drBuild()};$("#dr-dots").innerHTML="";drStats();return}
+ const m=drPool[drIdx],a=drAns[m.id],K="ABCD";
+ card.innerHTML=`<div class="dr-meta"><span>Question ${drIdx+1} of ${drPool.length}${drOnlyWrong?" · wrong ones":""}</span><span class="dr-chip">Chapter ${DR_CH(m.t)} · ${esc(m.t)}</span></div>
+ <div class="dr-q">${m.q}</div>
+ <div class="dr-opts">${m.o.map((o,i)=>{let cl="";if(a){if(i===m.a)cl="right";else if(i===a.pick)cl="wrong"}return`<button type="button" class="dr-opt ${cl}" data-i="${i}" ${a?"disabled":""}><span class="k">${K[i]}</span><span>${o}</span></button>`}).join("")}</div>
+ ${a?`<div class="dr-exp ${a.pick===-1?"skip":""}"><b>${a.pick===-1?"Skipped. Answer: "+K[m.a]:a.pick===m.a?"Correct":"Wrong. Answer: "+K[m.a]}</b>${m.e}</div>`:""}
+ <div class="dr-nav"><div class="grp"><button class="btn" type="button" id="dr-prev">← Prev</button>${a?"":`<button class="btn" type="button" id="dr-skip">Skip (S)</button>`}</div><div class="grp">${a?`<button class="btn" type="button" id="dr-redo">Try again</button>`:""}<button class="btn primary" type="button" id="dr-next">Next →</button></div></div>`;
+ card.querySelectorAll(".dr-opt").forEach(b=>b.onclick=()=>drPick(+b.dataset.i));
+ $("#dr-prev").onclick=()=>drGo(-1);$("#dr-next").onclick=()=>drGo(1);
+ if($("#dr-skip"))$("#dr-skip").onclick=()=>drPick(-1);
+ if($("#dr-redo"))$("#dr-redo").onclick=()=>{delete drAns[m.id];store.set("bda-ans",drAns);drRender()};
+ $("#dr-dots").innerHTML=drPool.map((q,i)=>{const x=drAns[q.id];let c="";if(x)c=x.pick===-1?"s":x.pick===q.a?"c":"w";return`<button type="button" class="${c} ${i===drIdx?"cur":""}" data-i="${i}" aria-label="Question ${i+1}">${i+1}</button>`}).join("");
+ drStats()}
+$("#dr-dots").addEventListener("click",e=>{const d=e.target.closest("[data-i]");if(d){drIdx=+d.dataset.i;drRender()}});
+function drPick(i){const m=drPool[drIdx];if(!m||drAns[m.id])return;drAns[m.id]={pick:i};store.set("bda-ans",drAns);drRender()}
+function drGo(d){drIdx=Math.max(0,Math.min(drPool.length-1,drIdx+d));drRender();const c=$("#dr-card"),r=c.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)window.scrollTo({top:scrollY+r.top-90,behavior:reduced?"auto":"smooth"})}
+$("#dr-topic").onchange=drBuild;$("#dr-order").onchange=drBuild;$("#dr-neg").onchange=drStats;
+$("#dr-wrong").onclick=()=>{if(!drOnlyWrong){const ids=DR_MCQ.filter(m=>drAns[m.id]&&drAns[m.id].pick!==-1&&drAns[m.id].pick!==m.a).map(m=>m.id);drRetry=new Set(ids);ids.forEach(id=>delete drAns[id]);store.set("bda-ans",drAns);drOnlyWrong=true}else{drOnlyWrong=false;drRetry=null}$("#dr-wrong").textContent=drOnlyWrong?"Show all questions":"Retry my wrong ones";drBuild()};
+$("#dr-reset").onclick=()=>{if(!drResetArmed){drResetArmed=true;$("#dr-reset").textContent="Click again to reset";setTimeout(()=>{drResetArmed=false;$("#dr-reset").textContent="Reset"},3000);return}drAns={};store.set("bda-ans",drAns);drResetArmed=false;$("#dr-reset").textContent="Reset";drOnlyWrong=false;drRetry=null;$("#dr-wrong").textContent="Retry my wrong ones";drBuild()};
+new IntersectionObserver(es=>{drVis=es.some(e=>e.isIntersecting)}).observe($("#dr-mcq"));
+document.addEventListener("keydown",e=>{if(!drVis||$("#dr-mcq").hidden||!$("#cmdk").hidden||e.ctrlKey||e.metaKey||e.altKey)return;const tg=e.target.tagName;if(/INPUT|TEXTAREA|SELECT/.test(tg))return;const k=e.key.toLowerCase();
+ if(k.length===1&&"abcd".includes(k)){const i="abcd".indexOf(k);if(drPool[drIdx]&&i<drPool[drIdx].o.length)drPick(i)}
+ else if(k==="s")drPick(-1);else if(k==="arrowright"||(k==="enter"&&tg!=="BUTTON")){e.preventDefault();drGo(1)}else if(k==="arrowleft"){e.preventDefault();drGo(-1)}});
+let drGot=store.get("bda-got")||{};
+function drRenderDesc(){const t=$("#dr-dtopic").value,list=DR_DESC.map((d,i)=>({...d,i})).filter(d=>t==="all"||d.t===t);
+ $("#dr-list").innerHTML=list.map((d,n)=>`<details class="dq"><summary><span class="n">${String(n+1).padStart(2,"0")}</span><span>${d.q}</span><span class="mk">${esc(d.m)}</span></summary><div class="ans"><div class="marks">Chapter ${DR_CH(d.t)} · ${esc(d.t)} · likely ${esc(d.m)}</div>${d.a}<label class="got" for="dr-got-${d.i}"><input type="checkbox" id="dr-got-${d.i}" data-i="${d.i}" ${drGot[d.i]?"checked":""}> I can answer this without looking</label></div></details>`).join("");
+ $("#dr-list").querySelectorAll("input[type=checkbox]").forEach(c=>c.onchange=()=>{drGot[c.dataset.i]=c.checked;store.set("bda-got",drGot);drCount()});drCount()}
+function drCount(){const n=Object.values(drGot).filter(Boolean).length;$("#dr-count").textContent=`${n} of ${DR_DESC.length} mastered`}
+$("#dr-dtopic").onchange=drRenderDesc;
+$("#dr-open").onclick=()=>$("#dr-list").querySelectorAll("details.dq").forEach(d=>d.open=true);
+$("#dr-close").onclick=()=>$("#dr-list").querySelectorAll("details.dq").forEach(d=>d.open=false);
+$("#dr-factlist").innerHTML=DR_FACTS.map(f=>`<div class="fact"><h3>${f.h}</h3><ul>${f.l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+document.querySelectorAll(".dr-tabs button").forEach(b=>b.onclick=()=>{const v=b.dataset.v;document.querySelectorAll(".dr-tabs button").forEach(x=>x.setAttribute("aria-pressed",x===b));["mcq","desc","facts"].forEach(k=>{$("#dr-"+k).hidden=k!==v})});
+drBuild();drRenderDesc();
+
+/* ---------- NoSQL: scale out, partition, replicate, survive failures ---------- */
+(function(){const KEYS=Array.from({length:12},(_,i)=>"k"+(i+1));let load=1,down=new Set();
+ function draw(){const n=Math.max(2,load+1),up=$("#nq-up"),maxed=load>=4;
+  up.style.width=Math.min(100,40+load*15)+"%";up.style.height=Math.min(140,50+load*22)+"px";up.classList.toggle("max",maxed);
+  $("#nq-up-t").textContent=maxed?"at the hardware limit: no bigger machine to buy":`load ${load}: buy a bigger machine`;
+  const owners=KEYS.map((k,i)=>[i%n,(i+1)%n]);
+  $("#nq-nodes").innerHTML=Array.from({length:n},(_,d)=>`<div class="nsq-node ${down.has(d)?"down":""}"><b>Node ${d+1}${down.has(d)?" · down":""}</b><div class="kk">${KEYS.map((k,i)=>owners[i][0]===d?`<i>${k}</i>`:owners[i][1]===d?`<i class="rep">${k}</i>`:"").join("")}</div></div>`).join("");
+  const lost=KEYS.filter((k,i)=>owners[i].every(o=>down.has(o)));
+  $("#nq-msg").innerHTML=down.size?(lost.length?`<span class="badge bad">Data lost</span> ${lost.join(", ")} had both copies on failed nodes. Two copies survive one failure, not two neighbouring ones.`:`<span class="badge ok">No data lost</span> ${down.size} node${down.size>1?"s":""} down, yet every key still has a live copy. No single point of failure.`):`${n} nodes share the load. Teal keys are each node's own partition; grey ones are replica copies of a neighbour's keys.`}
+ $("#nq-load").onclick=()=>{if(load<6){load++;down.clear();draw()}};
+ $("#nq-fail").onclick=()=>{const n=Math.max(2,load+1),alive=[...Array(n).keys()].filter(d=>!down.has(d));if(alive.length>1){down.add(alive[Math.floor(Math.random()*alive.length)]);draw()}};
+ $("#nq-reset").onclick=()=>{load=1;down.clear();draw()};draw()})();
+
+/* ---------- MRv1 vs YARN: where the work lands ---------- */
+(function(){let jobs=[],n=0;const COLS={mr:"#F5B83D",sp:"#B79CFF"};
+ function draw(){const mr=jobs.filter(j=>j.t==="mr").length,jt=Math.min(100,mr*22),rm=Math.min(100,jobs.length*7);
+  const jtEl=$("#my-jt"),rmEl=$("#my-rm");jtEl.style.width=jt+"%";jtEl.classList.toggle("hot",jt>=80);rmEl.style.width=rm+"%";
+  const tt=[[],[],[]],nm=[[],[],[]];
+  jobs.forEach((j,i)=>{if(j.t==="mr"){[0,1,2].forEach(w=>tt[w].push(`<i style="background:${COLS.mr}">J${j.n} task</i>`))}
+   nm[i%3].push(`<i style="background:${COLS[j.t]};outline:2px solid var(--fg);outline-offset:-2px">J${j.n} AM</i>`);[1,2].forEach(o=>nm[(i+o)%3].push(`<i style="background:${COLS[j.t]}">J${j.n} task</i>`))});
+  $("#my-tt").innerHTML=tt.map((x,w)=>`<div class="my-w"><b>TaskTracker ${w+1}</b>${x.join("")}</div>`).join("");
+  $("#my-nm").innerHTML=nm.map((x,w)=>`<div class="my-w"><b>NodeManager ${w+1}</b>${x.join("")}</div>`).join("")}
+ $("#my-mr").onclick=()=>{if(jobs.length>=6)return;n++;jobs.push({t:"mr",n});draw();const mr=jobs.filter(j=>j.t==="mr").length;
+  $("#my-msg").innerHTML=mr>=4?`<span class="badge bad">Bottleneck</span> ${mr} MapReduce jobs: the one JobTracker is scheduling and monitoring every task of every job. YARN's ResourceManager stays light because each job's ApplicationMaster (outlined) does that work.`:`<b>Job ${n} (MapReduce)</b> runs on both. MRv1: the JobTracker tracks all of its tasks. YARN: the ResourceManager gives it containers, and its own ApplicationMaster (outlined) runs it.`};
+ $("#my-sp").onclick=()=>{if(jobs.length>=6)return;n++;jobs.push({t:"sp",n});draw();$("#my-msg").innerHTML=`<span class="badge warn">Job ${n} (Spark)</span> MRv1 can't run it: it only runs MapReduce. YARN accepts it, because YARN supports non-MapReduce workloads.`};
+ $("#my-reset").onclick=()=>{jobs=[];n=0;draw();$("#my-msg").textContent="Submit a job to see where the work lands."};draw()})();
 
 /* ---------- search palette (Ctrl/Cmd+K or /) ---------- */
 const IDX=[];
 CH.forEach(c=>IDX.push({ty:"Page",t:`Chapter ${c.n} · ${c.el.dataset.title||c.name}`,s:c.el.dataset.sub||"",href:"#ch"+c.n}));
-IDX.push({ty:"Page",t:"Practice",s:"Glossary, flashcards, quiz, slide gaps",href:"#practice"},{ty:"Page",t:"Home",s:"Chapters and how to revise",href:"#home"});
+IDX.push({ty:"Page",t:"Test drill · Chapters 1–2",s:"176 MCQs with negative marking, 43 written questions, last-minute facts",href:"#drill"},{ty:"Page",t:"Practice",s:"Glossary, flashcards, quiz, slide gaps",href:"#practice"},{ty:"Page",t:"Home",s:"Chapters and how to revise",href:"#home"});
 topics.forEach(t=>{const n=t.querySelector(".tnum").textContent,h=t.querySelector("h3").textContent,txt=t.textContent.replace(/\s+/g," ").trim();IDX.push({ty:"Topic",t:`${n} ${h}`,s:"Chapter "+t.dataset.ch+" · "+chName(t.dataset.ch),href:"#"+t.id,ch:t.dataset.ch,txt,low:txt.toLowerCase()})});
 GL.forEach(g=>IDX.push({ty:"Term",t:g[0],s:g[2],term:g[0]}));
 IDX.push({ty:"Action",t:"Review flashcards",s:"Spaced-repetition review of due cards",act:"cards"},{ty:"Action",t:"Toggle recall mode",s:"Hide key definitions until you try to recall them",act:"recall"},{ty:"Action",t:"Start the quiz",s:"All chapters, shuffled",href:"#quiz"});
@@ -2540,7 +3210,73 @@ function buildBucket(){const st=makeStage($("#st-bucket"),{cam:[0,5.2,13.5],look
  $("#bk-n").addEventListener("change",()=>{if(busy)return;n=+$("#bk-n").value;build()});
  build()}
 
-function init(){const map=[["#st-vs",buildVs],["#st-stack",buildStack],["#st-pyr",buildPyr],["#st-pil",buildPillars],["#st-mr",buildMR],["#st-yarn",buildYarn],["#st-hdfs",buildHdfs],["#st-eco",buildCity],["#st-pipe",buildPipe],["#st-layers",buildLayers],["#st-harch",buildHiveArch],["#st-dag",buildDag],["#st-gran",buildGran],["#st-prune",buildPrune],["#st-bucket",buildBucket]];
+/* ---------- 2.10 HDFS write path: 2D + 3D views driven by one step machine ---------- */
+function buildHw(){const st=makeStage($("#st-hw"),{cam:[0,6.4,15.5],look:[0.2,2,0],aspectRef:1.55});if(!st)return;const tw=tweener(st);
+ const inn=flatView(st,"");modeSwitch(st,"st-hw","2d");
+ const PAL=["#F5B83D","#4FD1C5","#7C98FF","#F2727F","#8FD694","#B79CFF","#F29A4A","#6BA6D6"],DN=["DN1","DN2","DN3","DN4","DN5","DN6"];
+ let S,B,R,sizes,step=0,busy=false,playing=false,gen=0,pendingReset=false;
+ const rackOf=d=>d<3?1:2;
+ const plan=i=>{const ra=i%2,rb=1-ra,a=ra*3+(i%3),b=rb*3+((i+1)%3),c=rb*3+((i+2)%3);return[a,b,c].slice(0,R)};
+ const LAST=()=>3+sizes.length;
+ /* ----- 3D scene ----- */
+ const dnX=[-3.4,-1.8,-0.2,2.6,4.2,5.8],dnPos=dnX.map(x=>new THREE.Vector3(x,.75,0));
+ [[-1.8,"Rack 1"],[4.2,"Rack 2"]].forEach(([x,t])=>{const pl=new THREE.Mesh(new THREE.BoxGeometry(5.2,.12,2.2),new THREE.MeshStandardMaterial({color:0x22304A}));pl.position.set(x,.06,0);st.root.add(pl);const sp=sprite(t,.26,{color:"#97A3BA"});sp.position.set(x,-.35,1.3);st.root.add(sp)});
+ const dnM=dnPos.map((p,i)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.3,1.3),new THREE.MeshStandardMaterial({color:0x2A3A57,roughness:.6,emissive:C.amber,emissiveIntensity:0}));m.position.copy(p);st.root.add(m);const f=facePlane(DN[i],.24,{color:"#E7EBF3",weight:700});f.position.set(0,0,.66);m.add(f);return m});
+ const nn=new THREE.Mesh(new THREE.BoxGeometry(3,1,1.4),new THREE.MeshStandardMaterial({color:C.lilac,roughness:.5}));nn.position.set(1.2,4.6,0);st.root.add(nn);{const f=facePlane("NameNode · metadata",.22,{color:"#0B111C",weight:800});f.position.set(0,0,.71);nn.add(f)}
+ const cl=new THREE.Mesh(new THREE.SphereGeometry(.55,24,16),new THREE.MeshStandardMaterial({color:0xF2A0A8,roughness:.5}));cl.position.set(-6.6,1.2,0);st.root.add(cl);{const sp=sprite("Client",.26,{color:"#E7EBF3"});sp.position.set(-6.6,2.1,0);st.root.add(sp)}
+ let g3=null;const cubeGeo=new THREE.BoxGeometry(.5,.38,.5);
+ const mat=i=>new THREE.MeshStandardMaterial({color:new THREE.Color(PAL[i%PAL.length]),roughness:.45});
+ const slotPos=(d,k)=>new THREE.Vector3(dnPos[d].x+((k%2)?.3:-.3),1.55+Math.floor(k/2)*.44,0);
+ function draw3D(){if(g3)st.root.remove(g3);g3=new THREE.Group();st.root.add(g3);const cnt=[0,0,0,0,0,0],done=Math.max(0,step-3);
+  if(step>=1)sizes.forEach((sz,i)=>{if(i<done)return;const c=new THREE.Mesh(cubeGeo,mat(i));c.scale.x=Math.max(.35,sz/B);c.position.set(-7.4+i*.62,.35+0,1.4);g3.add(c)});
+  else{const bar=new THREE.Mesh(new THREE.BoxGeometry(Math.min(4,S/100),.38,.5),new THREE.MeshStandardMaterial({color:0xE7EBF3}));bar.position.set(-6.6,.35,1.4);g3.add(bar)}
+  for(let i=0;i<done;i++)plan(i).forEach(d=>{const c=new THREE.Mesh(cubeGeo,mat(i));c.position.copy(slotPos(d,cnt[d]++));g3.add(c)});
+  dnM.forEach(m=>m.material.emissiveIntensity=0);if(step>=3&&step<LAST())plan(step-3).forEach(d=>dnM[d].material.emissiveIntensity=.35);
+  nn.material.emissive=new THREE.Color(C.lilac);nn.material.emissiveIntensity=(step===2||(step>=3&&step<LAST()))?.35:.05;st.dirty=true}
+ function anim3D(i){return new Promise(res=>{const pl=plan(i),cnt=[0,0,0,0,0,0];for(let k=0;k<i;k++)plan(k).forEach(d=>cnt[d]++);
+  let from=cl.position.clone().add(new THREE.Vector3(0,.2,0)),hop=0;
+  const go=()=>{if(hop>=pl.length){res();return}const d=pl[hop],to=slotPos(d,cnt[d]),c=new THREE.Mesh(cubeGeo,mat(i));g3.add(c);const A=from.clone();
+   tw(.65,k=>{c.position.lerpVectors(A,to,k);c.position.y+=Math.sin(Math.PI*k)*1.4},()=>{from=to.clone();hop++;go()})};go()})}
+ /* ----- 2D view ----- */
+ function build2D(){inn.innerHTML=`<div class="hw2" id="hw2"><svg class="hw-svg" aria-hidden="true"><path id="hw-path" d=""/></svg><span class="hw-dot" id="hw-dot" hidden></span>
+  <div class="hw-box" style="grid-area:client"><b>Client</b><small>file.csv · ${S} MB</small><div class="hw-file" id="hw-file"></div></div>
+  <div class="hw-box" style="grid-area:nn" id="hw-nn"><b>NameNode</b><small>metadata only · in RAM</small><div class="hw-nnlog" id="hw-nnlog"></div></div>
+  <div class="hw-racks">${[0,1].map(r=>`<div class="hw-rack"><span>Rack ${r+1}</span><div class="row">${[0,1,2].map(k=>{const d=r*3+k;return`<div class="hw-dn" data-dn="${d}"><b>${DN[d]}</b><div class="hw-bl"></div></div>`}).join("")}</div></div>`).join("")}</div></div>`}
+ function draw2D(){const f=$("#hw-file"),done=Math.max(0,step-3);if(!f)return;
+  f.innerHTML=step>=1?sizes.map((sz,i)=>`<i style="flex:${sz};background:${PAL[i%PAL.length]}" class="${i<done?"sent":""}" data-b="${i}">B${i+1}</i>`).join(""):`<i style="flex:1;background:#E7EBF3">${S} MB</i>`;
+  inn.querySelectorAll(".hw-dn").forEach(el=>{const d=+el.dataset.dn;const bl=[];for(let i=0;i<done;i++)if(plan(i).includes(d))bl.push(`<i style="background:${PAL[i%PAL.length]}">B${i+1} · ${sizes[i]}</i>`);el.querySelector(".hw-bl").innerHTML=bl.join("");el.classList.toggle("hot",step>=3&&step<LAST()&&plan(step-3).includes(d))});
+  $("#hw-nnlog").innerHTML=step<2?"(no entry yet)":`/user/demo/file.csv · inode · ${sizes.length} blocks · rep ${R}<br>${step>=LAST()?"file closed ✓":done<sizes.length?`allocating block ${done+1}…`:""}`;
+  $("#hw-path").setAttribute("d","");$("#hw-dot").hidden=true}
+ function centre(el,box){const a=box.getBoundingClientRect(),b=el.getBoundingClientRect();return[b.left-a.left+b.width/2,b.top-a.top+b.height/2]}
+ function anim2D(i){return new Promise(res=>{const box=$("#hw2");if(!box||st.mode!=="2d"||!box.getBoundingClientRect().width||reduced){res();return}
+  const seg=box.querySelector(`[data-b="${i}"]`),pts=[centre(seg,box),...plan(i).map(d=>centre(box.querySelector(`[data-dn="${d}"]`),box))];
+  $("#hw-path").setAttribute("d","M"+pts.map(p=>p.join(" ")).join(" L"));const dot=$("#hw-dot");dot.hidden=false;dot.style.background=PAL[i%PAL.length];
+  let leg=0,t0=null;const LEG=520;const tick=t=>{if(t0===null)t0=t;const k=Math.min(1,(t-t0)/LEG),A=pts[leg],Bp=pts[leg+1];dot.style.left=(A[0]+(Bp[0]-A[0])*k)+"px";dot.style.top=(A[1]+(Bp[1]-A[1])*k)+"px";
+   if(k>=1){leg++;t0=null;if(leg>=pts.length-1){setTimeout(res,150);return}}requestAnimationFrame(tick)};requestAnimationFrame(tick)})}
+ /* ----- panel ----- */
+ function text(){const n=sizes.length;
+  if(step===0)return[`Start`,`A client wants to save <b>file.csv (${S} MB)</b> into HDFS with ${B} MB blocks and replication ${R}.`];
+  if(step===1)return[`Step 1 · Split`,`The client splits the file into <b>${n} block${n>1?"s":""}</b>: ${sizes.join(" + ")} MB.${sizes[n-1]<B?` The last block holds only the remaining ${sizes[n-1]} MB.`:""}`];
+  if(step===2)return[`Step 2 · Ask the NameNode`,`The client asks the <b>NameNode</b> to create /user/demo/file.csv. The NameNode adds an inode (permissions, times, quotas) to its namespace in RAM. No file data is sent to it.`];
+  if(step<LAST()){const i=step-3,pl=plan(i).map(d=>DN[d]);return[`Step ${step} · Write block ${i+1} of ${n}`,`The NameNode picks ${pl.length===1?"a DataNode":pl.length+" DataNodes"}: <b>${pl.join(", ")}</b>. The client sends the ${sizes[i]} MB block to ${pl[0]}${pl.length>1?`, which forwards it to ${pl.slice(1).join(" and then ")} in a pipeline. Acknowledgements travel back up the chain`:""}.${R>=2?` The first copy is on Rack ${rackOf(plan(i)[0])}; the other${R>2?"s are":" is"} on Rack ${rackOf(plan(i)[1])}.`:""}`]}
+  return[`Done · Close the file`,`The client closes the file. The NameNode now maps every block to its DataNodes. Raw disk used: ${S} MB × ${R} = <b>${S*R} MB</b>. ${R>1?`Any single DataNode can fail and every block still has a copy.`:`With replication 1, losing a DataNode loses the blocks it held.`}`]}
+ function panel(){const [k,t]=text();$("#hw-kick").textContent=k;$("#hw-step").innerHTML=t;const done=Math.max(0,step-3);
+  $("#hw-meta").innerHTML=step<2?`<tr><td colspan="3" style="color:var(--muted)">Empty. Nothing has been created yet.</td></tr>`:sizes.map((sz,i)=>`<tr class="${i===step-3?"on":""}"><td class="num">B${i+1}</td><td class="num">${sz} MB</td><td class="num">${i<done?plan(i).map(d=>DN[d]).join(", "):i===step-3?"writing…":"—"}</td></tr>`).join("");
+  $("#hw-stats").innerHTML=`<div class="tile"><b>${sizes.length}</b><span>blocks</span></div><div class="tile"><b>${S*R} MB</b><span>raw disk at rep ${R}</span></div><div class="tile"><b>${sizes.length*R}</b><span>block locations in NameNode RAM</span></div>`;
+  $("#hw-prev").disabled=step===0||busy;$("#hw-next").disabled=step>=LAST()||busy}
+ function render(){draw3D();draw2D();panel()}
+ async function next(){if(busy||step>=LAST())return;busy=true;panel();const target=step+1;
+  if(target>=4&&target<=LAST()){await Promise.all([anim3D(target-4),anim2D(target-4)])}
+  busy=false;if(pendingReset){pendingReset=false;reset();return}step=target;render()}
+ function reset(){S=+$("#hw-size").value;B=+$("#hw-bs").value;R=+$("#hw-rf").value;sizes=[];let left=S;while(left>0){sizes.push(Math.min(B,left));left-=B}step=0;build2D();render()}
+ $("#hw-next").onclick=()=>{if(!playing)next()};
+ $("#hw-prev").onclick=()=>{if(busy||playing||step===0)return;step--;render()};
+ $("#hw-play").onclick=async()=>{if(playing||busy)return;playing=true;const my=++gen;if(step>=LAST()){step=0;render()}while(step<LAST()&&gen===my){await next();await sleep(reduced?150:500)}if(gen===my)playing=false};
+ ["hw-size","hw-bs","hw-rf"].forEach(id=>$("#"+id).addEventListener("change",()=>{gen++;playing=false;if(busy)pendingReset=true;else reset()}));
+ st.onFlatShow=()=>draw2D();
+ reset()}
+
+function init(){const map=[["#st-vs",buildVs],["#st-stack",buildStack],["#st-pyr",buildPyr],["#st-pil",buildPillars],["#st-mr",buildMR],["#st-yarn",buildYarn],["#st-hdfs",buildHdfs],["#st-eco",buildCity],["#st-pipe",buildPipe],["#st-layers",buildLayers],["#st-harch",buildHiveArch],["#st-dag",buildDag],["#st-gran",buildGran],["#st-prune",buildPrune],["#st-bucket",buildBucket],["#st-hw",buildHw]];
  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const f=map.find(m=>$(m[0])===e.target);try{f[1]()}catch(err){console.error(err)}})},{rootMargin:"600px 0px"});
  map.forEach(m=>io.observe($(m[0])));requestAnimationFrame(loop)}
 document.querySelectorAll(".stage").forEach(s=>s.insertAdjacentHTML("afterbegin",'<div class="loading">Loading 3D model…</div>'));
