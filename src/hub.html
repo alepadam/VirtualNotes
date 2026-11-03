@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>notewithliqi</title>
+<meta name="description" content="notewithliqi: interactive revision notes for university subjects, with 3D labs, flashcards, quizzes and timed exams. Works offline.">
+<meta name="theme-color" content="#0D131E">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="notewithliqi">
+<meta property="og:description" content="Interactive revision notes with 3D labs, flashcards, quizzes and timed exams.">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="notewithliqi">
+<script>
+/* Runs first. 1) An old offline copy of this site (before subjects had their own folders) answers every address
+   with this page; if that happened, clear it and load the real page. 2) Old links such as /#ch2 now live under /big-data/. */
+(function(){var ids={{IDS}},p=location.pathname,stale=false;for(var i=0;i<ids.length;i++){if(p.indexOf("/"+ids[i]+"/")>=0)stale=true}
+ if(stale){var done=false;try{done=sessionStorage.getItem("nlq-fix")==="1";sessionStorage.setItem("nlq-fix","1")}catch(e){}
+  if(!done){var go=function(){location.reload()};if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations){navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.update().catch(function(){}).then(function(){return r.unregister()})}))}).then(go,go)}else go()}
+  return}
+ var fwd=function(){var h=location.hash;if(h&&h.length>1)location.replace("{{LEGACY}}"+h)};fwd();window.addEventListener("hashchange",fwd)})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="shared/core.css">
+<style>
+/* hub only: the subject picker */
+body{min-height:100vh;display:flex;flex-direction:column;
+ background:
+  radial-gradient(60vmax 40vmax at 88% -8%,#F5B83D1c,transparent 70%),
+  radial-gradient(50vmax 40vmax at -6% 104%,#4FD1C514,transparent 70%),
+  linear-gradient(#7C98FF0b 1px,transparent 1px) 0 0/40px 40px,
+  linear-gradient(90deg,#7C98FF0b 1px,transparent 1px) 0 0/40px 40px,
+  var(--bg);background-attachment:fixed}
+.hub-top .wrap{justify-content:space-between}
+.hub-top .brand{font-size:1rem;letter-spacing:.01em}
+.hub-top .acts{display:flex;align-items:center;gap:10px}
+.hub-main{flex:1;padding:clamp(28px,6vw,64px) 0 48px}
+.hub-eyebrow{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--amber)}
+.hub-h1{font-size:clamp(2.1rem,5.4vw,3.6rem);font-weight:800;font-stretch:112%;margin-top:10px;max-width:18ch}
+.hub-h1 em{font-style:normal;color:var(--amber)}
+.hub-lede{color:var(--muted);font-size:1.06rem;max-width:62ch;margin-top:14px}
+.today{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.today a,.today div{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--surface) 82%,transparent);color:var(--fg);text-decoration:none;min-width:0}
+.today a:hover{border-color:var(--amber)}
+.today .k{display:block;font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.today b{display:block;font-family:var(--f-display);font-weight:700}
+.today small{color:var(--muted);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46ch}
+.today .num{font:700 1.4rem var(--f-mono);color:var(--teal);font-variant-numeric:tabular-nums}
+.subj-h{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 12px}
+.subjects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px}
+.sc{position:relative;display:flex;flex-direction:column;gap:14px;padding:22px 22px 20px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 92%,transparent),color-mix(in srgb,var(--bg-2) 92%,transparent));overflow:hidden}
+.sc::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2))}
+.sc.live:hover{border-color:color-mix(in srgb,var(--a1) 60%,var(--line))}
+.sc .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sc .code{font-family:var(--f-mono);font-size:.72rem;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--a1) 16%,transparent);color:var(--a1);font-weight:600}
+.sc .st{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.sc h2{font-size:clamp(1.35rem,2.6vw,1.65rem);font-weight:800;font-stretch:108%}
+.sc h2 a{color:inherit;text-decoration:none}
+.sc h2 a::after{content:"";position:absolute;inset:0;z-index:0}
+.sc p{color:var(--muted)}
+.sc .chs{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.sc .chs li{display:grid;grid-template-columns:3.6em 1fr auto;gap:10px;align-items:center;font-size:.92rem}
+.sc .chs .n{font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
+.sc .chs .t{display:grid;gap:4px;min-width:0}
+.sc .chs .t span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc .chs .bar{height:4px;border-radius:2px;background:var(--surface-2);overflow:hidden}
+.sc .chs .bar i{display:block;height:100%;width:0;background:var(--a2);transition:width .5s}
+.sc .chs .v{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.sc .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.sc .stats div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--bg) 50%,transparent)}
+.sc .stats span{display:block;font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.sc .stats b{display:block;font:700 1.05rem var(--f-mono);font-variant-numeric:tabular-nums;margin-top:2px}
+@media (max-width:520px){.sc .stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sc .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px;position:relative;z-index:1}
+.sc .cta a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:9px;text-decoration:none;font-weight:600;font-size:.92rem}
+.sc .cta .go{background:var(--a1);color:#0B111C}
+.sc .cta .go:hover{filter:brightness(1.08)}
+.sc .cta .cont{border:1px solid var(--line);color:var(--fg);max-width:100%}
+.sc .cta .cont:hover{border-color:var(--a1)}
+.sc .cta .cont span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30ch;color:var(--muted);font-weight:500}
+.sc.soon{align-self:start;border-style:dashed;background:color-mix(in srgb,var(--bg-2) 70%,transparent)}
+.sc.soon::before{opacity:.45}
+.sc.soon h2{color:var(--muted)}
+.sc .ghost{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;opacity:.5}
+.sc .ghost i{height:46px;border-radius:10px;border:1px dashed var(--line)}
+.hub-note{margin-top:28px;color:var(--dim);font-size:.86rem;max-width:70ch}
+.hub-foot{border-top:1px solid var(--line);padding:18px 0 calc(18px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:.82rem}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.sc .chs .bar i{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#subjects">Skip to subjects</a>
+<header class="topbar hub-top">
+  <div class="wrap">
+    <a class="brand" href="./" title="notewithliqi home"><i></i><span>notewithliqi</span></a>
+    <div class="acts">
+      <span class="offl" id="offline-badge" hidden title="You are offline. Saved subjects still work.">Offline</span>
+      <button class="srch" id="install-btn" type="button" hidden><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lbl">Install app</span></button>
+    </div>
+  </div>
+</header>
+<main class="hub-main">
+  <div class="wrap">
+    <div class="hub-eyebrow">Interactive lecture notes</div>
+    <h1 class="hub-h1">Pick a subject, then <em>poke the ideas</em> until they stick.</h1>
+    <p class="hub-lede">Each subject has its own chapters, 3D and 2D labs, flashcards, quizzes and timed exams. Your progress is saved in this browser, and everything works offline once loaded.</p>
+    <div class="today" id="today" hidden></div>
+    <h2 class="subj-h" id="subjects">Subjects</h2>
+    <div class="subjects">
+{{CARDS}}
+    </div>
+    <p class="hub-note">Notes are summarised from the lecture slides, with extra explanations marked where they go beyond the slides. They are not official course material.</p>
+  </div>
+</main>
+<footer class="hub-foot"><div class="wrap"><span>notewithliqi</span><span>Progress stays on this device. Clearing site data resets it.</span></div></footer>
+<script>
+(function(){"use strict";
+const SUBJECTS={{SUBJECTS_JSON}};
+const get=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=s=>document.querySelector(s);
+const now=Date.now();let dueAll=0,dueTop=null,dueMax=0;
+SUBJECTS.filter(s=>s.status==="live").forEach(s=>{const card=document.querySelector(`[data-subject="${s.id}"]`);if(!card)return;
+ const sm=get(s.prefix+"summary"),srs=get(s.prefix+"srs")||{};
+ const seen=Object.keys(srs).length,due=Object.values(srs).filter(r=>r&&r.due<=now).length,fresh=sm?Math.max(0,sm.cards-seen):null;
+ dueAll+=due;if(due>dueMax){dueMax=due;dueTop=s}
+ const set=(k,v,c)=>{const b=card.querySelector(`[data-k="${k}"]`);if(b){b.textContent=v;if(c)b.style.color=c}};
+ if(sm){set("learned",`${sm.learned}/${sm.topics}`);
+  (sm.chapters||[]).forEach(c=>{const li=card.querySelector(`[data-ch="${c.n}"]`);if(!li)return;li.querySelector(".bar i").style.width=(c.total?c.done/c.total*100:0)+"%";li.querySelector(".v").textContent=`${c.done}/${c.total}`});
+  if(sm.drill){const n=sm.drill.c+sm.drill.w;if(n){const p=Math.round(sm.drill.c/n*100);set("drill",p+"%",p>=75?"var(--teal)":p>=50?"var(--amber)":"var(--rose)")}}
+  if(sm.exam!=null)set("exam",sm.exam+"%",sm.exam>=75?"var(--teal)":sm.exam>=50?"var(--amber)":"var(--rose)");
+  if(sm.last&&sm.lastLabel){const c=card.querySelector(".cont");c.href=s.href+sm.last;c.querySelector("span").textContent=sm.lastLabel;c.hidden=false}}
+ set("due",fresh!=null?`${due}`:"–");const d=card.querySelector('[data-k="due"]');if(d&&fresh!=null)d.title=`${due} due now, ${fresh} not started`});
+const last=get("nlq-last"),ls=last&&SUBJECTS.find(s=>s.id===last.id&&s.status==="live");let h="";
+if(ls&&last.hash)h+=`<a href="${esc(ls.href+last.hash)}"><span><span class="k">Continue · ${esc(ls.short)}</span><b>${esc(last.label||"Where you left off")}</b><small>${esc(ls.title)}</small></span><span aria-hidden="true">→</span></a>`;
+if(dueAll)h+=`<a href="${esc(dueTop.href+"#glossary")}"><span class="num">${dueAll}</span><span><span class="k">Flashcards due today</span><b>Review them now</b><small>${esc(dueTop.title)}</small></span><span aria-hidden="true">→</span></a>`;
+if(h){$("#today").innerHTML=h;$("#today").hidden=false}
+const offB=$("#offline-badge"),net=()=>{offB.hidden=navigator.onLine};addEventListener("online",net);addEventListener("offline",net);net();
+let ev=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();ev=e;$("#install-btn").hidden=false});
+$("#install-btn").onclick=async()=>{if(!ev)return;ev.prompt();try{await ev.userChoice}catch(e){}ev=null;$("#install-btn").hidden=true};
+addEventListener("pageshow",e=>{if(e.persisted)location.reload()});
+})();
+</script>
+{{SW}}
+</body>
+</html>

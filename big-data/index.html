@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Big Data Applications and Analytics</title>
+<meta name="description" content="Interactive revision for WIH3003 Big Data Applications and Analytics: Big Data, Hadoop, HDFS, MapReduce, YARN and Hive labs, HiveQL practice, spaced-repetition flashcards, quizzes and timed exams. Works offline.">
+<meta name="theme-color" content="#0D131E">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Big Data Applications and Analytics · notewithliqi">
+<meta property="og:description" content="Interactive revision for WIH3003 Big Data Applications and Analytics: Big Data, Hadoop, HDFS, MapReduce, YARN and Hive labs, HiveQL practice, spaced-repetition flashcards, quizzes and timed exams. Works offline.">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="notewithliqi">
+<link rel="preload" href="../vendor/three-r128.min.js" as="script">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../shared/core.css">
+</head>
+<body>
+<noscript><p style="padding:16px;color:#E7EBF3">This site needs JavaScript for its labs, flashcards and quiz. The notes still display without it.</p></noscript>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <button class="side-btn" type="button" id="side-btn" aria-controls="side" aria-expanded="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Topics</span></button>
+    <a class="hub-link" href="../" title="All subjects" aria-label="All subjects"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="9" y="2" width="5" height="5" rx="1.2" fill="currentColor" opacity=".55"/><rect x="2" y="9" width="5" height="5" rx="1.2" fill="currentColor" opacity=".55"/><rect x="9" y="9" width="5" height="5" rx="1.2" fill="currentColor"/></svg></a>
+    <a class="brand" href="#home" title="Subject home"><i></i><span><span class="code">WIH3003 · </span>Big Data Applications and Analytics</span></a>
+    <button class="srch" id="srch-btn" type="button" aria-label="Search topics and terms (Ctrl+K)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="lbl">Search</span><kbd>Ctrl K</kbd></button>
+    <span class="offl" id="offline-badge" hidden title="You are offline. Everything on this site still works.">Offline</span>
+    <button class="srch" id="install-btn" type="button" hidden><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lbl">Install app</span></button>
+    <nav class="nav" id="topnav" aria-label="Chapters"></nav>
+  </div>
+  <div class="readbar" aria-hidden="true"><i id="readbar"></i></div>
+</header>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="scrim" id="scrim"></div>
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Search">
+  <div class="cmdk-box">
+    <input type="text" id="cmdk-q" placeholder="Search topics, labs, terms and actions…" aria-label="Search" aria-controls="cmdk-res" autocomplete="off">
+    <ul class="cmdk-res" id="cmdk-res" role="listbox"></ul>
+    <div class="cmdk-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span><span><kbd>/</kbd> search</span><span><kbd>[</kbd> <kbd>]</kbd> previous / next page</span></div>
+  </div>
+</div>
+<button class="totop" type="button" id="totop" aria-label="Back to top" hidden>↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toast-msg"></span><button class="btn primary" type="button" id="toast-act" hidden></button><button class="toast-x" type="button" id="toast-x" aria-label="Dismiss">✕</button></div>
+<div class="shell">
+<aside class="side" id="side" aria-label="Topics">
+  <a class="side-hub" href="../"><span aria-hidden="true">←</span><span>All subjects · <b>notewithliqi</b></span></a>
+  <div class="prog"><b id="prog-num">0 of 0 topics learned</b><div class="ptrack"><i id="prog-bar" style="width:0"></i></div><small>Tick "Mark learned" on each topic. Saved in this browser.</small><label class="recall-tg" for="recall"><input type="checkbox" id="recall"> Recall mode: hide key definitions until you try</label></div>
+  <nav id="side-nav"></nav>
+  <button class="reset" type="button" id="prog-reset">Reset progress</button>
+</aside>
+<main id="main">
+  <section class="hero" data-view="home" id="home">
+    <div class="eyebrow">Big Data Applications &amp; Analytics · Revision companion</div>
+    <h1>Learn big data by <em>poking the cluster</em></h1>
+    <p class="lede">Three lecture chapters, every slide point kept, rebuilt as 3D models you can rotate and click. Fail a DataNode and watch HDFS re-replicate. Run MapReduce on your own input. Filter a Hive table and watch partition pruning skip whole folders.</p>
+    <div class="meta"><span><b>3</b> chapters</span><span><b>34</b> topics</span><span><b>19</b> interactive labs</span><span><b>9</b> with a 2D/3D switch</span><span><b>95+</b> glossary terms</span><span><b>84</b> quiz questions</span></div>
+    <div class="resume" id="resume" hidden></div>
+    <div class="toc" id="home-toc"></div>
+    <div class="howto" aria-label="How to revise with this site">
+      <div><b>Learn it with pictures</b><p>Read a chapter page and play with its labs. Pairing words with a diagram you can poke helps the idea stick.</p><span class="why">dual coding</span></div>
+      <div><b>Test yourself, don't reread</b><p>Turn on Recall mode, answer "Check yourself" at the end of each chapter, then take the chapter quiz. Pulling an answer out of memory beats rereading it.</p><span class="why">practice testing · high utility</span></div>
+      <div><b>Space it out</b><p>Do a few minutes of flashcards each day. Cards you get right come back later; cards you miss come back sooner.</p><span class="why">distributed practice · high utility</span></div>
+    </div>
+    <p class="sources">Based on Dunlosky et al. (2013), which rated practice testing and distributed practice the most effective of ten common study techniques, and rereading and highlighting among the least. <a href="https://doi.org/10.1177/1529100612453266" target="_blank" rel="noopener">Read the paper</a> · <a href="https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html" target="_blank" rel="noopener">APS summary</a></p>
+    <div class="cmap-wrap">
+      <h2 class="cmap-h">How the chapters connect</h2>
+      <p class="sub">Exam questions often join chapters together, such as "How does Hive use HDFS and MapReduce?". Tap a box to see its links, then open the topic.</p>
+      <div class="cmap-scroll"><div class="cmap" id="cmap"></div></div>
+      <div class="panel cmap-info" id="cmap-info"></div>
+    </div>
+    <div class="chips"><span class="chip on">Drag a 3D scene to rotate</span><span class="chip on">Flip labs between 2D and 3D</span><span class="chip on">Tap a block for details</span><span class="chip t">"Exam tip" boxes highlight likely questions</span><span class="chip">"Slide note" flags gaps in the PDFs</span></div>
+  </section>
+
+  <!-- ===================== CHAPTER 1 ===================== -->
+  <section class="chapter" id="ch1" data-view="ch1" data-ch="1" data-name="Big Data" data-title="Big Data Overview" data-sub="History, V's, pipeline, analytics stack, terminology, NoSQL, trends">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">01</span>
+      <span class="eyebrow">Chapter 1</span>
+      <h2>Big Data Applications &amp; Analytics: Overview</h2>
+      <p>Topics: concepts &amp; terminology, big data applications, history of big data, 3Vs to 6Vs, the analytics stack, and big data V's to M's. Learning outcome: describe big data concepts, including big data technologies, analytics, NoSQL and machine learning.</p>
+    </div>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.1</span><h3>History of big data &amp; the data size scale</h3></div>
+      <div class="def"><b>Big Data</b> is any data that is <b>expensive to manage</b> and <b>hard to extract value from</b>. <span style="color:var(--muted)">(Michael Franklin, Director of the Algorithms, Machines and People Lab, UC Berkeley)</span></div>
+      <p class="sub">Each unit is 1000× the one before. Tap a unit to see the slide's example.</p>
+      <div class="scale" id="scale"></div>
+      <div class="scale-out card"><div class="pow" id="scale-pow"></div><div style="min-width:0;flex:1"><h4 id="scale-name"></h4><p id="scale-ex"></p></div></div>
+      <p class="note">"Brontobyte" is not an official unit. The SI prefixes for 10²⁷ and 10³⁰ are ronna and quetta (added 2022). The infographic is old, so "Yottabyte = our digital universe today" is an exaggeration.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.2</span><h3>Big data analytics &amp; applications</h3></div>
+      <div class="def"><b>Big data analytics</b> is the process of examining large data sets to uncover <b>hidden patterns</b>, <b>unknown correlations</b>, <b>market trends</b>, <b>customer preferences</b> and other useful business information.</div>
+      <p class="sub">10 applications (source: analyticsvidhya.com, 2015)</p>
+      <div class="chips" style="margin:0">
+        <span class="chip">Internet search</span><span class="chip">Digital advertisements (targeting &amp; re-targeting)</span><span class="chip">Recommender systems</span><span class="chip">Image recognition</span><span class="chip">Speech recognition</span><span class="chip">Gaming</span><span class="chip">Price comparison websites</span><span class="chip">Airline route planning</span><span class="chip">Fraud &amp; risk detection</span><span class="chip">Delivery logistics</span>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.3</span><h3>The Hadoop ecosystem grows (Apache / Cloudera timeline)</h3></div>
+      <p class="sub">"Hadoop is so much more than just Hadoop." Drag the slider. Amber chips are new that year; every year keeps the tools from before.</p>
+      <div class="timeline">
+        <input type="range" id="eco" min="0" max="6" step="1" value="0" aria-label="Year">
+        <div class="years"><span>2006</span><span>2008</span><span>2009</span><span>2010</span><span>2011</span><span>2012</span><span>Present</span></div>
+        <div class="chips" id="eco-chips" style="margin:0"></div>
+      </div>
+      <div class="lab">
+        <div class="stage" id="st-eco" style="height:380px"><span class="hint">Drag to rotate · move the slider · tap a block</span></div>
+        <aside class="panel" id="pn-eco"></aside>
+      </div>
+      <p class="note">Whirr, Avro, Bigtop, MRUnit, Impala, Parquet and Sentry appear only on this slide. Neither chapter explains them.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.4</span><h3>The big data pipeline (Intel slides)</h3></div>
+      <p class="sub">Each particle is a piece of data travelling from its source, into storage, through the servers, and out as insight. Tap any part.</p>
+      <div class="lab">
+        <div class="stage" id="st-pipe" style="height:400px"><span class="hint">Drag to rotate · tap a source, store, server or insight</span></div>
+        <aside class="panel" id="pn-pipe"></aside>
+      </div>
+      <div class="pipe">
+        <div class="card"><span class="tag">Gather</span><h4>Sources</h4><p>Medical scans, social media, news &amp; journals, satellite images, e-commerce, TV &amp; video, sensors &amp; surveillance. Data is collected from all of them.</p></div>
+        <div class="card"><span class="tag">Store</span><h4>Correlate</h4><p>Collected data is correlated and stored together.</p></div>
+        <div class="card"><span class="tag">Manipulate</span><h4>Analyze / Predict</h4><p>Servers analyse the stored data and make predictions.</p></div>
+        <div class="card"><span class="tag">Untapped value</span><h4>Insight</h4><p>Business intelligence, biodiversity trends, customer purchase habits, epidemic migration paths, falls prevention for the elderly, extreme weather prediction. Also: answers and improved ROI.</p></div>
+      </div>
+      <p class="sub">Key question on the slides: data is moving in from a variety of sources. How can we keep up?</p>
+      <div class="grid2">
+        <div class="card"><span class="tag">Data growth · Oracle, source ESG</span><h4>80 EB (2013) → 300 EB (2015)</h4><p>Growth is driven by unstructured data: <b style="color:var(--fg)">88% unstructured</b> (applications → backup &amp; archive) vs <b style="color:var(--fg)">12% structured</b> (databases → backup). Curve label reads roughly "growing ~50% per year".</p>
+          <div class="growth" role="img" aria-label="Bar chart: 80 exabytes in 2013 and 300 exabytes in 2015, each 88% unstructured and 12% structured">
+            <div class="gcol"><b>80 EB</b><div class="gbar" style="height:40px"><i class="u"></i><i class="s" style="height:12%"></i></div><span>2013</span></div>
+            <div class="gcol"><b>300 EB</b><div class="gbar" style="height:150px"><i class="u"></i><i class="s" style="height:12%"></i></div><span>2015</span></div>
+          </div>
+          <div class="legend"><span><i style="background:var(--teal)"></i>Unstructured 88%</span><span><i style="background:var(--amber)"></i>Structured 12%</span></div></div>
+        <div class="note" style="align-self:start">80 → 300 EB in two years is about 94% per year, not 50%. Treat the chart as illustrative.</div>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.5</span><h3>The V's of big data, as particles</h3></div>
+      <p class="sub">Each particle is a piece of data. Switch the V to see how it behaves.</p>
+      <div class="controls" id="v-btns"></div>
+      <div class="lab">
+        <div class="stage" id="st-vs"><span class="hint">Drag to rotate</span></div>
+        <aside class="panel" id="pn-vs"></aside>
+      </div>
+      <p class="tip">Learn each V with its slide label: Volume = data at rest, Velocity = data in motion, Variety = data in many forms, Veracity = data in doubt.</p>
+      <p class="note">On the slide, Veracity carries an asterisk (*) with no footnote. It most likely marks the V that IBM added to Laney's original three.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.6</span><h3>From 3Vs to 4Vs, 5Vs and 6Vs</h3></div>
+      <div class="vevo">
+        <div class="controls" id="vevo-btns"></div>
+        <div class="vchips" id="vevo-chips"></div>
+        <div class="tbl"><table>
+          <thead><tr><th>Demchenko's 5Vs</th><th>Sub-points</th></tr></thead>
+          <tbody>
+            <tr><td><b>Volume</b></td><td>Records/archived, table/text/file, transactions</td></tr>
+            <tr><td><b>Velocity</b></td><td>Stream data, processes, real time, batches</td></tr>
+            <tr><td><b>Variety</b></td><td>Structured, semi-structured, unstructured, multi-factors</td></tr>
+            <tr><td><b>Veracity</b></td><td>Trustworthiness, authenticity, origin, accountability</td></tr>
+            <tr><td><b>Value</b></td><td>Hypothetical, correlations, events, statistical</td></tr>
+          </tbody></table></div>
+        <p class="tip">Who added what: Laney 3Vs (Volume, Variety, Velocity) → IBM +Veracity → Demchenko +Value → Microsoft +Visibility.</p>
+        <p class="note">The slide says "Records/achieved". This is a typo for "archived". Visibility (Microsoft's 6th V) is named but never described.</p>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.7</span><h3>The analytics stack (5 layers)</h3></div>
+      <p class="sub">Read it bottom to top: infrastructure → big data platforms → analytics platforms → analytics tools → analytics solutions. Tap a block.</p>
+      <div class="lab">
+        <div class="stage" id="st-stack"><span class="hint">Drag to rotate · tap a block</span></div>
+        <aside class="panel" id="pn-stack"></aside>
+      </div>
+      <p class="tip">Layers 2 and 3 each have two halves: stream (data in motion) and stored (data at rest). Be ready to give one example for each half, e.g. Storm vs Hadoop, Esper vs Pentaho.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.8</span><h3>Concepts &amp; terminology</h3></div>
+      <div class="grid3">
+        <div class="card"><span class="tag">Terminologies</span><p>Big Data Technologies, Datasets, Machine Learning, NoSQL, Cloud Computing</p></div>
+        <div class="card"><span class="tag">Frameworks</span><p>Hadoop, Spark, Storm, Flume</p></div>
+        <div class="card"><span class="tag">Programming languages</span><p>R, Python, Java, Scala, Julia</p></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><h4>Data Science</h4><p>An emerging area of work concerned with the collection, preparation, analysis, visualization, management and preservation of large collections of information.</p></div>
+        <div class="card"><h4>Machine Learning</h4><p>A type of artificial intelligence (AI) that gives computers the ability to learn without being explicitly programmed.</p></div>
+        <div class="card"><h4>Datasets</h4><p>Collections or groups of related data. Each member shares the same set of attributes or properties.</p><ul><li>Tweets stored in a flat file</li><li>A collection of image files in a directory</li><li>Rows extracted from a database table, stored as CSV</li><li>Historical weather observations stored as XML files</li></ul></div>
+        <div class="card"><h4>NoSQL database</h4><p>A mechanism for storage and retrieval of data modelled in means <b style="color:var(--fg)">other than</b> the tabular relations used in relational databases.</p></div>
+        <div class="card"><h4>Cloud Computing</h4><p>Using a network of remote servers hosted on the internet to store, manage and process data, rather than a local server or a personal computer.</p></div>
+        <div class="card"><h4>Hadoop</h4><p>An open-source collection of software utilities for computations on massive amounts of data. A framework for storage in multiple locations, processed with MapReduce technology.</p></div>
+      </div>
+      <div class="card"><span class="tag">NoSQL characteristics</span>
+        <ul><li>Non-relational</li><li>Doesn't require a schema</li><li>Data replicated to multiple nodes (identical &amp; fault-tolerant) and can be partitioned: down nodes are easily replaced, no single point of failure</li><li>Horizontally scalable</li><li>Cheap and easy to implement (open-source)</li><li>Fast key-value access</li></ul>
+        <p style="margin-top:8px">Examples shown: Redis, HBase, Cassandra, MongoDB, Riak, CouchDB, Tokyo Cabinet, Scalaris, Project Voldemort, Neo4j (graph), Membase</p>
+      </div>
+      <div class="card nsq">
+        <span class="tag">See it: horizontal scaling, partitioning and replication</span>
+        <p>Twelve keys are spread (partitioned) across the nodes, and each key is kept on two nodes (replicated). Add load to scale out, then fail nodes and see which keys survive.</p>
+        <div class="controls"><button class="btn primary" type="button" id="nq-load">Add load</button><button class="btn" type="button" id="nq-fail">Fail a node</button><button class="btn ghost" type="button" id="nq-reset">Reset</button></div>
+        <div class="nsq-grid">
+          <div class="nsq-side"><span class="kicker">Scale up (vertical) · one bigger machine</span><div class="nsq-up"><div class="nsq-box" id="nq-up"><b>1 server</b><small id="nq-up-t"></small></div></div></div>
+          <div class="nsq-side"><span class="kicker">Scale out (horizontal) · more cheap machines</span><div class="nsq-nodes" id="nq-nodes"></div></div>
+        </div>
+        <div class="steptext" id="nq-msg"></div>
+      </div>
+      <p class="note">"Big Data Technologies" is listed but never defined. Data Science is defined but not in the list. The Hadoop slide appears twice.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.9</span><h3>Big data V's to M's, and three key trends</h3></div>
+      <div class="def">Organisations follow competitors onto the big data bandwagon, then struggle with maintenance. Hidden costs and processes either slow the organisation or split it into silos. Many forget the four M's: <b>Make Me More Money</b>.</div>
+      <div class="grid2">
+        <div class="card"><span class="tag">① Top benefits · Chicago Analytics Group 2019</span><div class="bars" id="bars-1" style="margin-top:10px"></div></div>
+        <div class="card"><span class="tag">③ How companies monetize data · BARC Apr 2019</span><div class="bars" id="bars-3" style="margin-top:10px"></div></div>
+      </div>
+      <div class="card"><span class="tag">② Where companies plan to increase investment · BI Survey 2019</span><div class="bars" id="bars-2" style="margin-top:10px"></div></div>
+      <div class="card"><span class="tag">Review questions from the slides</span>
+        <ul><li><b style="color:var(--fg)">What exactly is big data?</b> Franklin's definition, described through the V's.</li><li><b style="color:var(--fg)">Biggest challenges?</b> Collecting the right data, blending multiple external sources (Variety), Veracity, maintenance, hidden costs, silos.</li><li><b style="color:var(--fg)">How does analysis increase revenue?</b> Finding patterns, trends and preferences; faster innovation and efficiency; monetising via platforms, analysis results or benchmarking.</li></ul>
+        <p style="margin-top:8px">Resources: <i>Big Data For Dummies</i> (Hurwitz, Nugent, Halper, Kaufman) · <i>Hadoop: The Definitive Guide</i> · bigdata.andreamostosi.name · <i>Big Data Fundamentals</i> · ScienceDirect S0306437914001288</p>
+      </div>
+    </article>
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.10</span><h3>Common misconceptions</h3></div>
+      <p class="sub">Each of these costs marks in exams. Say out loud why it's wrong before you open it.</p>
+      <div class="myths"><details class="myth"><summary><span class="mx">Myth</span><span>Big data just means a lot of data.</span></summary><p><b>Actually:</b> Volume is only one V. The slides define big data as data that is expensive to manage and hard to extract value from, and Variety, Velocity and Veracity can make data "big" even when it isn't huge.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Each new V model replaced the one before it.</span></summary><p><b>Actually:</b> 3Vs, 4Vs, 5Vs and 6Vs come from different people (Laney, IBM, Demchenko, Microsoft). They are different framings, not version upgrades. Know who added which V.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Hadoop and big data mean the same thing.</span></summary><p><b>Actually:</b> Hadoop is one framework. In the analytics stack it sits in layer 2 (stored data processing), alongside stream platforms like Storm and Kafka, with analytics platforms, tools and solutions above it.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>NoSQL means you can't use SQL.</span></summary><p><b>Actually:</b> NoSQL means data is stored and retrieved using models other than relational tables. It says nothing about the query language. Chapter 3's Hive even puts a SQL-like language on top of Hadoop.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Most new data is neatly structured.</span></summary><p><b>Actually:</b> The Oracle slide shows the opposite: about 88% of data growth is unstructured, stored by applications and sent to backup and archive.</p></details></div>
+    </article>
+  </section>
+
+  <!-- ===================== CHAPTER 2 ===================== -->
+  <section class="chapter" id="ch2" data-view="ch2" data-ch="2" data-name="Hadoop" data-title="Hadoop Basic Concepts" data-sub="Data structures, pillars, MapReduce, YARN, HDFS, ecosystem">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">02</span>
+      <span class="eyebrow">Chapter 2</span>
+      <h2>Hadoop: Basic Concepts</h2>
+      <p>Learning outcomes: a comprehensive understanding of the Hadoop framework and its principles in distributed computing, and practical use of HDFS and MapReduce. Key terms: Hadoop, HDFS, MapReduce, five-step MapReduce programming model.</p>
+    </div>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.1</span><h3>What happens in one internet minute</h3></div>
+      <div class="card"><span class="tag">Live · since this section came into view, at the 2023 slide's per-minute rates</span>
+        <div class="ticker" id="ticker" style="margin-top:8px"></div></div>
+      <div class="tabs" id="min-tabs"></div>
+      <div class="tiles" id="min-tiles"></div>
+      <p class="sub" id="min-src"></p>
+      <p class="note" id="min-note" hidden>The "2026" GO-Globe graphic is almost certainly an older graphic relabelled. It includes Skype (shut down by Microsoft in May 2025), and some figures are lower than 2022/2023 (emails 156M vs 241M).</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.2</span><h3>Data structures pyramid</h3></div>
+      <p class="sub">Higher means more structured. Tap a level for its definition and the slide example.</p>
+      <div class="lab">
+        <div class="stage" id="st-pyr"><span class="hint">Drag to rotate · tap a level</span></div>
+        <aside class="panel" id="pn-pyr"></aside>
+      </div>
+      <p class="tip">A common question gives you examples to classify. CSV, RDBMS, spreadsheets → structured. XML → semi-structured. Clickstream, web logs, email headers, IoT streams → quasi-structured. PDFs, images, video → unstructured.</p>
+      <p class="note">The pyramid slide only contains template text ("This slide is 100% editable"). The quasi-structured slide cites [1, 2, 3, 4] with no reference list. The semi-structured definition mentions XML but the figure shows HTML.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.3</span><h3>What is Hadoop, and when to use it</h3></div>
+      <div class="def"><b>Hadoop</b> is a software framework for <b>distributed processing</b> of <b>large datasets</b> (terabytes or petabytes) across <b>large clusters</b> (hundreds or thousands of nodes). It is the open-source implementation of Google MapReduce, based on a simple <b>programming model</b> (MapReduce) and a simple <b>data model</b> (any data will fit).</div>
+      <div class="lab">
+        <div class="stage" id="st-layers" style="height:340px"><span class="hint">Drag to rotate · tap a layer</span></div>
+        <aside class="panel"><div id="pn-layers"></div>
+          <span class="kicker" style="margin-top:4px">How does Hadoop work? 3 layers</span>
+          <div class="tbl"><table><tbody>
+            <tr><td><b>Application layer</b></td><td>MapReduce</td></tr>
+            <tr><td><b>Resource management layer</b></td><td>YARN</td></tr>
+            <tr><td><b>Storage layer</b></td><td>HDFS</td></tr></tbody></table></div></aside>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="tag">When Hadoop?</span><ul><li>Large volumes of unstructured data to process</li><li>Parallel processing is feasible for the task</li><li>Batch job execution is acceptable</li><li>Abundant cost-effective hardware is available</li></ul></div>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.4</span><h3>Five pillars of Hadoop (Hortonworks Data Platform)</h3></div>
+      <p class="sub">Data Management is the ground floor (HDFS + YARN). Data Access engines stand on it. Governance, Security and Operations wrap around. Tap any block.</p>
+      <div class="lab">
+        <div class="stage" id="st-pil"><span class="hint">Drag to rotate · tap a block</span></div>
+        <aside class="panel" id="pn-pil"></aside>
+      </div>
+      <p class="note">Falcon, NFS and WebHDFS appear only in this diagram. Falcon was a data lifecycle and governance tool (now retired), WebHDFS is a REST API for HDFS over HTTP, and NFS mounts HDFS like a network drive.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.5</span><h3>MapReduce: Mapper and Reducer</h3></div>
+      <div class="def"><b>MapReduce</b> is a method for distributing a task across multiple nodes. Each node processes the data stored on that node, where possible. It has two phases: <b>Map</b> and <b>Reduce</b>.</div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Features</span><ul><li>Automatic parallelization and distribution</li><li>Fault tolerance</li><li>Status and monitoring tools</li><li>A clean abstraction for programmers (usually Java)</li><li>Hides the "housekeeping"; developers just write Map and Reduce functions</li></ul></div>
+        <div class="card"><span class="tag">The Mapper</span><ul><li>Hadoop runs Mappers on nodes holding their data locally, to avoid network traffic</li><li>Multiple Mappers run in parallel, each on a portion of the input</li><li>Reads key/value pairs; outputs zero or more key/value pairs</li><li>May use or ignore the input key. Reading line by line: key = byte offset where the line starts, value = line contents, key usually irrelevant</li><li>Any output must be key/value pairs</li></ul></div>
+        <div class="card"><span class="tag">The Reducer</span><ul><li>After Map, all values for one intermediate key are combined into a list</li><li>One or many Reducers; all values for a key go to the same Reducer</li><li>Keys arrive in sorted order: this is the "shuffle and sort"</li><li>Outputs zero or more final pairs, written to HDFS; usually one pair per key</li></ul></div>
+        <div class="card"><span class="tag">Signatures</span>
+<pre class="code">map(in_key, in_value)
+  -&gt; (inter_key, inter_value) list
+
+map(key1, value) -&gt; list&lt;key2, value2&gt;
+reduce(key2, list&lt;value2&gt;) -&gt; list&lt;value3&gt;</pre></div>
+      </div>
+      <div class="grid2">
+<pre class="code"><span class="c"># Word count mapper</span>
+<span class="k">Map</span>(input_key, input_value)
+  foreach word w in input_value:
+    emit(w, 1)
+
+<span class="c"># Input to the mapper</span>
+(3414, 'the cat sat on the mat')
+(3437, 'the aardvark sat on the sofa')
+<span class="c"># 3437 - 3414 = 23 = 22 chars + 1 newline</span></pre>
+<pre class="code"><span class="c"># Sum reducer</span>
+<span class="k">reduce</span>(output_key, intermediate_vals)
+  set count = 0
+  foreach v in intermediate_vals:
+    count += v
+  emit(output_key, count)
+
+<span class="c"># Reducer output</span>
+('aardvark',1) ('cat',1) ('mat',1) ('on',2)
+('sat',2) ('sofa',1) ('the',4)</pre>
+      </div>
+      <div class="card"><span class="tag">Formal view (slides 31–32)</span><p>A job splits a large dataset into <b style="color:var(--fg)">independent chunks</b> as key-value pairs, which improves speed and reliability. The <b style="color:var(--fg)">InputFormat</b> divides input into ranges and one map task is created per range. The <b style="color:var(--fg)">JobTracker</b> distributes tasks to worker nodes. Each map's output is partitioned per reducer. Each reducer pulls its partition from the machines where the maps ran, combines it, and writes back to HDFS (Mapper ×3 → shuffling → sorting → reducer → Part 0 → HDFS replication).</p></div>
+      <p class="note">The diagram's input uses capital "The" yet the result counts the = 4, which needs a lowercase step the pseudocode never shows.</p>
+    </article>
+
+    <article class="topic" id="mr-lab">
+      <div class="topic-head"><span class="tnum">2.6</span><h3>Five-step MapReduce lab</h3></div>
+      <p class="sub">Step 1 Splitting · Step 2 Mapping (distribution) · Step 3 Shuffling and sorting · Step 4 Reducing (parallelizing) · Step 5 Aggregating. Edit the input and run it.</p>
+      <div class="lab">
+        <div class="stage" id="st-mr"><span class="hint">Drag to rotate</span></div>
+        <aside class="panel">
+          <span class="kicker">Input file</span>
+          <textarea id="mr-in" aria-label="MapReduce input">BAB
+DAD
+CAD</textarea>
+          <div class="controls">
+            <select id="mr-mode" aria-label="Tokenize by"><option value="letters">Count letters</option><option value="words">Count words</option></select>
+            <label class="inline"><input type="checkbox" id="mr-comb" checked> Combine in mapper</label>
+          </div>
+          <div class="controls">
+            <button class="btn ghost" id="mr-ex1">Slide example</button>
+            <button class="btn ghost" id="mr-ex2">Word count example</button>
+          </div>
+          <div class="controls">
+            <button class="btn" id="mr-prev">Back</button>
+            <button class="btn primary" id="mr-next">Next step</button>
+            <button class="btn" id="mr-play">Play all</button>
+          </div>
+          <div class="steptext" id="mr-step"></div>
+        </aside>
+      </div>
+      <p class="tip">Write the five steps in order with the bracket words the slide uses: Splitting, Mapping (distribution), Shuffling and sorting, Reducing (parallelizing), Aggregating. Expect to trace a small input like BAB / DAD / CAD by hand.</p>
+      <p class="note extra">"Combine in mapper" reproduces the slide, where BAB maps to (B,2) instead of (B,1),(B,1). Hadoop calls this local pre-summing a Combiner. The slides never name it.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.7</span><h3>MapReduce in Hadoop (MRv1) and why YARN replaced it</h3></div>
+      <div class="grid2">
+        <div class="card"><span class="tag">JobTracker (master)</span><ul><li>Resource management: managing worker nodes (TaskTrackers)</li><li>Tracking resource consumption and availability</li><li>Job life-cycle management: scheduling tasks, tracking progress, fault tolerance</li></ul></div>
+        <div class="card"><span class="tag">TaskTracker (per-node slave)</span><ul><li>Launch and tear down tasks on JobTracker's orders</li><li>Provide task-status information to the JobTracker periodically</li></ul><p style="margin-top:6px">Diagram: clients submit jobs (dashed) to the JobTracker; TaskTrackers running tasks send MapReduce status (solid).</p></div>
+      </div>
+      <div class="card"><span class="tag">Background: cluster computing</span><p>A <b style="color:var(--fg)">computer cluster</b> is a set of loosely or tightly connected computers that work together so they can be viewed as a single system. Challenges: storing data persistently and keeping it available if nodes fail; dealing with node failures during long-running computations; the network bottleneck that delays processing. MapReduce answers by <b style="color:var(--fg)">bringing computation close to the data</b>. Its stated limitation: map and reduce jobs are "not stateless", so Reduce must wait for Map to finish, which limits parallelism. So YARN was born as a generic resource management and distributed application framework.</p></div>
+      <div class="card my">
+        <span class="tag">See it: one JobTracker vs YARN</span>
+        <p>Submit jobs to both clusters. In MRv1 every job's scheduling and monitoring lands on the single JobTracker. In YARN the ResourceManager only hands out containers, and each job gets its own ApplicationMaster.</p>
+        <div class="controls"><button class="btn primary" type="button" id="my-mr">Submit MapReduce job</button><button class="btn" type="button" id="my-sp">Submit Spark job</button><button class="btn ghost" type="button" id="my-reset">Reset</button></div>
+        <div class="my-grid">
+          <div class="my-side"><span class="kicker">MRv1 (Hadoop 1)</span>
+            <div class="my-master"><b>JobTracker</b><small>resources + every job's scheduling &amp; monitoring</small><div class="meter"><i id="my-jt"></i></div></div>
+            <div class="my-workers" id="my-tt"></div></div>
+          <div class="my-side"><span class="kicker">YARN (Hadoop 2+)</span>
+            <div class="my-master"><b>ResourceManager</b><small>hands out containers only</small><div class="meter"><i id="my-rm"></i></div></div>
+            <div class="my-workers" id="my-nm"></div></div>
+        </div>
+        <div class="steptext" id="my-msg">Submit a job to see where the work lands.</div>
+      </div>
+      <p class="note">The slide calls JobTracker/TaskTracker the "current" system, but since Hadoop 2 they are replaced by YARN. "Not stateless" is confusing wording: the real problems were the strict map-then-reduce barrier, the single overloaded JobTracker, and MRv1 running only MapReduce jobs.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.8</span><h3>YARN: Yet Another Resource Negotiator</h3></div>
+      <div class="def"><b>YARN</b> is part of core Hadoop: a next-generation framework that extends MapReduce by supporting <b>non-MapReduce workloads</b>. It lets multiple engines (interactive SQL, real-time streaming, data science, batch) handle data stored in a single platform, and is the prerequisite for Enterprise Hadoop, providing resource management and a pluggable architecture with predictable performance and service levels.</div>
+      <p class="sub">Idea: split the JobTracker's two jobs (resource management and job scheduling/monitoring) into separate daemons: a global ResourceManager and a per-application ApplicationMaster. An application is a single job or a DAG of jobs. ResourceManager + NodeManager form the data-computation framework.</p>
+      <div class="lab">
+        <div class="stage" id="st-yarn"><span class="hint">Drag to rotate · tap a component</span></div>
+        <aside class="panel">
+          <div id="pn-yarn"></div>
+          <div class="controls"><button class="btn primary" id="yarn-run">Submit a job</button></div>
+          <div class="steptext" id="yarn-step">Press "Submit a job" to watch the five YARN message types in order.</div>
+        </aside>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th></th><th>MapReduce (MRv1)</th><th>YARN</th></tr></thead>
+        <tbody>
+          <tr><td>Master</td><td>JobTracker (does everything)</td><td>ResourceManager (resources only)</td></tr>
+          <tr><td>Per-node agent</td><td>TaskTracker</td><td>NodeManager</td></tr>
+          <tr><td>Per-job manager</td><td>none</td><td>ApplicationMaster</td></tr>
+          <tr><td>Unit of work</td><td>Task</td><td>Container</td></tr>
+          <tr><td>Diagram arrows</td><td>MapReduce status, job submission</td><td>+ node status, resource request</td></tr>
+          <tr><td>Workloads</td><td>MapReduce only</td><td>MapReduce, Spark, Tez, Storm…</td></tr>
+        </tbody></table></div>
+      <div class="card"><span class="tag">Architectural center of Enterprise Hadoop</span><p>Batch, interactive &amp; real-time data access: Script → Pig (Tez) · SQL → Hive (Tez) · Java/Scala → Cascading (Tez) · NoSQL → HBase, Accumulo (Slider) · Stream → Storm (Slider) · In-memory → Spark · Search → Solr · Others → ISV engines ("YARN Ready"). All run on YARN: Data Operating System (cluster resource management), on top of HDFS.</p></div>
+      <p class="tip">The key comparison: the MRv1 JobTracker did resource management and job scheduling/monitoring. YARN splits these into the global ResourceManager and a per-application ApplicationMaster; TaskTracker becomes NodeManager.</p>
+      <p class="note">One YARN diagram has the typo "APP MANGER" (Application Manager).</p>
+    </article>
+
+    <article class="topic" id="hdfs-lab">
+      <div class="topic-head"><span class="tnum">2.9</span><h3>HDFS lab: store, read, fail, re-replicate</h3></div>
+      <div class="def"><b>HDFS</b> is a Java-based, scalable, fault-tolerant distributed file system on low-cost commodity hardware, coordinated by YARN. It scales linearly and stays economical at any size. A cluster has one <b>NameNode</b> (metadata only) and many <b>DataNodes</b> (actual blocks on their local file system). Files split into large blocks (typically 128 MB), each replicated independently, 3 times in this example.</div>
+      <p class="sub">This is the slide's exact layout: <code>/user/diana/foo → 1, 2, 4</code> (amber) and <code>/user/diana/bar → 3, 5</code> (teal). Tap a DataNode to kill it.</p>
+      <div class="lab">
+        <div class="stage" id="st-hdfs" style="height:480px"><span class="hint">Drag to rotate · tap a DataNode to fail it</span></div>
+        <aside class="panel">
+          <span class="kicker">NameNode block map (live)</span>
+          <div class="tbl"><table><thead><tr><th>Block</th><th>File</th><th>DataNodes</th><th>Replicas</th></tr></thead><tbody id="hdfs-tbl"></tbody></table></div>
+          <div class="controls">
+            <button class="btn primary" id="hdfs-read">Read /user/diana/bar</button>
+            <button class="btn" id="hdfs-reset">Reset cluster</button>
+          </div>
+          <ul class="log" id="hdfs-log"></ul>
+        </aside>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="tag">NameNode</span><ul><li>Represents files and directories as <b style="color:var(--fg)">inodes</b>: permissions, modification and access times, namespace and disk-space quotas</li><li>Holds the namespace tree and block → DataNode mapping, with the entire namespace image in RAM</li><li>Metadata: file name, permissions, block IDs, block locations, number of replicas</li><li>Actively monitors replica counts; recreates lost replicas</li><li>Never sends requests directly. It replies to DataNode <b style="color:var(--fg)">heartbeats</b> with commands to: replicate blocks to other nodes; remove local block replicas; re-register and send an immediate block report; or shut down the node</li></ul></div>
+        <div class="card"><span class="tag">Reading a file</span><ul><li>The client asks the NameNode which blocks make up the file and which DataNodes hold them</li><li>It then reads <b style="color:var(--fg)">directly from the DataNodes</b>. Data never passes through the NameNode</li></ul>
+          <span class="tag" style="display:block;margin-top:10px">Master / slave layout</span><p>Master node: NameNode + ResourceManager. Each slave node: DataNode + NodeManager + Map/Reduce tasks. Blocks are replicated across Rack 1 and Rack 2.</p>
+          <span class="tag" style="display:block;margin-top:10px">Very high-level overview</span><p>Loaded data is split into blocks (typically 64 MB or 128 MB). A Map task usually works on one block. A master program assigns Map tasks to nodes that store that block locally, so many nodes work in parallel.</p></div>
+      </div>
+      <div class="card"><span class="tag">Core Hadoop concepts</span><ul><li>Applications are written in high-level code; developers don't worry about network programming or temporal dependencies</li><li>Nodes talk to each other as little as possible; a "shared nothing" architecture</li><li>Data is spread among machines in advance; computation happens where the data is stored; data is replicated for availability and reliability</li></ul></div>
+      <p class="tip">Know the four heartbeat-reply commands (replicate, remove replicas, re-register and send block report, shut down), that the NameNode stores metadata only, and that clients read data directly from DataNodes.</p>
+      <p class="note">The diagram shows a Secondary NameNode (fsimage + edits) that is never explained. It periodically merges the edit log into the fsimage (checkpointing). It is not a live backup NameNode. Also: 64 MB was the Hadoop 1 default, 128 MB from Hadoop 2. Two slides are numbered "29" out of order.</p>
+    </article>
+
+    <article class="topic" id="hdfs-write">
+      <div class="topic-head"><span class="tnum">2.10</span><h3>How HDFS stores a file: the write path</h3></div>
+      <p class="sub">Choose a file size, block size and replication factor, then step through what happens when a client saves the file into HDFS. The NameNode's metadata fills in as each block lands.</p>
+      <div class="controls">
+        <label class="inline" for="hw-size">File size</label><select id="hw-size"><option value="200">200 MB</option><option value="300" selected>300 MB</option><option value="500">500 MB</option></select>
+        <label class="inline" for="hw-bs">Block size</label><select id="hw-bs"><option value="64">64 MB (Hadoop 1)</option><option value="128" selected>128 MB (Hadoop 2+)</option></select>
+        <label class="inline" for="hw-rf">Replication</label><select id="hw-rf"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option></select>
+      </div>
+      <div class="lab">
+        <div class="stage" id="st-hw" style="height:480px"><span class="hint">Drag to rotate</span></div>
+        <aside class="panel">
+          <span class="kicker" id="hw-kick"></span>
+          <div class="steptext" id="hw-step"></div>
+          <div class="controls"><button class="btn" type="button" id="hw-prev">Back</button><button class="btn primary" type="button" id="hw-next">Next step</button><button class="btn" type="button" id="hw-play">Play all</button></div>
+          <span class="kicker">NameNode metadata (held in RAM)</span>
+          <div class="tbl"><table><thead><tr><th>Block</th><th>Size</th><th>Stored on</th></tr></thead><tbody id="hw-meta"></tbody></table></div>
+          <div class="tiles" id="hw-stats"></div>
+        </aside>
+      </div>
+      <div class="card"><span class="tag">Points to note</span>
+        <ul class="ptn">
+          <li><span class="src s">Slides</span>A file is cut into large blocks (typically 128 MB; 64 MB in Hadoop 1), and each block is replicated independently on several DataNodes.</li>
+          <li><span class="src s">Slides</span>The NameNode stores only metadata (namespace tree, inodes, and the block → DataNode map) and keeps it all in RAM. File data never passes through it.</li>
+          <li><span class="src s">Slides</span>Blocks sit on each DataNode's own local file system.</li>
+          <li><span class="src b">Beyond slides</span>The last block holds only what's left. A 300 MB file with 128 MB blocks is 128 + 128 + 44 MB, and that last block uses 44 MB of disk, not 128.</li>
+          <li><span class="src b">Beyond slides</span>Replication multiplies raw storage: 300 MB with 3 replicas uses 900 MB of disk across the cluster.</li>
+          <li><span class="src b">Beyond slides</span>By default the first replica goes on one rack and the other two go together on a different rack, so the file survives a whole rack failing.</li>
+          <li><span class="src b">Beyond slides</span>DataNodes pass the block along in a pipeline (client → DataNode → DataNode → DataNode), and acknowledgements travel back up the same chain.</li>
+        </ul></div>
+      <p class="tip">A favourite exam pairing: "how is a file stored" (this topic) with "how is a file read" (2.9). In both, the NameNode only deals in metadata; the bytes move between the client and the DataNodes.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.11</span><h3>Data access, governance, security and operations tools</h3></div>
+      <p class="sub">Data access lets you interact with data in a wide variety of ways, from batch to real-time.</p>
+      <div class="grid2">
+        <div class="card"><span class="tag">Data access · SQL</span><h4>Apache Hive</h4><p>Data warehouse built on MapReduce for easy summarization and ad-hoc queries via a SQL-like interface over HDFS. User submits SQL → Hive converts it into MapReduce jobs → masters → slaves. Keeps a metadata store.</p></div>
+        <div class="card"><span class="tag">Data access · Script</span><h4>Apache Pig</h4><p>Platform for processing and analysing large datasets. High-level language Pig Latin paired with MapReduce. Pig Latin scripts → Grunt Shell / Pig Server → Parser → Optimizer → Compiler → Execution Engine → MapReduce → HDFS.</p></div>
+        <div class="card"><span class="tag">Data access · In-memory</span><h4>Apache Spark</h4><p>Ideal for in-memory processing; fast iterative algorithms for clustering and classification. Driver Program (SparkContext) ↔ Cluster Manager ↔ Worker Nodes (Executor, Cache, Tasks).</p></div>
+        <div class="card"><span class="tag">Data access · NoSQL</span><h4>Apache HBase</h4><p>Column-oriented NoSQL store with random real-time read/write access to big data. Client → HMaster → Region Servers (Regions) → HDFS, coordinated by ZooKeeper.</p></div>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>Group</th><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>Streaming &amp; ingestion</td><td><b>Storm</b></td><td>Distributed real-time computation over large streams, reliably and quickly</td></tr>
+          <tr><td></td><td><b>Kafka</b></td><td>Distributed event streaming platform for real-time pipelines and streaming apps</td></tr>
+          <tr><td>Search &amp; cluster mgmt</td><td><b>Slider</b></td><td>Deploys existing distributed apps on YARN (retired by Apache in 2018)</td></tr>
+          <tr><td></td><td><b>Solr</b></td><td>Scalable open-source enterprise search, built on Apache Lucene</td></tr>
+          <tr><td>Processing &amp; analytics</td><td><b>Tez</b></td><td>High-performance batch and interactive processing; speeds up Hive and Pig</td></tr>
+          <tr><td></td><td><b>Mahout</b></td><td>Distributed linear algebra framework and Scala DSL for scalable machine learning</td></tr>
+          <tr><td>Databases &amp; storage</td><td><b>Accumulo</b></td><td>Sorted distributed key-value store based on Google Bigtable, with cell-level security</td></tr>
+          <tr><td></td><td><b>HCatalog</b></td><td>Table and storage management layer so Pig, Hive and MapReduce share data easily</td></tr>
+          <tr><td>Governance &amp; integration</td><td><b>Flume</b></td><td>Collects, aggregates and moves high-volume streaming and log data into Hadoop</td></tr>
+          <tr><td></td><td><b>Sqoop</b></td><td>Bulk transfer of structured data between RDBMS/NoSQL and Hadoop (HDFS, Hive, HBase)</td></tr>
+          <tr><td>Security</td><td><b>Knox</b></td><td>Perimeter security gateway and reverse proxy for Hadoop clusters</td></tr>
+          <tr><td></td><td><b>Ranger</b></td><td>Centralized authorization and fine-grained access control (FGAC)</td></tr>
+          <tr><td>Operations</td><td><b>Ambari</b></td><td>Cluster management and provisioning</td></tr>
+          <tr><td></td><td><b>Oozie</b></td><td>Workflow scheduler and coordination engine</td></tr>
+          <tr><td></td><td><b>ZooKeeper</b></td><td>Distributed coordination service</td></tr>
+        </tbody></table></div>
+      <p class="sub">Governance goal: quickly load data and manage it by policy. Security goal: authentication, authorization, accounting and data protection at every layer, from HDFS and YARN to Hive, up to the cluster perimeter via Knox. Operations goal: provision, manage, monitor and operate clusters at scale.</p>
+      <p class="tip">Match each tool to its pillar: Flume and Sqoop → Governance &amp; Integration; Knox and Ranger → Security; Ambari, Oozie, ZooKeeper → Operations; Hive, Pig, Spark, HBase, Storm → Data Access.</p>
+      <p class="note extra">Sqoop = "SQL to Hadoop". Modern Hive mostly runs on Tez rather than raw MapReduce, which is why the HDP diagram says Hive/Tez.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.12</span><h3>Where to apply Hadoop &amp; chapter summary</h3></div>
+      <div class="chips" style="margin:0"><span class="chip">1 Modeling true risk</span><span class="chip">2 Customer churn analysis</span><span class="chip">3 Recommendation engine</span><span class="chip">4 PoS transaction analysis</span><span class="chip">5 Analyzing network data to predict failure</span><span class="chip">6 Threat analysis</span><span class="chip">7 Search quality</span><span class="chip">8 Data "sandbox"</span></div>
+      <div class="card"><span class="tag">Summary</span><ul><li>Apache Hadoop is a fast-growing data framework</li><li>It addresses the problems of "traditional" large-scale computing</li><li>It features the Hadoop Distributed File System (HDFS)</li><li>Built on MapReduce concepts and Hadoop cluster operation</li></ul><p style="margin-top:6px">References: Cloudera, Introduction to Hadoop · hadoop.apache.org HDFS design (r1.2.1) · hadoop.apache.org MapReduce tutorial (r1.2.1)</p></div>
+    </article>
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.13</span><h3>Common misconceptions</h3></div>
+      <p class="sub">Each of these costs marks in exams. Say out loud why it's wrong before you open it.</p>
+      <div class="myths"><details class="myth"><summary><span class="mx">Myth</span><span>The Secondary NameNode is a backup NameNode.</span></summary><p><b>Actually:</b> It periodically merges the edit log into the fsimage (checkpointing). It cannot take over if the NameNode fails. The slides show it but never explain it, so this is a favourite trap.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>When you read a file, the data passes through the NameNode.</span></summary><p><b>Actually:</b> The NameNode only answers which blocks and DataNodes hold the file. The client then reads the blocks directly from the DataNodes.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>The NameNode sends commands straight to DataNodes.</span></summary><p><b>Actually:</b> It never sends requests directly. It gives instructions only as replies to DataNode heartbeats: replicate, remove replicas, re-register, or shut down.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>YARN replaced MapReduce.</span></summary><p><b>Actually:</b> YARN replaced MRv1's JobTracker and TaskTracker resource management. MapReduce still runs, now as one application on YARN alongside Spark, Tez, Storm and others.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Replication factor 3 means a file is cut into 3 blocks.</span></summary><p><b>Actually:</b> The replication factor is how many copies of each block exist. The number of blocks depends on file size divided by block size (typically 128 MB).</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Reduce can start working before the maps finish.</span></summary><p><b>Actually:</b> Reducers need every value for their keys, so reducing waits for mapping to finish. The slides call this MapReduce's biggest limitation and the reason YARN was created.</p></details></div>
+    </article>
+  </section>
+
+  <!-- ===================== CHAPTER 3 ===================== -->
+  <section class="chapter" id="ch3" data-view="ch3" data-ch="3" data-name="Hive" data-title="Introduction to Hive" data-sub="Architecture, components, data model, partitions, buckets, HiveQL">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">03</span>
+      <span class="eyebrow">Chapter 3</span>
+      <h2>Introduction to Hive</h2>
+      <p>Learning outcomes: demonstrate an understanding of Apache Hive concepts, and of how to manage big data using Hive. Key terms you must be able to use in assignments and exams: Hive and its characteristics, and Hive's main components.</p>
+      <span class="lect">Lecture by Ts. Dr. Tarak Nandy · FSKTM, Universiti Malaya</span>
+    </div>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.1</span><h3>Why Hive, and what it is</h3></div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Need for high-level languages</span><ul><li>Hadoop is great for large-data processing</li><li>But writing Java programs for everything is difficult</li><li>Not everyone wants to (or can) write Java code</li><li><b style="color:var(--fg)">Solution:</b> develop higher-level data processing languages. Hive: HQL is like SQL</li></ul></div>
+        <div class="def" style="align-self:start"><b>Hive</b> is a <b>data warehouse infrastructure tool</b> to process <b>structured data</b> in Hadoop. It resides on top of Hadoop to summarize big data, and makes querying and analyzing easy.</div>
+      </div>
+      <p class="sub">Same word count, two ways. The Java skeleton is shortened; a full Hadoop word count is roughly 60 lines.</p>
+      <div class="grid2">
+<pre class="code"><span class="c">// Java MapReduce (shortened)</span>
+<span class="k">public class</span> WordCount {
+  <span class="k">public static class</span> TokenizerMapper
+      <span class="k">extends</span> Mapper&lt;Object, Text, Text, IntWritable&gt; {
+    <span class="k">public void</span> map(Object key, Text value, Context ctx) { … }
+  }
+  <span class="k">public static class</span> IntSumReducer
+      <span class="k">extends</span> Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {
+    <span class="k">public void</span> reduce(Text key, Iterable&lt;IntWritable&gt; vals,
+                       Context ctx) { … }
+  }
+  <span class="k">public static void</span> main(String[] args) { <span class="c">/* job setup */</span> … }
+}</pre>
+<pre class="code"><span class="c">-- HiveQL: the same job</span>
+<span class="k">SELECT</span> word, <span class="k">COUNT</span>(*) <span class="k">AS</span> cnt
+<span class="k">FROM</span> (
+  <span class="k">SELECT</span> explode(split(line, ' ')) <span class="k">AS</span> word
+  <span class="k">FROM</span> docs
+) w
+<span class="k">GROUP BY</span> word;
+
+<span class="c">-- Hive compiles this into MapReduce
+-- stages for you.</span></pre>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Hive (slide 6)</span><ul><li>Apache Hive is a data warehouse software project. Its architecture is built on top of the Hadoop ecosystem</li><li>Provides <b style="color:var(--fg)">data query and analysis</b>: a SQL-like interface to query data stored in various databases and file systems that integrate with Hadoop</li><li>Hive frequently interacts with Hadoop. It copes with both the SQL database domain and MapReduce</li></ul></div>
+        <div class="card"><span class="tag">Characteristics (slide 8)</span><ul><li>Data warehousing package built on top of Hadoop</li><li>Used for data analysis</li><li>Targeted towards users comfortable with SQL</li><li>Similar to SQL and called HiveQL</li><li>For managing and querying structured data</li><li>Abstracts the complexity of Hadoop</li><li>No need to learn Java and Hadoop APIs</li><li>Developed by Facebook and contributed to the community</li><li>Facebook analyzed several terabytes of data every day using Hive</li></ul></div>
+      </div>
+      <p class="sub">Hive's four roles (slide 10)</p>
+      <div class="honey" aria-label="Hive's four roles">
+        <div class="hex">Defines a SQL-like query language called QL</div>
+        <div class="hex">Data warehouse infrastructure</div>
+        <div class="hex core">Hive</div>
+        <div class="hex">Allows programmers to plug in custom mappers and reducers</div>
+        <div class="hex">Provides tools to enable easy data ETL</div>
+      </div>
+      <p class="note">The language is called "HQL" (slide 4), "QL" (slide 10) and "HiveQL" (slide 8). These are all the same language; the slides never say so.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.2</span><h3>Where to use Hive, and the Facebook use case</h3></div>
+      <div class="lab">
+        <div class="hub" id="hub-apps"></div>
+        <aside class="panel" id="hubp-apps"></aside>
+      </div>
+      <div class="card fb">
+        <span class="tag">Hive use case from Facebook (slide 9)</span>
+        <div class="fb-row"><div class="lbl">Challenge<small>Facebook's scale</small></div><div class="fb-tiles"><div class="fb-t"><b>&gt;950 million</b>users</div><div class="fb-t"><b>&gt;500 TB</b>per day</div><div class="fb-t"><b>&gt;70k</b>queries per day</div><div class="fb-t"><b>&gt;300 million</b>photos per day</div><div class="fb-t x"><b>✗</b>Traditional RDBMS could not cope</div></div></div>
+        <div class="fb-row"><div class="lbl">Hadoop MapReduce<small>tried next</small></div><div class="fb-tiles"><div class="fb-t x"><b>✗</b>Hard to program</div><div class="fb-t"><b>But</b>users know SQL well</div></div></div>
+        <div class="fb-row"><div class="lbl">Solution: Hive<small>what it offered</small></div><div class="fb-tiles"><div class="fb-t ok">Tables can be partitioned &amp; bucketed</div><div class="fb-t ok">Schema flexibility &amp; evolution</div><div class="fb-t ok">Easy to plug in custom mapper/reducer code</div><div class="fb-t ok">JDBC/ODBC drivers are available</div><div class="fb-t ok">Hive tables can be defined directly on HDFS</div><div class="fb-t ok">Extensible: types, formats, functions, scripts</div></div></div>
+      </div>
+      <p class="tip">Know the Facebook story as challenge → failed options → Hive features. It explains why each Hive feature exists.</p>
+    </article>
+
+    <article class="topic" id="hive-arch">
+      <div class="topic-head"><span class="tnum">3.3</span><h3>Hive architecture</h3></div>
+      <p class="sub">Slide 11, rebuilt in 3D: outside tools on top, then Hive's client drivers, interfaces and core, then Hadoop underneath. Tap a component, or run a query and watch it travel.</p>
+      <div class="lab">
+        <div class="stage" id="st-harch" style="height:540px"><span class="hint">Drag to rotate · tap a component</span></div>
+        <aside class="panel">
+          <div id="pn-harch"></div>
+          <div class="controls"><button class="btn primary" id="harch-cli">Run a query from the CLI</button><button class="btn" id="harch-jdbc">Run from a JDBC app</button></div>
+          <div class="steptext" id="harch-step">Pick a run to watch the query flow through Hive and Hadoop.</div>
+        </aside>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Architecture of Hive (slide 17), top to bottom</span>
+          <div class="tbl" style="margin-top:8px"><table><tbody>
+            <tr><td><b>User interfaces</b></td><td>Web UI, Hive command line, HD Insight</td></tr>
+            <tr><td><b>Meta Store</b></td><td>Linked to the user interfaces and the HiveQL process engine</td></tr>
+            <tr><td><b>HiveQL process engine</b></td><td>Sits on the execution engine</td></tr>
+            <tr><td><b>Execution engine</b></td><td>Runs as MapReduce</td></tr>
+            <tr><td><b>Data storage</b></td><td>HDFS or HBase</td></tr></tbody></table></div></div>
+        <div class="card"><span class="tag">How the two diagrams line up</span><ul><li>CLI = Hive command line = the Shell component</li><li>HWI (Hive Web Interface) = Web UI</li><li>Driver (compiles, optimizes, executes) = HiveQL process engine + execution engine</li><li>Metastore = Meta Store</li><li>Hadoop master + DFS = MapReduce over HDFS or HBase storage</li></ul></div>
+      </div>
+      <p class="note">The "*" on Resource Manager has no footnote. HWI, Thrift Server, Karmasphere, Hue, Qubole and HD Insight are shown but never explained; the descriptions in the 3D panel are added for revision.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.4</span><h3>Hive components and the DAG of stages</h3></div>
+      <div class="lab">
+        <div class="hub" id="hub-comp"></div>
+        <aside class="panel" id="hubp-comp"></aside>
+      </div>
+      <p class="sub">The execution engine runs a Directed Acyclic Graph (DAG) of stages: MapReduce, HDFS and metadata. Step through the slide 14 flow; the table row for each stage highlights as you go.</p>
+      <div class="lab">
+        <div class="stage" id="st-dag" style="height:420px"><span class="hint">Drag to rotate · tap a stage</span></div>
+        <aside class="panel">
+          <div id="pn-dag"></div>
+          <div class="controls"><button class="btn" id="dag-prev">Back</button><button class="btn primary" id="dag-next">Next stage</button><button class="btn" id="dag-play">Play all</button></div>
+          <div class="steptext" id="dag-step"></div>
+        </aside>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>Stage</th><th>Component</th><th>Function</th></tr></thead>
+        <tbody id="dag-tbl">
+          <tr data-s="1"><td class="num">1</td><td>HDFS NameNode</td><td>Maintains filesystem metadata, including file names and block locations</td></tr>
+          <tr data-s="2"><td class="num">2</td><td>HDFS DataNodes</td><td>Store the actual data blocks and provide data to MapReduce tasks</td></tr>
+          <tr data-s="3"><td class="num">3</td><td>Map</td><td>Processes input records and generates intermediate key-value pairs</td></tr>
+          <tr data-s="4"><td class="num">4</td><td>Shuffle and Sort</td><td>Transfers intermediate data and groups values by key for reducers</td></tr>
+          <tr data-s="5"><td class="num">5</td><td>Reduce</td><td>Processes grouped values to generate final results</td></tr>
+          <tr data-s="6"><td class="num">6</td><td>HDFS Write</td><td>Stores the results in HDFS</td></tr>
+          <tr data-s="7"><td class="num">7</td><td>NameNode metadata update</td><td>Records filesystem information for the output file and its blocks</td></tr>
+        </tbody></table></div>
+      <p class="tip">Memorise the five components with their slide keywords: Shell = interactive queries · Driver = session handles, fetch, execute · Compiler = parse, plan, optimize · Execution engine = DAG of stages · Metastore = schema, HDFS location, SerDe.</p>
+      <p class="note">SerDe is used here and in 3.6 but never defined. It stands for Serializer/Deserializer: the code that turns a file's bytes into table rows and back.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.5</span><h3>Data model and type system</h3></div>
+      <div class="grid3">
+        <div class="card"><span class="tag">Tables</span><ul><li>Typed columns (int, float, string, boolean)</li><li>Also list and map, for JSON-like data</li></ul></div>
+        <div class="card"><span class="tag">Partitions</span><ul><li>For example, range-partition tables by date</li></ul></div>
+        <div class="card"><span class="tag">Buckets</span><ul><li>Hash partitions within ranges</li><li>Useful for sampling and join optimization</li></ul></div>
+      </div>
+      <p class="sub">Hive data, in order of granularity: database → table → partition → bucket. Tap each level. Example names follow the slide 23 table (timestamp, userid, referer_url, page_url, IP).</p>
+      <div class="lab">
+        <div class="stage" id="st-gran" style="height:400px"><span class="hint">Drag to rotate · tap a level</span></div>
+        <aside class="panel" id="pn-gran"></aside>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Hive data models (slide 24)</span><ul><li><b style="color:var(--fg)">Databases:</b> namespaces</li><li><b style="color:var(--fg)">Tables:</b> schemas in namespaces</li><li><b style="color:var(--fg)">Partitions:</b> how data is stored in HDFS; grouping data on some column; can have one or more columns</li><li><b style="color:var(--fg)">Buckets or clusters:</b> partitions divided further into buckets based on some other column; used for data sampling</li></ul></div>
+        <div class="card"><span class="tag">Primitive types (slide 21)</span>
+          <div class="bytes" id="bytes" style="margin-top:8px"></div>
+          <p style="margin-top:8px">Boolean: <code>BOOLEAN</code> TRUE/FALSE · Floating point: <code>FLOAT</code> single precision, <code>DOUBLE</code> double precision · String: <code>STRING</code> sequence of characters. Value ranges are added for revision.</p></div>
+      </div>
+      <p class="sub">Complex types (slide 22) are built from primitive and other composite types with three operators. Tap an expression to see what it returns from the example row.</p>
+      <div class="cx">
+<pre class="code" id="cx-code"></pre>
+        <div class="panel">
+          <span class="kicker">Access an element</span>
+          <div class="controls" id="cx-btns"></div>
+          <div class="res" id="cx-res"></div>
+          <p id="cx-why"></p>
+        </div>
+      </div>
+      <p class="note">Slide 16 says "Also, list: map", which reads as a typo for "list, map". Slide 24 says partitions group "databases" on some column; it means grouping a table's data.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.6</span><h3>Physical layout and partitions</h3></div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Physical layout (slide 18)</span><ul><li>Warehouse directory in HDFS, e.g. <code>/user/hive/warehouse</code></li><li>Tables stored in subdirectories of the warehouse; partitions form subdirectories of tables</li><li>Actual data stored in flat files: control-character-delimited text, or SequenceFiles</li><li>With a custom SerDe, any format can be used</li></ul></div>
+        <div class="card"><span class="tag">Partitions (slide 25)</span><p>Partition means dividing a table into coarse-grained parts based on the value of a partition column, such as a date. This makes queries on slices of the data faster.</p><ul><li>Partition keys determine how the data is stored</li><li>Each unique value of the partition keys defines a partition of the table</li><li>Partitions are named after dates for convenience</li></ul></div>
+      </div>
+      <div class="def"><b>Hive partitioning</b> splits a table into multiple files based on <b>partition keys</b>. The files are organised into folders, and inside each folder the partition key's value comes from the folder's name.</div>
+      <div class="lab">
+        <div style="min-width:0;display:grid;gap:8px;align-content:start">
+          <div class="tabs" id="tree-tabs"></div>
+          <ul class="tree" id="tree"></ul>
+        </div>
+        <aside class="panel" id="tree-info"></aside>
+      </div>
+      <p class="sub" id="part-lab"><b style="color:var(--fg)">Partition pruning lab.</b> Slide 26's query <code>SELECT * FROM sales WHERE region = 'US'</code> only opens the matching folders. The slide shows <code>sales_date=2025-08</code>; two more months are added so you can filter on both keys.</p>
+      <div class="lab">
+        <div class="stage" id="st-prune" style="height:420px"><span class="hint">Drag to rotate · tap a folder</span></div>
+        <aside class="panel">
+          <span class="kicker">Build the query</span>
+          <div class="controls">
+            <label class="inline" for="pr-region">region</label><select id="pr-region"><option value="">any</option><option value="US" selected>US</option><option value="IN">IN</option><option value="UK">UK</option></select>
+            <label class="inline" for="pr-date">sales_date</label><select id="pr-date"><option value="">any</option><option value="2025-06">2025-06</option><option value="2025-07">2025-07</option><option value="2025-08">2025-08</option></select>
+          </div>
+          <pre class="code" id="pr-sql"></pre>
+          <div class="tiles" id="pr-stats"></div>
+          <div class="steptext" id="pr-pick">Tap a folder to see whether this query reads it.</div>
+        </aside>
+      </div>
+      <p class="tip">Pruning works only when the WHERE clause filters on a partition column. Filtering on an ordinary column still scans every folder.</p>
+      <p class="note">Slide 28 has no page number and a cut-off date ("10/27/202"). Its example uses .parquet files; Parquet is never explained in the notes.</p>
+    </article>
+
+    <article class="topic" id="bucket-lab">
+      <div class="topic-head"><span class="tnum">3.7</span><h3>Buckets, and partitioning vs bucketing</h3></div>
+      <div class="def"><b>Bucketing</b> divides table data into a <b>fixed number of files</b>, called buckets, based on the <b>hash value</b> of a specified column. Unlike partitioning, which creates separate directories by column value, bucketing spreads records across a predefined number of buckets. It can speed up certain joins, aggregations and sampling.</div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Why buckets (slide 29)</span><ul><li>Buckets give extra structure to the data that can be used for more efficient queries</li><li>A join of two tables bucketed on the same columns, including the join column, can be implemented as a <b style="color:var(--fg)">Map Side Join</b></li><li>Bucketing by user ID lets us quickly evaluate a user-based query on a randomized sample of all users</li><li>Diagram: data → bucket ×3, based on the value of a hash function of some columns of the table</li></ul></div>
+        <div class="card"><span class="tag">Partitioning and bucketing (slide 30)</span><p>Student Details → partitions Dept - ECE and Dept - CSE → each partition split into Bucket 1 and Bucket 2. The lab below builds exactly this, with your choice of bucket count.</p></div>
+      </div>
+      <div class="lab">
+        <div class="stage" id="st-bucket" style="height:440px"><span class="hint">Drag to rotate</span></div>
+        <aside class="panel">
+          <span class="kicker">PARTITIONED BY (dept) CLUSTERED BY (student_id)</span>
+          <div class="controls"><label class="inline" for="bk-n">Buckets per partition</label><select id="bk-n"><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
+          <div class="controls"><button class="btn primary" id="bk-one">Insert next student</button><button class="btn" id="bk-all">Insert all</button><button class="btn" id="bk-sample">Sample bucket 1</button><button class="btn ghost" id="bk-reset">Reset</button></div>
+          <div class="steptext" id="bk-step"></div>
+          <div class="tbl" style="max-height:220px;overflow:auto"><table><thead><tr><th>student_id</th><th>dept</th><th>hash mod n</th><th>bucket</th></tr></thead><tbody id="bk-tbl"></tbody></table></div>
+        </aside>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>Feature</th><th>Partitioning</th><th>Bucketing</th></tr></thead>
+        <tbody>
+          <tr><td>Organization</td><td>Divides data by column values</td><td>Distributes data into a fixed number of buckets using a hash</td></tr>
+          <tr><td>Storage structure</td><td>Separate directories for partitions</td><td>Separate bucket files within a table or partition</td></tr>
+          <tr><td>Typical example</td><td>Partition by year or month</td><td>Bucket by student ID</td></tr>
+          <tr><td>Main benefit</td><td>Reduces the data scanned for queries filtering on partition columns</td><td>Can support efficient joins and sampling in suitable workloads</td></tr>
+          <tr><td>Number of divisions</td><td>Depends on the distinct partition values</td><td>Specified through the bucket count</td></tr>
+          <tr><td>Main risk</td><td>Too many small partitions</td><td>Too many small bucket files or unsuitable bucket configuration</td></tr>
+        </tbody></table></div>
+      <p class="tip">One-line contrast: partitions are folders chosen by value; buckets are a fixed number of files chosen by hash.</p>
+      <p class="note extra">For an INT column Hive's hash is the value itself, so the bucket is student_id mod n. The lab numbers buckets from 1 like the slide; Hive's files are numbered from 0 (000000_0, 000001_0). The slide orders CSE's buckets as "Bucket 2, Bucket 1"; the order has no meaning.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.8</span><h3>HiveQL abilities and differences with RDBMS</h3></div>
+      <p class="sub">Hive Query Language provides the basic SQL-like operations (slide 19). Tap an ability for an example statement.</p>
+      <div class="lab">
+        <div class="hub" id="hub-ql"></div>
+        <aside class="panel" id="hubp-ql"></aside>
+      </div>
+      <div class="card"><span class="tag">Schema on read vs schema on write (slide 20)</span>
+        <ul><li>Hive does not verify the data when it is loaded, but rather when a query is issued</li><li>Schema on read makes for a very fast initial load, since the data does not have to be read, parsed and serialized to disk in the database's internal format. The load operation is just a file copy or move</li><li>No updates, transactions and indexes</li></ul></div>
+      <div class="sor">
+        <div class="lane"><div class="lname"><b>Traditional RDBMS</b><small>schema on write</small></div>
+          <div class="track2" id="lane-w"><span class="station">sales.csv<br>3 rows</span><span class="station">read · parse · validate · serialize</span><span class="station">stored in internal format</span><span class="station">query</span></div></div>
+        <div class="lane"><div class="lname"><b>Hive</b><small>schema on read</small></div>
+          <div class="track2" id="lane-r"><span class="station">sales.csv<br>3 rows</span><span class="station">copy / move file</span><span class="station">stored as-is in HDFS</span><span class="station">query + apply schema</span></div></div>
+        <div class="controls"><button class="btn primary" id="sor-run">Load the file, then query it</button><span class="badge warn">Row 3 has price = "abc" in an INT column</span></div>
+        <div class="sor-cols">
+          <div class="sor-col"><div class="sor-ch"><b>Traditional RDBMS</b><small>schema on write</small></div><ul class="log" id="sor-log-w"><li>Press the button to load the file.</li></ul></div>
+          <div class="sor-col"><div class="sor-ch"><b>Hive</b><small>schema on read</small></div><ul class="log" id="sor-log-r"><li>Press the button to load the file.</li></ul></div>
+        </div>
+      </div>
+      <p class="note">"No updates, transactions and indexes" is outdated. Hive has supported ACID tables with UPDATE and DELETE since version 0.14, and indexes were removed in Hive 3.0. Answer with the slide's version in the exam unless told otherwise.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.9</span><h3>Limitations of Hive</h3></div>
+      <div class="grid2">
+        <div class="card"><span class="tag">Limitation</span><h4>Not designed for online transaction processing</h4></div>
+        <div class="card"><span class="tag">Limitation</span><h4>Does not offer real-time queries and row-level updates</h4></div>
+        <div class="card"><span class="tag">Limitation</span><h4>Latency for Hive queries is generally very high (minutes)</h4></div>
+        <div class="card"><span class="tag">Limitation</span><h4>Provides acceptable (not optimal) latency for interactive data browsing</h4></div>
+      </div>
+      <div class="lat" aria-label="Query latency scale">
+        <div><b>Milliseconds</b>Online transaction processing in an RDBMS (added for comparison)</div>
+        <div><b>Seconds</b>Interactive data browsing: Hive is acceptable, not optimal</div>
+        <div class="me"><b>Minutes</b>A typical Hive query on the slides</div>
+      </div>
+      <p class="tip">Hive is for batch analytics over huge tables, not for serving an app's live reads and writes.</p>
+      <p class="note">The "minutes" figure describes MapReduce-era Hive. Newer engines (Tez, LLAP) cut latency a lot. The Facebook figures in 3.2 date from around 2012.</p>
+      <div class="card"><span class="tag">References (slide 34)</span><p><a href="https://hive.apache.org/" target="_blank" rel="noopener">hive.apache.org</a> · <a href="https://aws.amazon.com/big-data/what-is-hive/" target="_blank" rel="noopener">aws.amazon.com/big-data/what-is-hive</a> · <a href="https://www.tutorialspoint.com/hive" target="_blank" rel="noopener">tutorialspoint.com/hive</a></p></div>
+    </article>
+    <article class="topic" id="hql-lab">
+      <div class="topic-head"><span class="tnum">3.10</span><h3>HiveQL practice</h3></div>
+      <p class="sub">Write HiveQL against three small tables: <code>sales</code> (partitioned by region and sales_date), <code>page_views</code> and <code>users</code>. It runs in your browser. Each exercise checks your answer and shows how many partition folders real Hive would read.</p>
+      <div class="hql">
+        <aside class="hql-side">
+          <span class="kicker">Exercises</span>
+          <ol class="hql-ex" id="hql-ex"></ol>
+          <span class="kicker">Tables</span>
+          <div class="hql-schema" id="hql-schema"></div>
+          <button class="btn ghost" type="button" id="hql-reset">Reset tables</button>
+        </aside>
+        <div class="hql-main">
+          <div class="hql-task" id="hql-task"></div>
+          <textarea id="hql-in" spellcheck="false" aria-label="HiveQL query" autocomplete="off"></textarea>
+          <div class="controls"><button class="btn primary" type="button" id="hql-run">Run ▸</button><button class="btn" type="button" id="hql-check">Check answer</button><button class="btn ghost" type="button" id="hql-hint">Hint</button><button class="btn ghost" type="button" id="hql-sol">Show solution</button><span style="font-family:var(--f-mono);font-size:.7rem;color:var(--dim)">Ctrl + Enter runs</span></div>
+          <div class="steptext" id="hql-msg">Loading the query engine…</div>
+          <div class="hql-prune" id="hql-prune" hidden></div>
+          <div class="tbl hql-out" id="hql-out"></div>
+        </div>
+      </div>
+      <p class="note extra">Supported here: SELECT, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT, JOIN, plus Hive's SHOW TABLES, DESCRIBE and SHOW PARTITIONS. Real Hive compiles each query into MapReduce or Tez jobs and takes seconds to minutes; here it's instant. This engine reserves the words <code>total</code> and <code>value</code>, so pick other column aliases.</p>
+    </article>
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.11</span><h3>Common misconceptions</h3></div>
+      <p class="sub">Each of these costs marks in exams. Say out loud why it's wrong before you open it.</p>
+      <div class="myths"><details class="myth"><summary><span class="mx">Myth</span><span>Hive is a database that stores my tables.</span></summary><p><b>Actually:</b> Hive is a data warehouse layer on top of Hadoop. Table data stays as flat files in HDFS; Hive's Metastore only keeps the schema, the HDFS location and the SerDe.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Hive checks my data when I load it.</span></summary><p><b>Actually:</b> Hive uses schema on read. Loading just copies or moves the file; values are checked when you query, and a value that doesn't fit its column comes back as NULL.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Partitioning and bucketing are the same idea.</span></summary><p><b>Actually:</b> Partitions are folders chosen by a column's value. Buckets are a fixed number of files chosen by a hash of a column. You can use both: buckets inside each partition.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>More partitions always make queries faster.</span></summary><p><b>Actually:</b> Pruning only helps when the WHERE clause filters on a partition column. Too many small partitions is the main risk listed on the slides.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>Hive is good for real-time apps.</span></summary><p><b>Actually:</b> Hive is not designed for online transaction processing, doesn't offer real-time queries or row-level updates, and its queries typically take minutes.</p></details><details class="myth"><summary><span class="mx">Myth</span><span>The Metastore holds the table's rows.</span></summary><p><b>Actually:</b> The Metastore holds metadata only: schema, location in HDFS and SerDe. The rows are in the HDFS files under the warehouse directory.</p></details></div>
+    </article>
+  </section>
+
+  <section class="chapter" id="practice" data-view="practice">
+    <div class="ch-head"><span class="num" aria-hidden="true">✓</span><span class="eyebrow">Practice</span><h2>Revise and test yourself</h2><p>Flip through flashcards, take the quiz for one chapter or all of them, and check what the slides leave out.</p></div>
+    <div class="phub">
+      <a href="#glossary"><b>Glossary &amp; flashcards</b><small>Every term, searchable, or one card at a time</small></a>
+      <a href="#quiz"><b>Quiz &amp; timed exam</b><small>Pick a chapter or mix them all</small></a>
+      <a href="#drill"><b>Test drill · Chapters 1–2</b><small>176 MCQs with negative marking, 43 written questions, last-minute facts</small></a>
+      <a href="#gaps"><b>Slide gaps</b><small>Missing, outdated or unclear points to ask about</small></a>
+    </div>
+  </section>
+
+  <section class="chapter" id="glossary" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Reference</span><h2>Glossary</h2><p>Every term from all chapters in one place. Search, filter by chapter, or switch to flashcards.</p></div>
+    <article class="topic">
+      <div class="gloss-bar"><input type="text" id="gloss-q" placeholder="Search a term, e.g. heartbeat, Sqoop, partition" aria-label="Search glossary"><div class="tabs" id="gloss-f"></div><div class="seg" id="gloss-v" role="group" aria-label="Glossary view"><button type="button" data-v="list" aria-pressed="true">List</button><button type="button" data-v="cards" aria-pressed="false">Flashcards</button></div></div>
+      <div class="fc-wrap" id="fc" hidden>
+        <div class="fc-stats" id="fc-stats"></div>
+        <button type="button" class="fc" id="fc-card" aria-label="Flashcard. Press to flip."><span class="fc-in"><span class="fc-face"><small id="fc-ch"></small><b id="fc-term"></b><em>Tap or press Space to flip</em></span><span class="fc-face back"><span class="fcp" id="fc-def"></span><em id="fc-pos"></em></span></span></button>
+        <div class="controls" id="fc-rate"><button class="btn" type="button" id="fc-again" disabled>Again</button><button class="btn primary" type="button" id="fc-good" disabled>Got it</button><button class="btn ghost" type="button" id="fc-skip">Skip</button></div><div class="fc-done" id="fc-done" hidden></div><label class="recall-tg" for="fc-all"><input type="checkbox" id="fc-all"> Include cards that aren't due yet</label>
+      </div>
+      <dl class="gloss" id="gloss"></dl>
+      <p class="gloss-empty" id="gloss-empty" hidden>No terms match. Try a shorter word.</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="quiz" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Self-check</span><h2>Quick quiz</h2><p>Each chapter has a bank of 25 to 30 questions. Every attempt draws 20 at random from the chapter you pick (or from all of them), shuffles the options, and lists what you missed at the end.</p></div>
+    <div class="tabs" id="quiz-f" style="margin-bottom:4px"></div>
+    <article class="topic quiz" id="quiz-box"></article>
+    <article class="topic exam" id="exam-box"></article>
+  </section>
+
+  <section class="chapter" id="drill" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Test drill · Chapters 1–2</span><h2>Big Data &amp; Hadoop test drill</h2><p>Built from the Chapter 1 and Chapter 2 lecture decks: 176 multiple-choice questions with negative marking, 43 written questions with model answers and likely marks, and a last-minute facts sheet.</p></div>
+    <div class="seg dr-tabs" role="group" aria-label="Drill section"><button type="button" data-v="mcq" aria-pressed="true">MCQ practice</button><button type="button" data-v="desc" aria-pressed="false">Written Q&amp;A</button><button type="button" data-v="facts" aria-pressed="false">Last-minute facts</button></div>
+    <article class="topic dr" id="dr-mcq">
+      <div class="dr-bar">
+        <label for="dr-topic">Topic<select id="dr-topic"></select></label>
+        <label for="dr-neg">Wrong answer costs<select id="dr-neg"><option value="0">0 marks</option><option value="0.25" selected>−0.25</option><option value="0.33">−0.33</option><option value="0.5">−0.5</option><option value="1">−1</option></select></label>
+        <label for="dr-order">Order<select id="dr-order"><option value="seq">As in slides</option><option value="rnd">Shuffled</option></select></label>
+        <button class="btn" type="button" id="dr-wrong">Retry my wrong ones</button>
+        <button class="btn ghost" type="button" id="dr-reset">Reset</button>
+      </div>
+      <div class="dr-score"><div><span>Score</span><b id="dr-s-score">0</b></div><div title="Correct ÷ answered. Skipped questions are not counted."><span>Accuracy</span><b id="dr-s-acc">–</b><small id="dr-s-accn">no answers yet</small></div><div><span>Correct</span><b id="dr-s-c">0</b></div><div><span>Wrong</span><b id="dr-s-w">0</b></div><div><span>Skipped</span><b id="dr-s-s">0</b></div><div><span>Left</span><b id="dr-s-l">0</b></div></div>
+      <div class="dr-card" id="dr-card"></div>
+      <div class="dr-dots" id="dr-dots"></div>
+      <p class="sub" style="font-size:.85rem">Keys: A–D to answer, S to skip, → or Enter for next, ← for previous. Skip when you'd only be guessing; that's the habit negative marking rewards.</p>
+    </article>
+    <article class="topic dr" id="dr-desc" hidden>
+      <div class="dr-bar"><label for="dr-dtopic">Topic<select id="dr-dtopic"></select></label><button class="btn" type="button" id="dr-open">Open all</button><button class="btn" type="button" id="dr-close">Close all</button><span id="dr-count" style="font-size:.85rem;color:var(--muted)"></span></div>
+      <div id="dr-list"></div>
+    </article>
+    <article class="topic dr" id="dr-facts" hidden><div class="dr-facts" id="dr-factlist"></div></article>
+  </section>
+
+  <section class="chapter" id="gaps" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Slide gaps</span><h2>What's missing or off in the PDFs</h2><p>Worth asking your lecturer whether the unexplained items are examinable.</p></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Where</th><th>Issue</th></tr></thead>
+      <tbody>
+        <tr><td>Ch3 language name</td><td>"HQL", "QL" and "HiveQL" are the same language; never stated</td></tr>
+        <tr><td>Ch3 architecture</td><td>"*Resource Manager" asterisk has no footnote; HWI, Thrift Server, Karmasphere, Hue, Qubole, HD Insight never explained</td></tr>
+        <tr><td>Ch3 SerDe</td><td>Used on slides 13 and 18 but never defined (Serializer/Deserializer)</td></tr>
+        <tr><td>Ch3 data model</td><td>"Also, list: map" reads as a typo for "list, map"; partitions "grouping databases" should be grouping table data</td></tr>
+        <tr><td>Ch3 RDBMS differences</td><td>"No updates, transactions and indexes" is outdated (ACID since Hive 0.14; indexes removed in 3.0)</td></tr>
+        <tr><td>Ch3 limitations</td><td>"Minutes" latency reflects MapReduce-era Hive; Facebook figures date from around 2012</td></tr>
+        <tr><td>Ch3 slides 28 and 30</td><td>Slide 28 has no page number and a cut-off date; Parquet never explained; slide 30 orders CSE buckets "2, 1"</td></tr>
+        <tr><td>Ch2 data structures pyramid</td><td>Only template placeholder text; real definitions are on later slides</td></tr>
+        <tr><td>Ch2 quasi-structured</td><td>Citations [1, 2, 3, 4] with no reference list</td></tr>
+        <tr><td>Ch2 "2026" internet minute</td><td>Likely an old relabelled infographic (includes Skype)</td></tr>
+        <tr><td>Ch2 MapReduce in Hadoop</td><td>Calls JobTracker/TaskTracker "current"; replaced by YARN in Hadoop 2</td></tr>
+        <tr><td>Ch2 MR limitation</td><td>"Not stateless" wording is confusing</td></tr>
+        <tr><td>Ch2 HDFS</td><td>Secondary NameNode shown but never explained</td></tr>
+        <tr><td>Ch2 HDP diagram</td><td>Falcon, NFS, WebHDFS never explained</td></tr>
+        <tr><td>Ch2 word count</td><td>"The" vs "the" with no lowercase step</td></tr>
+        <tr><td>Ch2 five-step model</td><td>Mapper pre-sums (B,2): a Combiner that is never named</td></tr>
+        <tr><td>Ch2 numbering</td><td>Two slides labelled 29; title slide shows "Slide &lt;2&gt; of 9"</td></tr>
+        <tr><td>Ch1 ecosystem timeline</td><td>Whirr, Avro, Bigtop, MRUnit, Impala, Parquet, Sentry never explained</td></tr>
+        <tr><td>Ch1 terminology</td><td>"Big Data Technologies" never defined; Hadoop slide duplicated</td></tr>
+        <tr><td>Ch1 V's</td><td>Veracity* asterisk has no footnote; Visibility never described</td></tr>
+        <tr><td>Ch1 data growth</td><td>"~50%/year" doesn't match 80 → 300 EB in two years</td></tr>
+        <tr><td>Ch1 size scale</td><td>Brontobyte is unofficial (SI: ronna, quetta)</td></tr>
+        <tr><td>Typos</td><td>"Records/achieved", "Weather Preditaion", "APP MANGER"</td></tr>
+        <tr><td>Ch1 review questions</td><td>Asked with no answers (guides added in 1.9)</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <footer><span>WIH3003 Big Data Applications &amp; Analytics · Revision companion</span><span>Summarised from the lecture slides "Big Data Applications and Analytics – Overview", "Hadoop: Basic Concepts" and "Introduction to Hive". Not official course material.</span></footer>
+</main>
+</div>
+
+<script src="../vendor/three-r128.min.js"></script>
+<script src="data.js"></script>
+<script src="../shared/core.js"></script>
+<script src="labs.js"></script>
+<script>
+(function(){if(!("serviceWorker" in navigator))return;var h=location.hostname;if(location.protocol!=="https:"&&h!=="localhost"&&h!=="127.0.0.1")return;
+ window.addEventListener("load",function(){var first=!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register("../sw.js").then(function(reg){
+   reg.addEventListener("updatefound",function(){var w=reg.installing;if(!w)return;w.addEventListener("statechange",function(){
+    if(w.state==="activated"&&first){first=false;window.bdlToast&&bdlToast("Saved for offline use. This site now works without internet.")}})});
+   setInterval(function(){reg.update().catch(function(){})},60*60*1000);
+  }).catch(function(){});
+ });
+})();
+</script>
+</body>
+</html>

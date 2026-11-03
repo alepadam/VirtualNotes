@@ -6,11 +6,7 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
 
-# the page itself: always check for a newer version
-/
-  Cache-Control: public, max-age=0, must-revalidate
-/index.html
-  Cache-Control: public, max-age=0, must-revalidate
+# everything else uses Netlify's default (public, max-age=0, must-revalidate): browsers re-check on every visit
 
 # the service worker must never be cached by the browser
 /sw.js
@@ -18,7 +14,6 @@
 
 /manifest.webmanifest
   Content-Type: application/manifest+json
-  Cache-Control: public, max-age=3600
 
 # versioned file names: safe to cache for a year
 /vendor/*
@@ -26,3 +21,7 @@
 
 /icons/*
   Cache-Control: public, max-age=604800
+
+# source files are public in the repo anyway; just keep them out of search results
+/src/*
+  X-Robots-Tag: noindex

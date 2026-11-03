@@ -1,0 +1,25 @@
+[
+  {
+    "id": "big-data",
+    "status": "live",
+    "code": "WIH3003",
+    "title": "Big Data Applications and Analytics",
+    "short": "Big Data",
+    "prefix": "bdl-",
+    "accent": ["#F5B83D", "#4FD1C5"],
+    "blurb": "Big Data concepts, Hadoop (HDFS, MapReduce, YARN) and Hive, with 3D labs, HiveQL practice, a 176-question test drill and timed exams.",
+    "chapters": ["Big Data overview", "Hadoop", "Hive"],
+    "vendor": ["three"],
+    "description": "Interactive revision for WIH3003 Big Data Applications and Analytics: Big Data, Hadoop, HDFS, MapReduce, YARN and Hive labs, HiveQL practice, spaced-repetition flashcards, quizzes and timed exams. Works offline.",
+    "shortcuts": [["Big Data flashcards", "#glossary"], ["Big Data quiz and exam", "#quiz"], ["HiveQL practice", "#hql-lab"]]
+  },
+  {
+    "id": "data-viz",
+    "status": "soon",
+    "code": "",
+    "title": "Data Visualization",
+    "short": "Data Viz",
+    "accent": ["#B79CFF", "#7C98FF"],
+    "blurb": "Chapters, labs and practice appear here once the lecture slides are added."
+  }
+]

@@ -1,7 +1,7 @@
 {
-  "name": "WIH3003 Big Data Applications and Analytics",
-  "short_name": "Big Data A&A",
-  "description": "Revision site for WIH3003 Big Data Applications and Analytics: Big Data, Hadoop and Hive, with labs, HiveQL practice, flashcards, quizzes and timed exams. Works offline.",
+  "name": "notewithliqi",
+  "short_name": "notewithliqi",
+  "description": "Interactive revision notes for university subjects: 3D labs, flashcards, quizzes and timed exams. Works offline.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -27,16 +27,21 @@
   ],
   "shortcuts": [
     {
-      "name": "Flashcards",
-      "url": "./#glossary"
+      "name": "Big Data Applications and Analytics",
+      "short_name": "Big Data",
+      "url": "./big-data/"
     },
     {
-      "name": "Quiz and exam",
-      "url": "./#quiz"
+      "name": "Big Data flashcards",
+      "url": "./big-data/#glossary"
+    },
+    {
+      "name": "Big Data quiz and exam",
+      "url": "./big-data/#quiz"
     },
     {
       "name": "HiveQL practice",
-      "url": "./#hql-lab"
+      "url": "./big-data/#hql-lab"
     }
   ]
 }

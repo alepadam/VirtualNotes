@@ -1,0 +1,33 @@
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <button class="side-btn" type="button" id="side-btn" aria-controls="side" aria-expanded="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Topics</span></button>
+    <a class="hub-link" href="{{HUB}}" title="All subjects" aria-label="All subjects"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="9" y="2" width="5" height="5" rx="1.2" fill="currentColor" opacity=".55"/><rect x="2" y="9" width="5" height="5" rx="1.2" fill="currentColor" opacity=".55"/><rect x="9" y="9" width="5" height="5" rx="1.2" fill="currentColor"/></svg></a>
+    <a class="brand" href="#home" title="Subject home"><i></i><span>{{CODE_HTML}}{{TITLE}}</span></a>
+    <button class="srch" id="srch-btn" type="button" aria-label="Search topics and terms (Ctrl+K)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="lbl">Search</span><kbd>Ctrl K</kbd></button>
+    <span class="offl" id="offline-badge" hidden title="You are offline. Everything on this site still works.">Offline</span>
+    <button class="srch" id="install-btn" type="button" hidden><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lbl">Install app</span></button>
+    <nav class="nav" id="topnav" aria-label="Chapters"></nav>
+  </div>
+  <div class="readbar" aria-hidden="true"><i id="readbar"></i></div>
+</header>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="scrim" id="scrim"></div>
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Search">
+  <div class="cmdk-box">
+    <input type="text" id="cmdk-q" placeholder="Search topics, labs, terms and actions…" aria-label="Search" aria-controls="cmdk-res" autocomplete="off">
+    <ul class="cmdk-res" id="cmdk-res" role="listbox"></ul>
+    <div class="cmdk-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span><span><kbd>/</kbd> search</span><span><kbd>[</kbd> <kbd>]</kbd> previous / next page</span></div>
+  </div>
+</div>
+<button class="totop" type="button" id="totop" aria-label="Back to top" hidden>↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toast-msg"></span><button class="btn primary" type="button" id="toast-act" hidden></button><button class="toast-x" type="button" id="toast-x" aria-label="Dismiss">✕</button></div>
+<div class="shell">
+<aside class="side" id="side" aria-label="Topics">
+  <a class="side-hub" href="{{HUB}}"><span aria-hidden="true">←</span><span>All subjects · <b>notewithliqi</b></span></a>
+  <div class="prog"><b id="prog-num">0 of 0 topics learned</b><div class="ptrack"><i id="prog-bar" style="width:0"></i></div><small>Tick "Mark learned" on each topic. Saved in this browser.</small><label class="recall-tg" for="recall"><input type="checkbox" id="recall"> Recall mode: hide key definitions until you try</label></div>
+  <nav id="side-nav"></nav>
+  <button class="reset" type="button" id="prog-reset">Reset progress</button>
+</aside>
