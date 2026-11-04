@@ -32,16 +32,17 @@
       "url": "./big-data/"
     },
     {
+      "name": "Data Visualization",
+      "short_name": "Data Viz",
+      "url": "./data-viz/"
+    },
+    {
       "name": "Big Data flashcards",
       "url": "./big-data/#glossary"
     },
     {
-      "name": "Big Data quiz and exam",
-      "url": "./big-data/#quiz"
-    },
-    {
-      "name": "HiveQL practice",
-      "url": "./big-data/#hql-lab"
+      "name": "Excel lab",
+      "url": "./data-viz/#excel"
     }
   ]
 }

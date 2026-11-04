@@ -71,15 +71,17 @@ topics.forEach(t=>{const n=t.querySelector(".tnum").textContent.trim();if(!t.id)
  if(!sgs[ch]){side.insertAdjacentHTML("beforeend",`<a class="sh" href="#ch${ch}" data-g="ch${ch}">Chapter ${ch} · ${esc(chName(ch))}</a><div class="sg" data-g="ch${ch}"></div>`);sgs[ch]=side.querySelector(`.sg[data-g="ch${ch}"]`)}
  sgs[ch].insertAdjacentHTML("beforeend",`<a href="#${t.id}" data-t="${t.id}"><span class="n">${n}</span><span>${esc(h)}</span></a>`);
  const b=document.createElement("button");b.type="button";b.className="mark";b.dataset.t=t.id;b.onclick=()=>{learned.has(t.id)?learned.delete(t.id):learned.add(t.id);store.set(K("learned"),[...learned]);syncLearned()};t.querySelector(".topic-head").appendChild(b)});
+const XP=(S.pages||[]).filter(p=>document.querySelector(`[data-view="${p.v}"]`));
+XP.forEach(p=>{const items=[...document.querySelectorAll(`[data-view="${p.v}"] [data-side][id]`)];side.insertAdjacentHTML("beforeend",`<a class="sh" href="#${p.v}" data-g="${p.v}">${esc(p.label)}</a><div class="sg" data-g="${p.v}">${items.map(el=>`<a href="#${el.id}"><span class="n">${esc(el.dataset.n||"·")}</span><span>${esc(el.dataset.side)}</span></a>`).join("")}</div>`)});
 side.insertAdjacentHTML("beforeend",`<a class="sh" href="#practice" data-g="practice">Practice</a><div class="sg" data-g="practice">${(S.practice||[]).map(([h,n,l])=>`<a href="${h}"><span class="n">${n}</span><span>${l}</span></a>`).join("")}</div>`);
 /* top nav: one link per chapter page (new chapters appear automatically) + Practice */
 const topnav=$("#topnav");
-topnav.innerHTML=CH.map(c=>`<a href="#ch${c.n}" data-nav="ch${c.n}" title="Chapter ${c.n} · ${esc(c.name)}"><span>Chapter ${c.n}</span><i class="np"><b style="width:0"></b></i></a>`).join("")+`<a href="#practice" data-nav="practice"><span>Practice</span><i class="np" style="visibility:hidden"><b></b></i></a>`;
+topnav.innerHTML=CH.map(c=>`<a href="#ch${c.n}" data-nav="ch${c.n}" title="Chapter ${c.n} · ${esc(c.name)}"><span>Chapter ${c.n}</span><i class="np"><b style="width:0"></b></i></a>`).join("")+XP.map(p=>`<a href="#${p.v}" data-nav="${p.v}" title="${esc(p.label)}"><span>${esc(p.nav||p.label)}</span><i class="np" style="visibility:hidden"><b></b></i></a>`).join("")+`<a href="#practice" data-nav="practice"><span>Practice</span><i class="np" style="visibility:hidden"><b></b></i></a>`;
 CH.forEach(c=>{c.el.querySelector(".ch-head").insertAdjacentHTML("beforeend",`<div class="ch-prog"><span class="cp-t"></span><span class="ptrack"><i style="width:0"></i></span></div>`)});
 /* home page chapter cards */
-$("#home-toc").innerHTML=CH.map(c=>`<a href="#ch${c.n}" data-toc="${c.n}"><b>Chapter ${c.n} · ${esc(c.el.dataset.title||c.name)}</b><small>${esc(c.el.dataset.sub||"")}</small><span class="tp"><span><i style="width:0"></i></span><em class="tpn" style="font-style:normal"></em></span><span class="go">Open chapter →</span></a>`).join("")+`<a href="#practice"><b>Practice</b><small>${S.practiceBlurb?S.practiceBlurb(QZ.length):`Glossary &amp; flashcards, ${QZ.length}-question quiz`}</small><span class="go">Open practice →</span></a>`;
+$("#home-toc").innerHTML=CH.map(c=>`<a href="#ch${c.n}" data-toc="${c.n}"><b>Chapter ${c.n} · ${esc(c.el.dataset.title||c.name)}</b><small>${esc(c.el.dataset.sub||"")}</small><span class="tp"><span><i style="width:0"></i></span><em class="tpn" style="font-style:normal"></em></span><span class="go">Open chapter →</span></a>`).join("")+XP.map(p=>`<a href="#${p.v}" class="xp"><b>${esc(p.label)}</b><small>${esc(p.sub||"")}</small><span class="go">Open →</span></a>`).join("")+`<a href="#practice"><b>Practice</b><small>${S.practiceBlurb?S.practiceBlurb(QZ.length):`Glossary &amp; flashcards, ${QZ.length}-question quiz`}</small><span class="go">Open practice →</span></a>`;
 /* previous / next chapter links */
-const PAGES=[...CH.map(c=>({v:"ch"+c.n,label:`Chapter ${c.n} · ${c.name}`})),{v:"practice",label:"Practice"}];
+const PAGES=[...CH.map(c=>({v:"ch"+c.n,label:`Chapter ${c.n} · ${c.name}`})),...XP.map(p=>({v:p.v,label:p.label})),{v:"practice",label:"Practice"}];
 PAGES.forEach((pg,i)=>{const el=document.querySelectorAll(`[data-view="${pg.v}"]`);const host=el[el.length-1];const pv=PAGES[i-1],nx=PAGES[i+1];
  host.insertAdjacentHTML("beforeend",`<nav class="pager" aria-label="Chapter pages">${pv?`<a href="#${pv.v}"><small>← Previous</small><b>${esc(pv.label)}</b></a>`:`<a href="#home"><small>← Back to</small><b>Home</b></a>`}${nx?`<a class="next" href="#${nx.v}"><small>Next →</small><b>${esc(nx.label)}</b></a>`:""}</nav>`)});
 function syncLearned(){topics.forEach(t=>{const on=learned.has(t.id);t.classList.toggle("done",on);const b=t.querySelector(".mark");b.setAttribute("aria-pressed",on);b.textContent=on?"Learned ✓":"Mark learned";const a=side.querySelector(`a[data-t="${t.id}"]`);a&&a.classList.toggle("done",on)});
@@ -251,6 +253,7 @@ drBuild();drRenderDesc();
 const IDX=[];let idxBuilt=false;
 function buildIdx(){if(idxBuilt)return;idxBuilt=true;
 
+XP.forEach(p=>IDX.push({ty:"Page",t:p.label,s:p.sub||"",href:"#"+p.v}));
 CH.forEach(c=>IDX.push({ty:"Page",t:`Chapter ${c.n} · ${c.el.dataset.title||c.name}`,s:c.el.dataset.sub||"",href:"#ch"+c.n}));
 IDX.push(...(S.searchPages||[]),{ty:"Page",t:"Practice",s:"Glossary, flashcards, quiz, slide gaps",href:"#practice"},{ty:"Page",t:"Home",s:"Chapters and how to revise",href:"#home"});
 topics.forEach(t=>{const n=t.querySelector(".tnum").textContent,h=t.querySelector("h3").textContent,txt=t.textContent.replace(/\s+/g," ").trim();IDX.push({ty:"Topic",t:`${n} ${h}`,s:"Chapter "+t.dataset.ch+" · "+chName(t.dataset.ch),href:"#"+t.id,ch:t.dataset.ch,txt,low:txt.toLowerCase()})});

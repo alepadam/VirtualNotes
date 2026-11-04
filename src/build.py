@@ -39,6 +39,8 @@ def cp(src, dst):
 E = html.escape
 
 subjects = json.loads(rd('subjects.json'))
+def subject_files(s):
+    return ['data.js'] + s.get('css', []) + s.get('scripts', ['labs.js']) + s.get('files', [])
 live = [s for s in subjects if s['status'] == 'live']
 link = lambda folder: folder + ('/index.html' if PREVIEW else '/')
 HUB_FROM_SUBJECT = '../index.html' if PREVIEW else '../'
@@ -80,6 +82,8 @@ for s in live:
     shell = (shell_t.replace('{{HUB}}', HUB_FROM_SUBJECT)
              .replace('{{CODE_HTML}}', f'<span class="code">{E(s["code"])} · </span>' if s.get('code') else '')
              .replace('{{TITLE}}', E(s['title'])))
+    css = ''.join(f'<link rel="stylesheet" href="{c}">\n' for c in s.get('css', []))
+    scripts = '\n'.join(f'<script src="{j}"></script>' for j in s.get('scripts', ['labs.js']))
     vend = ''.join(f'<script src="../{VENDOR[v][0]}"></script>\n' for v in s.get('vendor', []))
     pre = ''.join(f'<link rel="preload" href="../{VENDOR[v][0]}" as="script">\n' for v in s.get('vendor', []))
     page = f'''<!doctype html>
@@ -101,7 +105,7 @@ for s in live:
 <meta name="apple-mobile-web-app-title" content="notewithliqi">
 {pre}{FONTS}
 <link rel="stylesheet" href="../shared/core.css">
-</head>
+{css}</head>
 <body>
 <noscript><p style="padding:16px;color:#E7EBF3">This site needs JavaScript for its labs, flashcards and quiz. The notes still display without it.</p></noscript>
 {shell.rstrip()}
@@ -110,14 +114,14 @@ for s in live:
 
 {vend}<script src="data.js"></script>
 <script src="../shared/core.js"></script>
-<script src="labs.js"></script>
+{scripts}
 {sw_reg("../sw.js")}
 </body>
 </html>
 '''
     wr(sid + '/index.html', page)
-    cp(os.path.join(HERE, base + 'data.js'), sid + '/data.js')
-    cp(os.path.join(HERE, base + 'labs.js'), sid + '/labs.js')
+    for f in subject_files(s):
+        cp(os.path.join(HERE, base + f), sid + '/' + f)
 
 # ---------- hub ----------
 def card(s):
@@ -132,13 +136,13 @@ def card(s):
     href = link(s['id'])
     chs = '\n'.join(f'          <li data-ch="{i+1}"><span class="n">CH {i+1:02d}</span><span class="t"><span>{E(c)}</span><span class="bar"><i></i></span></span><span class="v">–</span></li>' for i, c in enumerate(s['chapters']))
     return f'''      <article class="sc live" data-subject="{s["id"]}" style="{st}">
-        <div class="row"><span class="code">{E(s["code"])}</span><span class="st">{len(s["chapters"])} chapters</span></div>
+        <div class="row">{f'<span class="code">{E(s["code"])}</span>' if s.get("code") else ""}<span class="st">{len(s["chapters"])} chapters{f' · {E(s["extra"])}' if s.get("extra") else ""}</span></div>
         <h2><a href="{href}">{E(s["title"])}</a></h2>
         <p>{E(s["blurb"])}</p>
         <ul class="chs" aria-label="Chapters">
 {chs}
         </ul>
-        <div class="stats"><div><span>Topics learned</span><b data-k="learned">–</b></div><div><span>Cards due</span><b data-k="due">–</b></div><div><span>Drill accuracy</span><b data-k="drill">–</b></div><div><span>Last exam</span><b data-k="exam">–</b></div></div>
+        <div class="stats"><div><span>Topics learned</span><b data-k="learned">–</b></div><div><span>Cards due</span><b data-k="due">–</b></div>{'<div><span>Drill accuracy</span><b data-k="drill">–</b></div>' if s.get('drill') else '<div><span>Quiz bank</span><b>' + str(s.get('quiz', '–')) + '</b></div>'}<div><span>Last exam</span><b data-k="exam">–</b></div></div>
         <div class="cta"><a class="go" href="{href}">Open subject <span aria-hidden="true">→</span></a><a class="cont" href="{href}" hidden>Continue <span></span></a></div>
       </article>'''
 
@@ -169,10 +173,11 @@ icon(512, maskable=True, path='icons/maskable-512.png'); icon(180, maskable=True
 ICONS = ['icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png']
 
 # ---------- manifest ----------
-shortcuts = []
-for s in live:
-    shortcuts.append({"name": s['title'], "short_name": s['short'], "url": './' + s['id'] + '/'})
-    shortcuts += [{"name": n, "url": './' + s['id'] + '/' + h} for n, h in s.get('shortcuts', [])]
+shortcuts = [{"name": s['title'], "short_name": s['short'], "url": './' + s['id'] + '/'} for s in live]
+extra = [[{"name": n, "url": './' + s['id'] + '/' + h} for n, h in s.get('shortcuts', [])] for s in live]
+while any(extra):  # round-robin so every subject gets a shortcut before any gets two
+    for lst in extra:
+        if lst: shortcuts.append(lst.pop(0))
 manifest = {
     "name": "notewithliqi", "short_name": "notewithliqi",
     "description": "Interactive revision notes for university subjects: 3D labs, flashcards, quizzes and timed exams. Works offline.",
@@ -191,7 +196,7 @@ if PREVIEW:
 # ---------- service worker ----------
 STATIC = [VENDOR[v][0] for v in VENDOR] + ICONS
 PAGES = ['./', 'shared/core.css', 'shared/core.js', 'manifest.webmanifest']
-for s in live: PAGES += [s['id'] + '/', s['id'] + '/data.js', s['id'] + '/labs.js']
+for s in live: PAGES += [s['id'] + '/'] + [s['id'] + '/' + f for f in subject_files(s)]
 def digest(files, n=10):
     h = hashlib.sha256()
     for f in files: h.update(open(os.path.join(OUT, 'index.html' if f == './' else (f + 'index.html' if f.endswith('/') else f)), 'rb').read())
@@ -312,7 +317,7 @@ wr('_headers', '''# Netlify headers: caching + security
 ''')
 
 # ---------- README ----------
-rows = '\n'.join(f"| `{s['id']}/` | {s['title']} ({s['code']}) |" for s in live)
+rows = '\n'.join(f"| `{s['id']}/` | {s['title']}{' (' + s['code'] + ')' if s.get('code') else ''} |" for s in live)
 wr('README.md', f"""# notewithliqi
 
 Interactive revision notes. The home page lists every subject; each subject has its own chapters,

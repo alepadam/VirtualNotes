@@ -1,0 +1,581 @@
+<main id="main">
+  <section class="hero" data-view="home" id="home">
+    <div class="eyebrow">WIE3010 Data Visualization · Revision companion</div>
+    <h1>See the pattern, <em>then make others see it</em></h1>
+    <p class="lede">Four lecture chapters, every slide point kept and rebuilt as visuals you can poke. Count the 7s against the clock, walk around an Ames room, see your chart through colour-blind eyes, strip an Excel default chart down to its data, and drag tiles around a dashboard to see where the eye lands first. Then practise for real: write SQL that turns into charts, and build PivotTables, slicers and a dashboard in a practice Excel.</p>
+    <div class="meta"><span><b>4</b> chapters</span><span><b>35</b> topics</span><span><b>30+</b> interactive visuals</span><span><b>2</b> hands-on labs (SQL, Excel)</span><span><b>100+</b> glossary terms</span><span><b>106</b> quiz questions</span></div>
+    <div class="resume" id="resume" hidden></div>
+    <div class="toc" id="home-toc"></div>
+    <div class="howto" aria-label="How to revise with this site">
+      <div><b>Learn it with pictures</b><p>Read a chapter and play with its visuals. In this subject the picture is the point: change a colour, a sort order or a chart type and watch what it does to your reading.</p><span class="why">dual coding</span></div>
+      <div><b>Make it with your hands</b><p>Do the SQL lab and the Excel lab. Choosing the chart yourself, and fixing it when it reads badly, is what the assignments and the exam ask for.</p><span class="why">generation effect</span></div>
+      <div><b>Test yourself, space it out</b><p>Answer "Check yourself" at the end of each chapter, take the chapter quiz, and do a few flashcards each day.</p><span class="why">practice testing · distributed practice</span></div>
+    </div>
+    <p class="sources">Based on Dunlosky et al. (2013), which rated practice testing and distributed practice the most effective of ten common study techniques. <a href="https://doi.org/10.1177/1529100612453266" target="_blank" rel="noopener">Read the paper</a></p>
+    <div class="cmap-wrap">
+      <h2 class="cmap-h">How the chapters connect</h2>
+      <p class="sub">A dashboard question in Chapter 4 usually needs Chapter 1's preattentive attributes, Chapter 2's chart rules and Chapter 3's colour rules. Tap a box to see its links, then open the topic.</p>
+      <div class="cmap-scroll"><div class="cmap" id="cmap"></div></div>
+      <div class="panel cmap-info" id="cmap-info"></div>
+    </div>
+    <div class="chips"><span class="chip on">Tap and drag the visuals</span><span class="chip on">Flip "Fix it" to see the better chart</span><span class="chip on">Preview any chart as a colour-blind viewer</span><span class="chip t">"Exam tip" boxes highlight likely questions</span><span class="chip">"Slide note" flags gaps in the PDFs</span><span class="chip">"Extra" marks material beyond the slides</span></div>
+  </section>
+
+  <!-- ===================== CHAPTER 1 ===================== -->
+  <section class="chapter" id="ch1" data-view="ch1" data-ch="1" data-name="Introduction" data-title="Introduction to Data Visualization" data-sub="Why it matters, data to strategy, preattentive attributes, history, perception, Bertin's visual variables">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">01</span>
+      <span class="eyebrow">Chapter 1</span>
+      <h2>Introduction to Data Visualization</h2>
+      <p>Goals: define data visualization and express its value as a tool for understanding our world; describe the fundamental aspects of visual perception and how they relate to data visualization; learn the history of data visualization, important people in the field and contemporary practitioners; understand the preattentive attributes, the embedded meaning of colour and size, and the two thinking systems that we use to process the world around us.</p>
+    </div>
+
+    <article class="topic" id="dv-why">
+      <div class="topic-head"><span class="tnum">1.1</span><h3>What is data visualization, and why is it important?</h3></div>
+      <p class="sub">The slides open with three signals that visual analytics matters to organisations. The first is a 2010 MIT Sloan survey. Respondents named the top three analytic techniques creating value today, and predicted which three would create the most value in 24 months. Tap a technique to follow it.</p>
+      <div class="vz-card"><div class="vz" id="mit-slope" style="min-height:320px"></div><p class="vz-cap" id="mit-cap">Source: "Big Data, Analytics and the Path From Insights to Value", MIT Sloan Management Review, December 2010.</p></div>
+      <div class="cards3">
+        <div class="mini"><span class="kicker">Gartner, 2014</span><p>"…2014 will be a critical year in which the task of making 'hard types of analysis easy' for an expanded set of users… will continue to dominate BI market requirements." <small>Gartner 2014 Magic Quadrant for Business Intelligence and Analytics Platforms</small></p></div>
+        <div class="mini"><span class="kicker">A growing field</span><ul><li>Data visualization classes are now taught at universities, as part of Business Analytics, Statistics, Information Systems, Business Administration and Econometrics.</li><li>Companies are adding visual analyst positions: visually trained business analysts with a data orientation, and growing ranks of data "storytellers" and "data visualization" positions.</li></ul></div>
+        <div class="mini"><span class="kicker">Jobs seen on Indeed.com, July 2017</span><ul><li>Data Visualization Designer/Storyteller at Facebook</li><li>Data Visualization Expert at a leading hedge fund</li><li>Data Visualization Manager at Deloitte</li></ul></div>
+      </div>
+      <p class="tip">Read the slopegraph as the slide's point: data visualization jumps from 3rd place today to 1st place in 24 months, while standardized reporting drops from 2nd to last. A slopegraph is itself a good chart for "rank before vs after".</p>
+      <p class="note">The evidence is dated (2010 survey, 2014 Gartner quote, 2017 job ads). The argument still holds, but quote the years if you use them in an answer.</p>
+    </article>
+
+    <article class="topic" id="dv-dik">
+      <div class="topic-head"><span class="tnum">1.2</span><h3>Business intelligence: moving from data to action</h3></div>
+      <p class="sub">Business intelligence is a path: Data → Information → Knowledge → a plan to guide actions or key decisions (Strategy). Each step answers a different kind of question. Tap a step.</p>
+      <div class="lab2">
+        <div class="vz" id="dik"></div>
+        <aside class="panel" id="dik-p"></aside>
+      </div>
+      <p class="tip">Learn the four definitions word for word and the question words for each step. "How many / how much / what are" questions give you information. "Why are" gives knowledge. "How do we / what can we" leads to strategy.</p>
+    </article>
+
+    <article class="topic" id="dv-sevens">
+      <div class="topic-head"><span class="tnum">1.3</span><h3>How many times does the digit 7 appear?</h3></div>
+      <p class="sub">The slides' opening exercise. Count the 7s in the plain grid with the timer running. Then switch on colour and count again. Then see the counts as a bar chart and as a pie chart. It starts with the slide's own grid (12 rows of 17 digits); "New grid" makes a fresh random one so you can try again without remembering the answer.</p>
+      <div class="sev">
+        <div class="sev-top">
+          <div class="seg" role="group" aria-label="How to show the digits" id="sev-mode"><button type="button" data-m="plain" aria-pressed="true">1 · Plain</button><button type="button" data-m="color" aria-pressed="false">2 · Colour the 7s</button><button type="button" data-m="bar" aria-pressed="false">3 · Bar chart</button><button type="button" data-m="pie" aria-pressed="false">4 · Pie chart</button></div>
+          <span class="sev-clock" id="sev-clock">0.0 s</span>
+        </div>
+        <div class="sev-body" id="sev-body"></div>
+        <div class="controls"><label class="inl">Your count <input type="number" id="sev-ans" min="0" max="99" inputmode="numeric"></label><button class="btn primary" type="button" id="sev-check">Check</button><button class="btn ghost" type="button" id="sev-new">New grid</button><span class="steptext" id="sev-msg" style="flex:1;min-width:220px">Press "Start" by clicking the grid, then count.</span></div>
+      </div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">What the bar chart fixes</span><p>A bar chart of every digit's count lets you compare <b>length</b> along a common baseline, which the slides list with <b>2D position</b> as the attributes for <b>precise quantitative comparisons</b>. Highlighting only the 7 bar answers the question at a glance.</p></div>
+        <div class="mini"><span class="kicker">What the pie charts get wrong (slide 24)</span><ul><li>Label problems</li><li>Colour problems</li><li>Hard to make visual comparisons</li><li>Do we get the same answer from both pies? (the two pies order and colour the digits differently)</li></ul></div>
+      </div>
+      <div class="vz-card"><span class="kicker" style="color:var(--teal)">Preattentive attributes: which one pops out?</span><div class="pre56" id="pre56"></div><p class="vz-cap">Slide 17 shows "56789" with the 7 changed by colour, size, orientation and texture. Slide 18 repeats it with shapes: a different shape, colour, size or enclosure in a grid of dots is seen before you consciously search.</p></div>
+      <p class="tip">Preattentive attributes are processed by the eye in under about a quarter of a second, before conscious attention. Colour, size, orientation, shape, texture and enclosure make something "pop out". Only length/width and 2D position support precise quantitative comparison.</p>
+      <p class="note extra">"Preattentive" timings (about 200–250 ms) come from vision research (Treisman, Healey). The slides show the effect but don't give a number.</p>
+    </article>
+
+    <article class="topic" id="dv-hist">
+      <div class="topic-head"><span class="tnum">1.4</span><h3>A brief history of data visualization</h3></div>
+      <p class="sub">From Ptolemy's tables to Tufte's sparklines. Tap a point on the timeline to see who did what, drawn as the chart type they gave us.</p>
+      <div class="hist" id="hist"></div>
+      <div class="lab2"><div class="vz" id="hist-viz" style="min-height:240px"></div><aside class="panel" id="hist-p"></aside></div>
+      <p class="tip">Common questions: who created the time-series line graph, bar chart and pie chart (William Playfair), who introduced the box plot and EDA (John Tukey, 1977), who wrote Semiology of Graphics (Jacques Bertin, 1967), who invented sparklines (Edward Tufte), who developed trellis charts (William Cleveland), and which map is called "the best statistical graphic ever drawn" (Minard's map of Napoleon's Russian campaign).</p>
+      <p class="note">Slide 29 calls Playfair "founder of graphical methods of statistics" and dates him late 18th–early 19th century; slide 30 dates Minard's work 1844–1870 under "Early 19th Century", which is really mid-19th century.</p>
+    </article>
+
+    <article class="topic" id="dv-perc">
+      <div class="topic-head"><span class="tnum">1.5</span><h3>Visual perception: "I see" vs "Show me"</h3></div>
+      <p class="sub">Slides 40–68 are a run of illusions from the Brain Games video and elsewhere. Each one shows a rule your visual system follows without asking you, and each rule matters when you design a chart. Pick one and use its control.</p>
+      <div class="tabs ill-tabs" id="ill-tabs" role="tablist" aria-label="Perception effects"></div>
+      <div class="lab2"><div class="vz ill-stage" id="ill-stage"></div><aside class="panel" id="ill-p"></aside></div>
+      <p class="tip">Be ready to name the effect and give the design lesson: same colour looks different on different backgrounds (so avoid heavy background gradients); the Hermann grid and Moiré effect (so keep gridlines spaced and muted); Gestalt closure, proximity and similarity (so group related things by position and colour); context changes what we read (so label clearly).</p>
+    </article>
+
+    <article class="topic" id="ames-lab">
+      <div class="topic-head"><span class="tnum">1.6</span><h3>The Ames room in 3D: why viewpoint and context matter</h3></div>
+      <p class="sub">Slides 48–51. Through the peephole the room looks like a normal box, so the two people look like a giant and a dwarf. Drag to walk around it and the trick is revealed: the back wall slants away, so one person is much further from you. Slide 50 (a hand "pinching" a distant monument) and slide 52 (the railway tracks) use the same trick: our brain assumes a context and judges size from it.</p>
+      <div class="lab">
+        <div class="stage" id="st-ames"></div>
+        <aside class="panel">
+          <span class="kicker">Ames room</span>
+          <div class="controls"><button class="btn primary" type="button" id="ames-peep">Peephole view</button><button class="btn" type="button" id="ames-walk">Walk around</button><button class="btn ghost" type="button" id="ames-swap">Swap the people</button></div>
+          <p id="ames-txt">Peephole view: both people stand against the "back wall". The one on the right looks nearly twice as tall.</p>
+          <p class="sub" style="font-size:.85rem">Real room: the left back corner is about twice as far from the peephole as the right back corner, and the floor and ceiling slope to hide it. The chequered floor is distorted to look square from the peephole only.</p>
+        </aside>
+      </div>
+      <p class="tip">The design lesson: a chart's size judgements depend on the frame around them. 3D perspective, a non-zero baseline or an unequal axis are the chart versions of an Ames room.</p>
+    </article>
+
+    <article class="topic" id="dv-together">
+      <div class="topic-head"><span class="tnum">1.7</span><h3>Putting it all together, and "easy, right? Not so fast…"</h3></div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">Putting it all together</span><ul><li>We live in a world that is rich with data.</li><li>Tools let us look at the past, present, and "try out" future scenarios.</li><li>Ultimately we want to understand our world and make better choices, change behaviour, grow wealth, improve quality of life, etc.</li><li>We discover <i>how</i> to do these things by asking questions through data.</li><li>The understanding and interpretation of data is an activity of <b>human cognition</b>: asking questions, discovering patterns, drawing meaning from the data; a creative, visually-driven process that also requires empirical and mathematical skills; it requires subject matter knowledge; built-in rules (or at least guidelines) affect the way we process information.</li></ul></div>
+        <div class="mini"><span class="kicker">Easy, right? Not so fast…</span><ul><li>Software promises to reveal the answers, but computers can't figure out what our data means, how it connects to the business or problem, and what to do.</li><li>Data needs are changing (e.g. big data).</li><li>Users expect "iPhone easy".</li><li>We don't train for visual intelligence.</li></ul><p class="big-eq">Data + tools + brains ⋙ business intelligence</p></div>
+      </div>
+      <p class="sub">Stretching our thinking about data: most people agree a dashboard like Few's Telesales dashboard (slide 73) is data visualization. The slides then show the Cleveland Museum of Art's online collection: a grid of artwork images you can filter and open. That browsable image grid is also data visualization. Each artwork is a record, the image is how the record is drawn, and filtering it is exploring the data.</p>
+      <div class="vz-card"><div class="museum" id="museum"></div><p class="vz-cap">A record grid in the spirit of slides 74–77: each tile is one record (filter by type), and opening it shows the fields behind it.</p></div>
+      <div class="mini"><span class="kicker">Concluding thoughts</span><ul><li>Ultimately we're trying to understand our world and make better choices, change behaviour, enhance wealth, or improve quality of life.</li><li>Learning more about the way our brains work, how we perceive and process data, and improving how we practise visualization is essential to achieving these goals.</li></ul></div>
+    </article>
+
+    <article class="topic" id="dv-blocks">
+      <div class="topic-head"><span class="tnum">1.8</span><h3>The building blocks: an enhanced visual path, a limited working memory</h3></div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">We are born with an enhanced visual path to cognition</span><ul><li>Approximately <b>70%</b> of sense receptors are in our eyes.</li><li><b>40%</b> of the cerebral cortex is involved in processing visual information.</li><li>The visual connection to the brain has more bandwidth than other paths.</li><li>Visual perception is intimately connected to understanding, and this is reflected in language: "I see what you're talking about…", "Sketch out the idea…", "Seeing is believing…".</li></ul></div>
+        <div class="mini"><span class="kicker">Our brain is powerful, but working memory is limited</span><ul><li>Long-term memory is very important.</li><li>Working memory is limited to a small number of "chunks".</li><li>Visualization lets us consolidate complex statistics so we can process more data simultaneously (seeing the forest along with the trees).</li><li>The picture is not the end goal; it's what we do with it that is important.</li></ul></div>
+      </div>
+      <div class="vz-card"><span class="kicker" style="color:var(--teal)">Working memory test</span><div id="chunks"></div></div>
+      <p class="note extra">The "small number of chunks" is often quoted as about 4 (Cowan, 2001), or Miller's older "7 ± 2". The slides don't give a number.</p>
+      <div class="cards2">
+        <div class="mini sys"><span class="kicker">System 1 · fast</span><p>Automatic, effortless, always on: noticing the red dot, the tallest bar, a face. Preattentive attributes talk to System 1.</p></div>
+        <div class="mini sys"><span class="kicker">System 2 · slow</span><p>Deliberate, effortful, limited by working memory: counting the 7s digit by digit, reading values off a legend, doing arithmetic.</p></div>
+      </div>
+      <p class="note extra">The chapter goals mention "the two thinking systems that we use to process the world", but no slide covers them. They are Daniel Kahneman's System 1 and System 2 (Thinking, Fast and Slow, 2011). A good chart hands the pattern to System 1 so System 2 can spend its effort on the meaning. Ask your lecturer how much of this is examinable.</p>
+    </article>
+
+    <article class="topic" id="dv-bertin">
+      <div class="topic-head"><span class="tnum">1.9</span><h3>Bertin's visual variables</h3></div>
+      <p class="sub">According to Bertin, our perception of data on a printed page is associated with these visual variables: shape, orientation, colour, texture, value and size, plus the two planar dimensions (x and y), which are encoded in position and order. Slides 83–106 show each one as a grid of dots where one dot differs. Pick a variable, then click the odd dot as fast as you can.</p>
+      <div class="bert">
+        <div class="tabs" id="bert-tabs"></div>
+        <div class="lab2"><div class="vz bert-stage" id="bert-stage"></div><aside class="panel" id="bert-p"></aside></div>
+      </div>
+      <div class="mini"><span class="kicker">The digital additions</span><p>With today's digital technology, three more factors have become critical: <b>Motion</b> (animated presentation of frames of data), <b>Medium</b> (the physical strata on which data is displayed) and <b>Context</b> (the sensory and emotional environment). Slide 107 asks how the video made you feel and how that differs from now: motion, medium and context influence how we perceive data and information.</p></div>
+      <p class="tip">Memorise Bertin's list: shape, orientation, colour (hue), texture, value, size, plus position and order on the plane. The slides split colour into hue, saturation (intensity) and value (brightness); know all three terms.</p>
+    </article>
+
+    <article class="topic" id="dv-color1">
+      <div class="topic-head"><span class="tnum">1.10</span><h3>Colour: hue, saturation, value, and the colour wheel</h3></div>
+      <p class="sub">Slide 89 separates three ways a colour can change. Move the sliders, then switch between the traditional (painters') wheel and the RGB (screen) wheel to see why the complements differ.</p>
+      <div class="lab2"><div class="vz" id="hsv"></div><aside class="panel" id="hsv-p"></aside></div>
+      <ul class="facts">
+        <li><b>Hue</b>: changes to the colour itself (red, orange, yellow, green, blue, purple).</li>
+        <li><b>Saturation</b>: changes to the intensity (pale to vivid).</li>
+        <li><b>Value</b>: changes to the brightness (light to dark).</li>
+        <li><b>Traditional colour wheel</b>: primaries red, yellow and blue. Classical painters used this arrangement to find complements.</li>
+        <li><b>RGB colour wheel</b>: computer displays use red, green and blue elements, which results in a shifted arrangement of complementary colours.</li>
+        <li>The five uses of colour (sequential, diverging, categorical, highlight, alert) come from The Big Book of Dashboards and are covered in Chapter 3. Slides 94–95 ask "Does this colour use enhance or detract?" and "What does colour even mean here?" about a rainbow-coloured Wall Street Journal chart: colour that varies without meaning detracts.</li>
+      </ul>
+      <p class="note">The slides spell it "compliments". The correct word is "complements" (opposite colours on the wheel).</p>
+    </article>
+
+    <article class="topic" id="dv3d">
+      <div class="topic-head"><span class="tnum">1.11</span><h3>"…and what happens now?" The 3D chart problem</h3></div>
+      <p class="sub">The chapter ends with a 3D line chart from an old survey tool (slide 108). Perspective, tilt and depth make values hard to read and lines hide each other. Rotate this 3D chart, try to read the values, then flip to 2D.</p>
+      <div class="lab">
+        <div class="stage" id="st-3d"></div>
+        <aside class="panel" id="p-3d"></aside>
+      </div>
+      <p class="tip">If asked why to avoid 3D charts: the third dimension carries no data, perspective distorts length and position (the attributes we read most precisely), and front series hide back series.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">1.12</span><h3>Common misconceptions</h3></div>
+      <div class="myths">
+        <details class="myth"><summary><span class="mx">Myth</span><span>A chart is just a prettier table.</span></summary><p><b>Actually:</b> The 7s exercise shows a chart changes what you can see. Tables are good for looking up exact values; charts let preattentive vision find patterns, outliers and comparisons, which a table can't do.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>More colour makes a chart easier to read.</span></summary><p><b>Actually:</b> Colour is one of the strongest preattentive attributes, so it should point at something. If every bar is a different colour, nothing stands out and the reader keeps checking the legend.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>All visual variables are equally precise.</span></summary><p><b>Actually:</b> Colour, shape and orientation are good for "find it", but for precise quantitative comparison the slides single out length/width and 2D position.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Our eyes measure colour and size objectively.</span></summary><p><b>Actually:</b> The illusions show the same grey looks different on different backgrounds and the same person looks different sizes in the Ames room. Context changes perception.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Data visualization is a modern invention of software.</span></summary><p><b>Actually:</b> Tables go back to Ptolemy (about 150 CE), coordinates to Descartes, and the line, bar and pie chart to Playfair in the late 1700s. Software (Macintosh 1984, GUI from Xerox PARC) made it interactive.</p></details>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== CHAPTER 2 ===================== -->
+  <section class="chapter" id="ch2" data-view="ch2" data-ch="2" data-name="Fundamentals" data-title="The Fundamentals of Data Visualization" data-sub="Halloween data set, time on the x-axis, line charts, avoid Excel defaults, data-ink ratio, chart pitfalls">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">02</span>
+      <span class="eyebrow">Chapter 2</span>
+      <h2>The Fundamentals of Data Visualization</h2>
+      <p>A review of the Halloween visualization assignment (Jeffrey A. Shaffer, University of Cincinnati). Goals: learn fundamental design choices through review of the Halloween exercise; learn data visualization best practices by comparing and contrasting numerous examples; discover some of the pitfalls in the analysis of the Halloween data set.</p>
+    </div>
+
+    <article class="topic" id="hw-data">
+      <div class="topic-head"><span class="tnum">2.1</span><h3>The Halloween data set, and the trap inside it</h3></div>
+      <p class="sub">The assignment data: trick-or-treaters counted at one house each Halloween, 2008–2016, at six times of the evening. Look closely at the numbers: they <b>only ever go up</b> across a row. Each column is a running total ("so far by this time"), not the number who came in that half hour. Flip the switch to derive the arrivals per half hour, and watch the chart change shape.</p>
+      <div class="hw">
+        <div class="controls"><div class="seg" role="group" aria-label="Values" id="hw-mode"><button type="button" data-m="cum" aria-pressed="true">As recorded: running total</button><button type="button" data-m="per" aria-pressed="false">Derived: arrivals per half hour</button></div><label class="inl">Year <select id="hw-year"></select></label></div>
+        <div class="lab2 hw-lab"><div class="tbl hw-tbl" id="hw-tbl"></div><div class="vz" id="hw-chart" style="min-height:280px"></div></div>
+        <p class="steptext" id="hw-msg"></p>
+      </div>
+      <p class="tip">"Total (8:15pm)" is the year's total. Arrivals between two times = later value − earlier value, e.g. 2011, 7:00–7:30pm: 619 − 367 = 252. Several student examples on the slides plotted the running totals as if they were per-timeslot counts, which makes every evening look like it "builds up".</p>
+      <p class="note">The slide never says the columns are cumulative; you have to notice it. The 2012 Halloween Planning Dashboard reads the per-slot counts as a "bell curve" peaking at 7:00–7:30pm, which is right for the derived counts.</p>
+    </article>
+
+    <article class="topic" id="hw-dash">
+      <div class="topic-head"><span class="tnum">2.2</span><h3>Selected samples from 2012: what worked and what didn't</h3></div>
+      <p class="sub">Examples from 2012 (slides 6–17): cumulative line charts with a 2012 forecast, small multiples, dark "Halloween" themes, and a <b>Halloween Planning Dashboard</b> that pairs every chart with a "Knowledge" line and a "Recommendation" line. That pairing is what makes a chart actionable (Chapter 4). Below is a rebuild of that dashboard with its claims you can test.</p>
+      <div class="hpd" id="hpd"></div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">What the dashboard said</span><ul><li><b>Knowledge:</b> visits come in a bell curve, fewer at the beginning and end, more towards the middle. <b>Recommendation:</b> if someone offers to help, 7:00–7:30pm has historically been the busiest.</li><li><b>Knowledge:</b> the total number of visitors has increased each year. <b>Recommendation:</b> purchase candy for ~1160 visitors (last year's total 869 + maximum increase 143 + a 10% buffer ~105).</li><li><b>Knowledge:</b> with limited data, the percentage growth of the DJIA correlates with the percentage growth of visitors. <b>Recommendation:</b> visitor growth has almost exactly equalled 2.5× DJIA growth; with growth at 6%, prepare for 15% growth.</li></ul></div>
+        <div class="mini"><span class="kicker">The pitfalls hidden in it</span><ul><li><b>Three data points</b> (2008–09, 09–10, 10–11) can "correlate" with almost anything. The Dow Jones has no plausible link to trick-or-treating: this is a spurious correlation.</li><li><b>The candy arithmetic doesn't add up:</b> 869 + 143 + 105 = 1117, not ~1160.</li><li><b>"Max change = +143" isn't the maximum:</b> the yearly totals 492, 542, 726, 869 change by +50, +184 and +143. The largest rise was +184 (2009→2010); +143 is just the latest. The "Avg. annual change = +125" is right: (869 − 492) ÷ 3 ≈ 125.7.</li><li><b>Totals don't only go up:</b> the data from later years (2012: 673, 2013: 391) broke the "increased every year" rule straight away. A short trend is not a law.</li></ul></div>
+      </div>
+      <p class="note">Slide 12 says "~1160 visitors" but the parts it lists add to 1117, and its "maximum increase" of 143 is really the latest increase (the biggest was +184). This is a student sample being reviewed, so checking its numbers is part of the lesson; mention both if the example comes up.</p>
+    </article>
+
+    <article class="topic" id="time-x">
+      <div class="topic-head"><span class="tnum">2.3</span><h3>Keep time on the x-axis, and use line charts for time series</h3></div>
+      <p class="sub">Slides 16–21. The same five yearly totals, drawn four ways. Time read top-to-bottom (horizontal bars) or right-to-left fights the way we read time. Time left-to-right on the x-axis matches it, and a line joins the points into a trend.</p>
+      <div class="controls"><div class="seg" role="group" aria-label="Chart form" id="tx-mode"><button type="button" data-m="hbar" aria-pressed="true">Horizontal bars</button><button type="button" data-m="rev" aria-pressed="false">Years reversed</button><button type="button" data-m="col" aria-pressed="false">Columns</button><button type="button" data-m="line" aria-pressed="false">Line</button></div></div>
+      <div class="lab2"><div class="vz" id="tx-chart" style="min-height:280px"></div><aside class="panel" id="tx-p"></aside></div>
+      <p class="tip">The rule from the slides: keep time on the x-axis, running left to right; line charts are usually a good option for time series. Bars are fine for a few periods when each period is a separate total, but never put years down the y-axis or run them backwards.</p>
+    </article>
+
+    <article class="topic" id="declutter">
+      <div class="topic-head"><span class="tnum">2.4</span><h3>Avoid Excel defaults: remove to improve (the data-ink ratio)</h3></div>
+      <p class="sub">Slides 22–28 show seven students' (Persons A–G) charts built on old Excel defaults: heavy gridlines, markers on every point, a boxed legend far from its lines, borders, a grey plot area, bold titles. Then a "sigh of relief" version. Remove one thing at a time and watch the data come forward.</p>
+      <div class="lab2">
+        <div class="vz" id="dc-chart" style="min-height:320px"></div>
+        <aside class="panel">
+          <span class="kicker">Remove to improve</span>
+          <div class="dc-list" id="dc-list"></div>
+          <div class="controls"><button class="btn primary" type="button" id="dc-next">Remove next</button><button class="btn ghost" type="button" id="dc-reset">Back to defaults</button></div>
+          <div class="ink"><span>Data-ink ratio</span><div class="meter"><i id="dc-ink"></i></div><small id="dc-ink-t"></small></div>
+        </aside>
+      </div>
+      <p class="tip">Data-ink ratio (Tufte): the share of a graphic's ink that shows data. Raise it by erasing non-data ink (borders, backgrounds, heavy gridlines, redundant markers) and redundant data ink, as long as nothing the reader needs is lost. "Remove to improve" (slide 28, Darkhorse Analytics) is the same idea.</p>
+      <p class="note extra">The meter here is an approximation: it counts drawn elements, weighted by how much ink they use. Tufte defined the ratio conceptually; nobody measures it exactly.</p>
+    </article>
+
+    <article class="topic" id="pitfalls">
+      <div class="topic-head"><span class="tnum">2.5</span><h3>Examples from 2013–2015: spot the problem, then fix it</h3></div>
+      <p class="sub">Slides 29–46 show more student charts. Each one below is rebuilt from the slide. Decide what's wrong before you reveal it, then flip "Fix it" to see a better version.</p>
+      <div class="tabs" id="pf-tabs" role="tablist" aria-label="Examples"></div>
+      <div class="lab2"><div class="vz" id="pf-chart" style="min-height:300px"></div><aside class="panel" id="pf-p"></aside></div>
+      <p class="tip">Typical exam wording: "Critique this chart and suggest an improvement." Structure the answer as: what the chart tries to say, what gets in the way (axis, chart type, colour, clutter, misleading claim), and the fix.</p>
+    </article>
+
+    <article class="topic" id="chooser">
+      <div class="topic-head"><span class="tnum">2.6</span><h3>Choosing a chart for the question</h3></div>
+      <p class="sub">The chapter's examples boil down to matching the chart to the question. Pick what you want to show.</p>
+      <div class="tabs" id="ch-tabs"></div>
+      <div class="lab2"><div class="vz" id="ch-chart" style="min-height:260px"></div><aside class="panel" id="ch-p"></aside></div>
+      <p class="note extra">This chooser goes beyond the slides. It follows the same rules (time on x, length on a common baseline, sort for order, few slices) and is a quick way to justify a chart choice in an assignment.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">2.7</span><h3>Common misconceptions</h3></div>
+      <div class="myths">
+        <details class="myth"><summary><span class="mx">Myth</span><span>If two series move together, one explains the other.</span></summary><p><b>Actually:</b> The DJIA, unemployment, childhood obesity and "the Obama factor" all appear next to trick-or-treater counts on the slides. With four or five yearly points almost anything lines up. Correlation over a handful of points is not evidence of cause.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Excel's default chart is a safe, neutral choice.</span></summary><p><b>Actually:</b> The slides' "Avoid Excel Defaults" series shows defaults adding borders, heavy gridlines, markers and distant legends. Start from the default, then remove what doesn't carry data.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>A line is right for any data with years in it.</span></summary><p><b>Actually:</b> A line suggests continuous change between points. Total precipitation on one night per year isn't continuous, so the slides' line through 2008–2011 invents a "trend". Dots or lollipops (slides 38–40) are honest.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Clip art and themes make a chart engaging.</span></summary><p><b>Actually:</b> A thermometer image, an Obama photo or full-black moon pies add ink without adding data, and the photo even implies a cause. Engagement should come from a clear message.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>The numbers in a table mean what the column header seems to say.</span></summary><p><b>Actually:</b> The Halloween columns are running totals. Check how the data was recorded before choosing a chart, or the chart will answer the wrong question.</p></details>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== CHAPTER 3 ===================== -->
+  <section class="chapter" id="ch3" data-view="ch3" data-ch="3" data-name="Colour" data-title="Use of Color in Data Visualization" data-sub="Meaning of colour, sequential, diverging, categorical, highlight, alert, too much colour, colour vision deficiency">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">03</span>
+      <span class="eyebrow">Chapter 3</span>
+      <h2>Use of Color in Data Visualization</h2>
+      <p>Jeffrey A. Shaffer. Goals: learn how to use colour in data visualization; understand colour vision deficiency; learn options for designing colourblind-friendly data visualizations.</p>
+    </div>
+
+    <article class="topic" id="c-framing">
+      <div class="topic-head"><span class="tnum">3.1</span><h3>Colour carries a message before anyone reads a number</h3></div>
+      <p class="sub">Slide 5 places two famous charts side by side: "Iraq's bloody toll" draws deaths as red bars dripping down from the top, while "Iraq: Deaths on the Decline" draws the same data as blue bars rising from a baseline. Same numbers, opposite feelings. Slide 4 (a "What-if" minimum-wage dashboard) uses one accent colour to separate the affected group from everyone else. Flip the framing on illustrative data.</p>
+      <div class="controls"><div class="seg" role="group" aria-label="Framing" id="fr-mode"><button type="button" data-m="toll" aria-pressed="true">"Bloody toll" framing</button><button type="button" data-m="decline" aria-pressed="false">"On the decline" framing</button></div></div>
+      <div class="vz" id="fr-chart" style="min-height:300px"></div>
+      <p class="note extra">The numbers here are made up for illustration; the slide shows the two published graphics (Simon Scarr, South China Morning Post, 2011, and Andy Cotgreave's 2014 redesign).</p>
+    </article>
+
+    <article class="topic" id="c-meaning">
+      <div class="topic-head"><span class="tnum">3.2</span><h3>What meaning does colour bring to the presentation?</h3></div>
+      <p class="sub">Slide 6 (Juice Analytics whitepaper): colour families carry moods. Apply each family to the same chart and notice how the tone changes.</p>
+      <div class="tabs" id="mood-tabs"></div>
+      <div class="lab2"><div class="vz" id="mood-chart" style="min-height:240px"></div><aside class="panel" id="mood-p"></aside></div>
+    </article>
+
+    <article class="topic" id="c-five">
+      <div class="topic-head"><span class="tnum">3.3</span><h3>The five uses of colour (The Big Book of Dashboards)</h3></div>
+      <p class="sub">Slides 7–12. Each use answers a different question. The same Malaysian state data is drawn as a tile map and a bar chart; switch the colour use and read what each one tells you.</p>
+      <div class="tabs" id="five-tabs"></div>
+      <div class="five">
+        <div class="vz" id="five-map"></div>
+        <div class="vz" id="five-bar" style="min-height:300px"></div>
+      </div>
+      <p class="steptext" id="five-msg"></p>
+      <ul class="facts">
+        <li><b>Sequential</b>: colour is ordered from low to high (e.g. unemployment rate by state). One hue, light to dark.</li>
+        <li><b>Diverging</b>: two sequential colours with a neutral midpoint (e.g. profit by state, losses one colour and gains another, zero neutral).</li>
+        <li><b>Categorical</b>: contrasting colours for individual comparison (e.g. quantity by category and sub-category).</li>
+        <li><b>Highlight</b>: colour used to highlight something (one line in colour, the rest grey).</li>
+        <li><b>Alert</b>: colour used to get the reader's attention (one red dot on the one late inspection).</li>
+      </ul>
+      <p class="tip">Know one example of each from the slides: sequential = unemployment rate by state map; diverging = profit by state map; categorical = quantity by category and subcategory bars; highlight = one state's sales line in blue among grey lines; alert = the red dot next to "19 days" since last inspection.</p>
+    </article>
+
+    <article class="topic" id="c-toomuch">
+      <div class="topic-head"><span class="tnum">3.4</span><h3>Too much colour</h3></div>
+      <p class="sub">Slides 13–14. Short-term memory holds only "small chunks of information", so many colours force you to reuse the same or similar colours and to keep referring to the legend. Add categories and watch the legend take over, then switch to highlight.</p>
+      <div class="controls"><label class="inl">Colours used <input type="range" id="tm-n" min="3" max="13" value="13"></label><b id="tm-n-v" class="mono">13</b><div class="seg" role="group" aria-label="Colour approach" id="tm-mode"><button type="button" data-m="all" aria-pressed="true">One colour per category</button><button type="button" data-m="hi" aria-pressed="false">Highlight one</button></div><label class="inl" id="tm-pick-l" hidden>Highlight <select id="tm-pick"></select></label></div>
+      <div class="vz" id="tm-chart" style="min-height:320px"></div>
+      <p class="steptext" id="tm-msg"></p>
+    </article>
+
+    <article class="topic" id="cvd-lab">
+      <div class="topic-head"><span class="tnum">3.5</span><h3>Colour vision deficiency (colour blindness)</h3></div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">The eye with normal colour vision</span><p>Three types of colour-sensitive cones:</p><ol><li><b>Short (S)</b>: respond to short wavelengths.</li><li><b>Medium (M)</b>: respond to medium wavelengths, more sensitive to green colours.</li><li><b>Long (L)</b>: respond to long wavelengths, more sensitive to red colours.</li></ol></div>
+        <div class="mini"><span class="kicker">Types and how common (per 100 men)</span><div id="cvd-prev"></div><p style="margin-top:6px">Together about <b>8% of men</b> have colour vision deficiency. Dichromats (2 working cones) see no perceptible difference between red, orange, brown and green.</p></div>
+      </div>
+      <p class="sub">Simulate it. Pick a chart and a type of colour vision. The simulation runs on the chart itself, so it also works on charts you build in the SQL lab.</p>
+      <div class="controls"><div class="tabs" id="cvd-charts"></div></div>
+      <div class="controls"><div class="seg" role="group" aria-label="Vision" id="cvd-mode"><button type="button" data-m="none" aria-pressed="true">Normal</button><button type="button" data-m="protan" aria-pressed="false">Protanopia (red-blind)</button><button type="button" data-m="deutan" aria-pressed="false">Deuteranopia (green-blind)</button><button type="button" data-m="tritan" aria-pressed="false">Tritanopia (blue-blind)</button><button type="button" data-m="mono" aria-pressed="false">Greyscale</button></div></div>
+      <div class="cvd-pair"><div><span class="kicker">Normal vision</span><div class="vz" id="cvd-a" style="min-height:240px"></div></div><div><span class="kicker" id="cvd-b-l">Simulated</span><div class="vz" id="cvd-b" style="min-height:240px"></div></div></div>
+      <p class="steptext" id="cvd-msg"></p>
+      <p class="note extra">Simulation uses the Machado, Oliveira and Fernandes (2009) model at full severity. The slides used VisCheck (www.vischeck.com) and Color Oracle-style images; results look similar. Tritanopia is rare and isn't on the slide's list.</p>
+    </article>
+
+    <article class="topic" id="c-pal">
+      <div class="topic-head"><span class="tnum">3.6</span><h3>Designing colourblind-friendly visualizations</h3></div>
+      <p class="sub">Slides 22–32. Traffic-light colours (red, yellow, green) collapse to olive and yellow for deuteranopes. The fixes on the slides: use blue and orange instead of red and green, or keep the traffic-light idea but change the lightness so red is dark, yellow is light and green is mid. Test your own palette here.</p>
+      <div class="pal" id="pal"></div>
+      <div class="controls"><label class="inl">Simulate <select id="pal-sim"><option value="deutan">Deuteranopia</option><option value="protan">Protanopia</option><option value="tritan">Tritanopia</option><option value="mono">Greyscale</option></select></label><label class="inl">Try your own: <input type="color" id="pal-c1" value="#E22049"><input type="color" id="pal-c2" value="#FFF200"><input type="color" id="pal-c3" value="#0D9E49"></label></div>
+      <div class="tbl" id="pal-score"></div>
+      <ul class="facts">
+        <li>Traffic light palette: <code>#E22049</code> <code>#FFF200</code> <code>#0D9E49</code>. Under deuteranopia red and green both become olive.</li>
+        <li>Alternate traffic light palette (slide 31): <code>#8E191C</code> <code>#FFDE17</code> <code>#83C775</code>, and (slide 32): <code>#8D1D1C</code> <code>#FFDE17</code> <code>#83C79B</code>. Dark red vs light green stay apart because their <b>lightness</b> differs.</li>
+        <li>Colourblind-friendly blue and orange (slide 24): the bars stay distinguishable under protanopia.</li>
+        <li>In scatter plots with three categories (Furniture, Office Supplies, Technology), orange and green dots merge under protanopia; region colours (Central, East, South, West) merge under deuteranopia.</li>
+        <li>Slide 33's joke "Reasons why I hate pie charts: because I am colour blind" shows a pie with every slice the same grey.</li>
+      </ul>
+      <p class="tip">Three-part answer for "make this colourblind friendly": avoid red/green pairs (use blue/orange); vary lightness, not only hue; and don't rely on colour alone (add labels, position, shape or direct annotation).</p>
+      <p class="note extra">The distinguishability score is the CIE76 colour difference (ΔE) between the simulated colours. Below about 20 two swatches are easy to confuse on a chart; above about 40 they're clearly different. These cut-offs are rules of thumb.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">3.7</span><h3>Common misconceptions</h3></div>
+      <div class="myths">
+        <details class="myth"><summary><span class="mx">Myth</span><span>Colour blind people see in black and white.</span></summary><p><b>Actually:</b> Most have one weak or missing cone type (protan, deutan). They see colour but confuse certain hues, especially red, orange, brown and green. True greyscale vision is rare.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>A rainbow palette is good for ordered data.</span></summary><p><b>Actually:</b> Rainbow hues have no natural order and change lightness unevenly. Ordered data needs a sequential palette (one hue, light to dark) or diverging if there is a meaningful midpoint.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Every category deserves its own colour.</span></summary><p><b>Actually:</b> Beyond a handful of colours the reader can't remember them and keeps checking the legend. Highlight what matters and grey the rest, or split into small multiples.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Red and green are fine because everyone knows "red = bad, green = good".</span></summary><p><b>Actually:</b> About 8% of men can't tell them apart. Use blue/orange, change lightness, or add icons and labels.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Colour is just decoration you add at the end.</span></summary><p><b>Actually:</b> The framing example shows colour (and direction) sets the emotional message. Choose colour on purpose: sequential, diverging, categorical, highlight or alert.</p></details>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== CHAPTER 4 ===================== -->
+  <section class="chapter" id="ch4" data-view="ch4" data-ch="4" data-name="Dashboards" data-title="Exploratory vs. Explanatory and Dashboard Design" data-sub="Exploratory vs directed discovery, dashboard definitions, KPI rollups, bling, layout and eye scanning, analytics maturity, KPIs, Duell rules">
+    <div class="ch-head">
+      <span class="num" aria-hidden="true">04</span>
+      <span class="eyebrow">Chapter 4</span>
+      <h2>Exploratory vs. Explanatory and Dashboard Design</h2>
+      <p>Goals: learn exploratory vs. explanatory visualizations; discuss the definition of a dashboard; learn fundamentals of dashboard design; learn what makes data visualization actionable.</p>
+    </div>
+
+    <article class="topic" id="d-discovery">
+      <div class="topic-head"><span class="tnum">4.1</span><h3>Process of discovery: exploratory vs. directed</h3></div>
+      <p class="sub">"No matter how well-designed your graphic is, users will want to know 'why' or to look at things in a different way." The same store data, two ways. Exploratory gives you the tools; explanatory (directed) shows the answer to a pre-known question.</p>
+      <div class="controls"><div class="seg" role="group" aria-label="Mode" id="ex-mode"><button type="button" data-m="exp" aria-pressed="true">Exploratory discovery</button><button type="button" data-m="dir" aria-pressed="false">Directed discovery (explanatory)</button></div></div>
+      <div class="exd" id="exd"></div>
+      <div class="cards2">
+        <div class="mini"><span class="kicker">Exploratory discovery</span><ul><li>Give users tools to find the answer.</li><li>Allows analysts and power users to find new patterns and relationships.</li></ul></div>
+        <div class="mini"><span class="kicker">Directed discovery</span><ul><li>Show the answer to a pre-known question.</li><li>Options to change basic parameters.</li><li>Suitable for general consumption by a wide variety of users.</li></ul></div>
+      </div>
+      <p class="tip">Dashboards are a form of directed discovery. A "faceted analytical display" is closer to exploratory: several interactive views of one dataset for analysis.</p>
+    </article>
+
+    <article class="topic" id="d-def">
+      <div class="topic-head"><span class="tnum">4.2</span><h3>What is a dashboard?</h3></div>
+      <div class="defs3">
+        <blockquote class="dq1"><p>A dashboard is a visual display of the most important information needed to achieve one or more objectives; <mark>consolidated and arranged on a single screen</mark> so the information can be <mark>monitored at a glance</mark>.</p><cite>Stephen Few (2004), "Dashboard Confusion", Intelligent Enterprise, 20 March 2004</cite></blockquote>
+        <blockquote class="dq1"><p>A dashboard is a visual display of data used to monitor conditions and/or facilitate understanding.</p><cite>The Big Book of Dashboards (2017)</cite></blockquote>
+        <blockquote class="dq1"><p>Another way to think about it: an information display designed for people to help maintain <b>situational awareness</b>.</p><cite>The Big Book of Dashboards</cite></blockquote>
+        <blockquote class="dq1"><p>vs. a "faceted analytical display": a set of interactive charts (primarily graphs and tables) that simultaneously reside on a single screen, each of which presents a somewhat different view of a common dataset and is used to analyze that information.</p><cite>Stephen Few (2007), "Dashboard Confusion Revisited", PerceptualEdge.com, March 2007</cite></blockquote>
+      </div>
+      <div class="mini"><span class="kicker">Dashboards: supporting attributes (Few 2013, Information Dashboard Design, p. 28)</span><ul><li>Information is presented using small, concise, direct and clear display media: clearly stated messages; each point limited to the space needed.</li><li>Customized: tailored to the needs of a specific group or individual.</li><li>Consistent layout: data changes over time, but the interface is consistent (until it's time for the next revision).</li></ul></div>
+      <p class="tip">Be able to quote Few's 2004 definition and point to its key phrases (most important information, one or more objectives, single screen, at a glance), then contrast it with the broader 2017 Big Book definition (monitor conditions and/or facilitate understanding).</p>
+    </article>
+
+    <article class="topic" id="d-rollup">
+      <div class="topic-head"><span class="tnum">4.3</span><h3>Dashboard and KPI rollups: different views for levels of the organization</h3></div>
+      <p class="sub">Slides 12–13. Each level sees a different scope, fed by the same operational data sources. Tap a level.</p>
+      <div class="lab2"><div class="vz" id="rollup"></div><aside class="panel" id="rollup-p"></aside></div>
+    </article>
+
+    <article class="topic" id="d-bling">
+      <div class="topic-head"><span class="tnum">4.4</span><h3>Compare and contrast: avoid useless bling</h3></div>
+      <p class="sub">Slides 15–21. A "blinged" oil production dashboard (3D bars, gradients, green background) next to the "unblinged" version; a balanced scorecard of eight gauges (low effectiveness) next to Few's CIO dashboard (high effectiveness). Same KPI, three displays: compare how much room each needs.</p>
+      <div class="bling" id="bling"></div>
+      <div class="mini"><span class="kicker">Avoid useless bling (slide 18)</span><p>Some widgets and displays provided by tool vendors are glitzy but unhelpful, like gauges. They:</p><ul><li>require a disproportionate amount of room for the information presented,</li><li>are hard to read and understand,</li><li>provide little actionable information.</li></ul><p>On the CIO dashboard slide: "One gauge takes the same space that can accommodate twenty data points in this dashboard design."</p></div>
+      <p class="tip">Bullet graphs and sparklines are Few's replacements for gauges: a bullet graph shows actual, target and qualitative ranges in a thin bar; a sparkline shows the recent trend in a word-sized line.</p>
+    </article>
+
+    <article class="topic" id="d-layout">
+      <div class="topic-head"><span class="tnum">4.5</span><h3>Dashboard "dos", layout basics and eye scanning</h3></div>
+      <div class="mini"><span class="kicker">Dashboard "dos" (Few 2013, p. 28)</span><ul><li>Content position and size should match its importance and frequency of use.</li><li>Use colour and formatting to draw attention where needed, rather than to decorate.</li><li>Visually associate data and content that is related.</li><li>Use the needs of the user to drive the layout, rather than forcing layout with an inflexible grid (note: this is a consideration when choosing tools).</li></ul><p>When deciding placement, consider how the eye will scan the page.</p></div>
+      <p class="sub">Eye-tracking heat maps of web pages show the well-known "F" pattern: attention falls heavily on the top left and fades down and to the right. The slides warn it's partly a product of text-heavy pages; patterns change with content and with the medium (a newspaper is scanned differently). For dashboards the slides give a simple guide: top-left most emphasis, top-right and bottom-left neutral, bottom-right least. Place the four tiles, then check the heat map.</p>
+      <div class="lay" id="lay"></div>
+      <p class="tip">When asked where to put the most important KPI: top left (most emphasis), with supporting detail in the neutral quadrants and the least critical content bottom right. Mention that dominance of the neutral quadrants can change with content.</p>
+      <p class="note">Slides 37–39 (Tableau eye-tracking research) are images without text: dark backgrounds and big headline numbers pulled the eye first. Ask whether those details are examinable.</p>
+    </article>
+
+    <article class="topic" id="d-maturity">
+      <div class="topic-head"><span class="tnum">4.6</span><h3>What makes visualization actionable? Questions and analytics maturity</h3></div>
+      <blockquote class="dq1"><p>"At their best, graphics are instruments for reasoning about quantitative information. Often the most effective way to describe, explore, and summarize a set of numbers is to look at pictures of those numbers."</p><cite>Edward R. Tufte, Professor Emeritus, Yale University, author of The Visual Display of Quantitative Information</cite></blockquote>
+      <p class="sub">Slide 42 (LÛCRUM Inc.): as questions get harder, analytics move up a staircase towards improved decision making and business value. Tap a step.</p>
+      <div class="lab2"><div class="vz" id="mat"></div><aside class="panel" id="mat-p"></aside></div>
+    </article>
+
+    <article class="topic" id="d-kpi">
+      <div class="topic-head"><span class="tnum">4.7</span><h3>Key performance indicators (KPIs) and the bullet graph</h3></div>
+      <div class="mini"><span class="kicker">KPI</span><p>A KPI is a type of performance measurement, used to evaluate success or achievement against a specific goal.</p><ul><li>Can be operational or strategic.</li><li>Helps to identify areas that need attention: more "where to look" vs. "this happened".</li><li>Knowledge of "what matters" to an organization makes KPIs relevant.</li><li>Often included in dashboard displays.</li></ul><p><b>You must know what you're measuring and what performance is desired before you create a KPI.</b></p></div>
+      <p class="sub">Slide 44's example KPI: revenue per unit. Move the actual value and the target and watch the bullet graph and its status change.</p>
+      <div class="lab2">
+        <div class="kpi" id="kpi"></div>
+        <aside class="panel">
+          <span class="kicker">Revenue per unit</span>
+          <label class="inl">Actual ($/unit) <input type="range" id="kpi-a" min="0" max="300" value="270"><b id="kpi-a-v" class="mono">270</b></label>
+          <label class="inl">Target ($/unit) <input type="range" id="kpi-t" min="0" max="300" value="240"><b id="kpi-t-v" class="mono">240</b></label>
+          <div class="tbl"><table><thead><tr><th>Component</th><th>Measure / level</th><th>Value</th></tr></thead><tbody><tr><td>Revenue</td><td>Actual $ per unit</td><td id="kpi-ta">$270 / unit</td></tr><tr><td>Target</td><td>Goal $ per unit</td><td id="kpi-tt">$240 / unit</td></tr><tr><td rowspan="3">Performance</td><td>Low</td><td>$0–99 / unit</td></tr><tr><td>Marginal</td><td>$100–199 / unit</td></tr><tr><td>High</td><td>$200+ / unit</td></tr></tbody></table></div>
+        </aside>
+      </div>
+    </article>
+
+    <article class="topic" id="d-duell">
+      <div class="topic-head"><span class="tnum">4.8</span><h3>The Duell rules for actionable visualizations</h3></div>
+      <p class="sub">Created by Eric Duell, used by permission on the slides. Step through the five rules; each one updates the mini dashboard on the right, built in the style of the slides' complaints and inspections examples.</p>
+      <div class="duell">
+        <ol class="du-steps" id="du-steps"></ol>
+        <div class="du-dash" id="du-dash"></div>
+      </div>
+      <p class="tip">Learn the five rules in order: (1) the question to answer must be identifiable; (2) the data needed must be available; (3) the visualization should be tailored to the person who will use the information; (4) the story uncovered in the visualization should be evident; (5) the action required should be clear. Rule 1 is different from exploratory data analysis, where you don't start with a fixed question.</p>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head"><span class="tnum">4.9</span><h3>Common misconceptions</h3></div>
+      <div class="myths">
+        <details class="myth"><summary><span class="mx">Myth</span><span>Any page with several charts is a dashboard.</span></summary><p><b>Actually:</b> By Few's definition a dashboard shows the <i>most important</i> information for specific objectives, on a single screen, to be monitored at a glance. A set of interactive charts for analysis is a "faceted analytical display".</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>Gauges look like a car dashboard, so they're ideal.</span></summary><p><b>Actually:</b> Gauges take a lot of space for one number and are hard to compare. A bullet graph or sparkline shows the same value, its target and its trend in a fraction of the space.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>One dashboard can serve the CEO and the team equally.</span></summary><p><b>Actually:</b> KPI rollups give each level its own view: strategic for the CEO, tactical for managers, operational for teams. Duell rule 3 says tailor it to the person.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>A KPI is any number you track.</span></summary><p><b>Actually:</b> A KPI evaluates success against a specific goal. Without a target and a sense of what "good" looks like, it's just a metric.</p></details>
+        <details class="myth"><summary><span class="mx">Myth</span><span>People always read a dashboard in an F pattern.</span></summary><p><b>Actually:</b> The F pattern comes from text-heavy web pages. The slides stress that content and medium change scanning; big numbers, colour and dark backgrounds pull the eye too.</p></details>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== SQL LAB ===================== -->
+  <section class="chapter" id="sql" data-view="sql">
+    <div class="ch-head"><span class="num" aria-hidden="true">SQL</span><span class="eyebrow">Hands-on lab</span><h2>SQL → Chart lab</h2><p>Write SQL against the store's sales and the Halloween data, then turn the result into a chart. Each exercise checks your query and your chart choice, and explains the choice using the chapter rules: time on the x-axis, sort for comparison, the right colour use, and no pie with many slices.</p></div>
+
+    <article class="topic" id="sql-lab" data-side="Query, then chart it" data-n="1">
+      <div class="sqll">
+        <aside class="sql-side">
+          <span class="kicker">Exercises</span>
+          <ol class="sql-ex" id="sql-ex"></ol>
+          <span class="kicker">Tables</span>
+          <div class="sql-schema" id="sql-schema"></div>
+        </aside>
+        <div class="sql-main">
+          <div class="sql-task" id="sql-task"></div>
+          <textarea id="sql-in" spellcheck="false" aria-label="SQL query" autocomplete="off"></textarea>
+          <div class="controls"><button class="btn primary" type="button" id="sql-run">Run ▸</button><button class="btn" type="button" id="sql-check">Check answer</button><button class="btn ghost" type="button" id="sql-hint">Hint</button><button class="btn ghost" type="button" id="sql-sol">Show solution</button><span class="kbd-hint">Ctrl + Enter runs</span></div>
+          <div class="steptext" id="sql-msg">Loading the query engine…</div>
+          <details class="sql-res" id="sql-res-d" open><summary>Result table <span id="sql-res-n"></span></summary><div class="tbl sql-out" id="sql-out"></div></details>
+          <div class="cb" id="cb">
+            <div class="cb-row"><span class="cb-l">Chart</span><div class="cb-types" id="cb-types"></div></div>
+            <div class="cb-row cb-fields"><label>X / category <select id="cb-x"></select></label><label>Value <select id="cb-y"></select></label><label>Series <select id="cb-s"></select></label><label>Sort <select id="cb-sort"><option value="none">As returned</option><option value="desc">Largest first</option><option value="asc">Smallest first</option></select></label></div>
+            <div class="cb-row cb-fields"><label>Colour use <select id="cb-col"><option value="single">Single colour</option><option value="cat">Categorical</option><option value="hi">Highlight largest</option><option value="seq">Sequential</option><option value="div">Diverging (± around 0)</option></select></label><label>Preview as <select id="cb-cvd"><option value="none">Normal vision</option><option value="protan">Protanopia</option><option value="deutan">Deuteranopia</option><option value="tritan">Tritanopia</option><option value="mono">Greyscale</option></select></label><label class="chk"><input type="checkbox" id="cb-lab"> Data labels</label><label class="chk"><input type="checkbox" id="cb-grid" checked> Gridlines</label><input type="text" id="cb-title" placeholder="Chart title (say the message)" aria-label="Chart title"></div>
+            <div class="vz cb-chart" id="cb-chart" style="min-height:300px"></div>
+            <div class="cb-crit" id="cb-crit"></div>
+          </div>
+        </div>
+      </div>
+      <p class="note extra">Runs in your browser with AlaSQL, which follows standard SQL closely. Dates are text in YYYY-MM-DD form, so <code>SUBSTRING(OrderDate,1,7)</code> gives the month and <code>SUBSTRING(OrderDate,1,4)</code> the year. Avoid the words <code>total</code> and <code>value</code> as column aliases.</p>
+    </article>
+
+    <article class="topic" id="sql-ref" data-side="SQL patterns for charts" data-n="2">
+      <div class="topic-head"><h3>SQL patterns behind common charts</h3></div>
+      <div class="pat" id="sql-pat"></div>
+    </article>
+  </section>
+
+  <!-- ===================== EXCEL LAB ===================== -->
+  <section class="chapter" id="excel" data-view="excel">
+    <div class="ch-head"><span class="num" aria-hidden="true">XL</span><span class="eyebrow">Hands-on lab</span><h2>Excel lab: charts, PivotTables, slicers and a dashboard</h2><p>A practice Excel in your browser with the same store data. Follow a track step by step: every step tells you the exact ribbon path in real Excel, then lets you do it here and ticks it off when you get it right. Download the workbook to repeat each track in Excel itself.</p></div>
+
+    <article class="topic" id="xl-lab" data-side="Practice Excel (guided)" data-n="1">
+      <div class="xl-top">
+        <div class="tabs" id="xl-tracks" role="tablist" aria-label="Tracks"></div>
+        <a class="btn-dl" id="xl-dl" href="practice-workbook.xlsx" download>Download practice workbook (.xlsx)</a>
+      </div>
+      <div class="xl-wrap">
+        <div class="xl" id="xl" aria-label="Practice Excel window"></div>
+        <aside class="xl-guide" id="xl-guide" aria-live="polite"></aside>
+      </div>
+      <p class="note extra">This is a practice copy of Excel's ribbon, field list and dialogs, close to Microsoft 365 for Windows. Mac and older versions use the same names but some buttons sit on different tabs (e.g. "PivotTable Analyze" was called "Analyze" in Excel 2016 and "Options" in 2010).</p>
+    </article>
+
+    <article class="topic" id="xl-real" data-side="Do it in real Excel" data-n="2">
+      <div class="topic-head"><h3>The same steps in real Excel</h3></div>
+      <div class="xl-steps" id="xl-real-steps"></div>
+    </article>
+
+    <article class="topic" id="xl-charts" data-side="Excel chart types" data-n="3">
+      <div class="topic-head"><h3>Excel's chart types: when to use each</h3></div>
+      <div class="xl-gal" id="xl-gal"></div>
+    </article>
+  </section>
+
+  <section class="chapter" id="practice" data-view="practice">
+    <div class="ch-head"><span class="num" aria-hidden="true">✓</span><span class="eyebrow">Practice</span><h2>Revise and test yourself</h2><p>Flip through flashcards, take the quiz for one chapter or all of them, time yourself in the exam, and check what the slides leave out. The SQL and Excel labs are on their own pages in the top bar.</p></div>
+    <div class="phub">
+      <a href="#glossary"><b>Glossary &amp; flashcards</b><small>Every term, searchable, or one card at a time</small></a>
+      <a href="#quiz"><b>Quiz &amp; timed exam</b><small>Pick a chapter or mix them all</small></a>
+      <a href="#sql"><b>SQL → Chart lab</b><small>Query the data, choose the chart, get it checked</small></a>
+      <a href="#excel"><b>Excel lab</b><small>Charts, PivotTables, slicers, report connections, dashboard</small></a>
+      <a href="#gaps"><b>Slide gaps</b><small>Missing, outdated or unclear points to ask about</small></a>
+    </div>
+  </section>
+
+  <section class="chapter" id="glossary" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Reference</span><h2>Glossary</h2><p>Every term from all chapters in one place. Search, filter by chapter, or switch to flashcards.</p></div>
+    <article class="topic">
+      <div class="gloss-bar"><input type="text" id="gloss-q" placeholder="Search a term, e.g. sparkline, diverging, slicer" aria-label="Search glossary"><div class="tabs" id="gloss-f"></div><div class="seg" id="gloss-v" role="group" aria-label="Glossary view"><button type="button" data-v="list" aria-pressed="true">List</button><button type="button" data-v="cards" aria-pressed="false">Flashcards</button></div></div>
+      <div class="fc-wrap" id="fc" hidden>
+        <div class="fc-stats" id="fc-stats"></div>
+        <button type="button" class="fc" id="fc-card" aria-label="Flashcard. Press to flip."><span class="fc-in"><span class="fc-face"><small id="fc-ch"></small><b id="fc-term"></b><em>Tap or press Space to flip</em></span><span class="fc-face back"><span class="fcp" id="fc-def"></span><em id="fc-pos"></em></span></span></button>
+        <div class="controls" id="fc-rate"><button class="btn" type="button" id="fc-again" disabled>Again</button><button class="btn primary" type="button" id="fc-good" disabled>Got it</button><button class="btn ghost" type="button" id="fc-skip">Skip</button></div><div class="fc-done" id="fc-done" hidden></div><label class="recall-tg" for="fc-all"><input type="checkbox" id="fc-all"> Include cards that aren't due yet</label>
+      </div>
+      <dl class="gloss" id="gloss"></dl>
+      <p class="gloss-empty" id="gloss-empty" hidden>No terms match. Try a shorter word.</p>
+    </article>
+  </section>
+
+  <section class="chapter" id="quiz" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Self-check</span><h2>Quick quiz</h2><p>Each chapter has a bank of 25 to 30 questions. Every attempt draws 20 at random from the chapter you pick (or from all of them), shuffles the options, and lists what you missed at the end.</p></div>
+    <div class="tabs" id="quiz-f" style="margin-bottom:4px"></div>
+    <article class="topic quiz" id="quiz-box"></article>
+    <article class="topic exam" id="exam-box"></article>
+  </section>
+
+  <section class="chapter" id="gaps" data-view="practice">
+    <div class="ch-head"><span class="eyebrow">Slide gaps</span><h2>What's missing or off in the PDFs</h2><p>Worth asking your lecturer whether the unexplained items are examinable. Nothing here has been "corrected" in the notes without saying so.</p></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Where</th><th>Issue</th></tr></thead>
+      <tbody>
+        <tr><td>Ch1 goals</td><td>The goals promise "the two thinking systems that we use to process the world", but no slide covers them (see the Extra note in 1.8)</td></tr>
+        <tr><td>Ch1 evidence</td><td>The case for data visualization uses a 2010 MIT survey, a 2014 Gartner quote and July 2017 job ads</td></tr>
+        <tr><td>Ch1 illusions (slides 42–68)</td><td>Images from the Brain Games video with no text explaining each effect; the explanations here are added</td></tr>
+        <tr><td>Ch1 history</td><td>Minard is filed under "Early 19th Century" but his graphics date 1844–1870; two different citations are both numbered 7</td></tr>
+        <tr><td>Ch1 colour wheels</td><td>"compliments" should be "complements"</td></tr>
+        <tr><td>Ch1 visual variables</td><td>Motion, medium and context are named but not demonstrated; "two planar dimensions" is Bertin's term for x and y</td></tr>
+        <tr><td>Ch1 slide 108</td><td>3D survey chart shown with only "…and what happens now?"; the lesson (avoid 3D) is implied</td></tr>
+        <tr><td>Ch2 Halloween data</td><td>Columns are running totals, which the slide never states</td></tr>
+        <tr><td>Ch2 planning dashboard</td><td>"Purchase candy for ~1160" but 869 + 143 + 105 = 1117; "Max change = +143" but the biggest yearly rise was +184 (2009→2010); the DJIA "correlation" rests on three points</td></tr>
+        <tr><td>Ch2 slide 15</td><td>Title typo "Avergage"; wind speed vs late arrivals uses four points plus a forecast</td></tr>
+        <tr><td>Ch2 slide 28</td><td>"Data-ink ratio" is named but never defined</td></tr>
+        <tr><td>Ch2 temperatures</td><td>In °F with no conversion (Halloween data is from Cincinnati, USA)</td></tr>
+        <tr><td>Ch3 slide 5</td><td>The two Iraq graphics are shown with no explanation of the point (framing by colour and direction)</td></tr>
+        <tr><td>Ch3 CVD</td><td>Only red-green types listed; tritan (blue-yellow) deficiency not mentioned</td></tr>
+        <tr><td>Ch4 slides 37–39</td><td>Tableau eye-tracking research shown as images only</td></tr>
+        <tr><td>Ch4 slides 47–59</td><td>Examples for each Duell rule (regions, Valentine's spending, rat sightings, rain, income statement, complaints) have no captions linking them to the rule</td></tr>
+        <tr><td>Ch4 KPI example</td><td>Uses US dollars and a revenue-per-unit KPI with no context</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <footer><span>WIE3010 Data Visualization · Revision companion</span><span>Summarised from the lecture slides "Introduction to Data Visualization", "The Fundamentals of Data Visualization", "Use of Color in Data Visualization" and "Exploratory vs. Explanatory and Dashboard Design". Not official course material.</span></footer>
+</main>

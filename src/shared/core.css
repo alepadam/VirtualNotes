@@ -420,6 +420,11 @@ tr.on td{background:var(--amber-soft);color:var(--fg)}
 [data-view="ch2"]{--ch:var(--blue);--ch-soft:#7C98FF22}
 [data-view="ch3"]{--ch:var(--amber);--ch-soft:var(--amber-soft)}
 [data-view="practice"]{--ch:var(--lilac);--ch-soft:#B79CFF22}
+[data-view="ch4"]{--ch:var(--rose);--ch-soft:var(--rose-soft)}
+[data-view="ch5"]{--ch:var(--mint);--ch-soft:#8FD69422}
+[data-view="ch6"]{--ch:var(--lilac);--ch-soft:#B79CFF22}
+[data-view="sql"]{--ch:var(--blue);--ch-soft:#7C98FF22}
+[data-view="excel"]{--ch:#3FBF7F;--ch-soft:#3FBF7F22}
 [data-view] .tnum{color:var(--ch,var(--amber));background:var(--ch-soft,var(--amber-soft))}
 [data-view] .ch-head .eyebrow{color:var(--ch,var(--amber))}
 [data-view] .ch-head .num{-webkit-text-stroke-color:color-mix(in srgb,var(--ch,var(--line)) 45%,transparent)}

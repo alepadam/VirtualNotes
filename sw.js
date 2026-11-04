@@ -5,11 +5,11 @@
    A new worker takes over immediately; because everything that changes is fetched network-first,
    a page never mixes an old engine with new content. */
 const STATIC = "nlq-static-658373bd54";
-const PAGES = "nlq-pages-ae47cb80ee";
+const PAGES = "nlq-pages-33e3b43ff1";
 const FONTS = "nlq-fonts";
 const STATIC_FILES = ["vendor/three-r128.min.js", "vendor/alasql-4.4.0.min.js", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
-const PAGE_FILES = ["./", "shared/core.css", "shared/core.js", "manifest.webmanifest", "big-data/", "big-data/data.js", "big-data/labs.js"];
-const SUBJECT_DIRS = ["big-data/"];
+const PAGE_FILES = ["./", "shared/core.css", "shared/core.js", "manifest.webmanifest", "big-data/", "big-data/data.js", "big-data/labs.js", "data-viz/", "data-viz/data.js", "data-viz/subject.css", "data-viz/dataset.js", "data-viz/viz.js", "data-viz/labs.js", "data-viz/sqllab.js", "data-viz/excel.js", "data-viz/practice-workbook.xlsx"];
+const SUBJECT_DIRS = ["big-data/", "data-viz/"];
 
 self.addEventListener("install", e => {
   e.waitUntil(Promise.all([

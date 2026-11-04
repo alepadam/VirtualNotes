@@ -126,11 +126,18 @@ body{min-height:100vh;display:flex;flex-direction:column;
         <div class="stats"><div><span>Topics learned</span><b data-k="learned">–</b></div><div><span>Cards due</span><b data-k="due">–</b></div><div><span>Drill accuracy</span><b data-k="drill">–</b></div><div><span>Last exam</span><b data-k="exam">–</b></div></div>
         <div class="cta"><a class="go" href="big-data/">Open subject <span aria-hidden="true">→</span></a><a class="cont" href="big-data/" hidden>Continue <span></span></a></div>
       </article>
-      <article class="sc soon" style="--a1:#B79CFF;--a2:#7C98FF" aria-label="Data Visualization, coming soon">
-        <div class="row"><span class="st">Coming soon</span></div>
-        <h2>Data Visualization</h2>
-        <p>Chapters, labs and practice appear here once the lecture slides are added.</p>
-        <div class="ghost" aria-hidden="true"><i></i><i></i><i></i></div>
+      <article class="sc live" data-subject="data-viz" style="--a1:#B79CFF;--a2:#4FD1C5">
+        <div class="row"><span class="code">WIE3010</span><span class="st">4 chapters · SQL &amp; Excel labs</span></div>
+        <h2><a href="data-viz/">Data Visualization</a></h2>
+        <p>Perception and preattentive attributes, chart fundamentals, colour and colour blindness, dashboard design, with a hands-on SQL → Chart lab and a guided Excel lab (PivotTables, slicers, report connections, dashboard).</p>
+        <ul class="chs" aria-label="Chapters">
+          <li data-ch="1"><span class="n">CH 01</span><span class="t"><span>Introduction to Data Visualization</span><span class="bar"><i></i></span></span><span class="v">–</span></li>
+          <li data-ch="2"><span class="n">CH 02</span><span class="t"><span>Fundamentals (Halloween review)</span><span class="bar"><i></i></span></span><span class="v">–</span></li>
+          <li data-ch="3"><span class="n">CH 03</span><span class="t"><span>Use of Color</span><span class="bar"><i></i></span></span><span class="v">–</span></li>
+          <li data-ch="4"><span class="n">CH 04</span><span class="t"><span>Exploratory vs. Explanatory &amp; Dashboards</span><span class="bar"><i></i></span></span><span class="v">–</span></li>
+        </ul>
+        <div class="stats"><div><span>Topics learned</span><b data-k="learned">–</b></div><div><span>Cards due</span><b data-k="due">–</b></div><div><span>Quiz bank</span><b>106</b></div><div><span>Last exam</span><b data-k="exam">–</b></div></div>
+        <div class="cta"><a class="go" href="data-viz/">Open subject <span aria-hidden="true">→</span></a><a class="cont" href="data-viz/" hidden>Continue <span></span></a></div>
       </article>
     </div>
     <p class="hub-note">Notes are summarised from the lecture slides, with extra explanations marked where they go beyond the slides. They are not official course material.</p>
@@ -139,7 +146,7 @@ body{min-height:100vh;display:flex;flex-direction:column;
 <footer class="hub-foot"><div class="wrap"><span>notewithliqi</span><span>Progress stays on this device. Clearing site data resets it.</span></div></footer>
 <script>
 (function(){"use strict";
-const SUBJECTS=[{"id": "big-data", "status": "live", "title": "Big Data Applications and Analytics", "short": "Big Data", "prefix": "bdl-", "href": "big-data/"}, {"id": "data-viz", "status": "soon", "title": "Data Visualization", "short": "Data Viz"}];
+const SUBJECTS=[{"id": "big-data", "status": "live", "title": "Big Data Applications and Analytics", "short": "Big Data", "prefix": "bdl-", "href": "big-data/"}, {"id": "data-viz", "status": "live", "title": "Data Visualization", "short": "Data Viz", "prefix": "dvl-", "href": "data-viz/"}];
 const get=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const $=s=>document.querySelector(s);

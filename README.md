@@ -8,6 +8,7 @@ Interactive revision notes. The home page lists every subject; each subject has 
 | --- | --- |
 | `index.html` | Home page: pick a subject, see progress, continue where you left off |
 | `big-data/` | Big Data Applications and Analytics (WIH3003) |
+| `data-viz/` | Data Visualization (WIE3010) |
 | `shared/core.css`, `shared/core.js` | Engine shared by every subject (layout, navigation, search, quiz, flashcards, exam, drill, 3D toolkit) |
 | `vendor/` | Self-hosted three.js r128 (3D) and AlaSQL 4.4.0 (HiveQL practice) |
 | `sw.js` | Service worker: offline support and caching |
